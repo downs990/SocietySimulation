@@ -9,6 +9,7 @@ using std::cout;
 int main()
 {
 
+
 	Schedule p1Schedule = Schedule();
 	p1Schedule.addTask("MWF 2:00pm Math Class");
 	p1Schedule.addTask("T 3:00pm History Class");
