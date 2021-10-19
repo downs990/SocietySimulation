@@ -8,6 +8,16 @@ using std::cout;
 
 int main()
 {
+	// ( MVP ) Minimum Viable Product 
+	
+	// 1. Create one Person 
+	// 2. Create one Environment 
+	//		- Construct the enviorment specific decision tree
+	// 3. Begin process that lets Person execute decisions
+	//		- Check each threashold for all decisions
+	// 4. Add all decisions to Person's life decision tree
+	//		- update Person's mood based on decisions 
+
 
 
 	Schedule p1Schedule = Schedule();
