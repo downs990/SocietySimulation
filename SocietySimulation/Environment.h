@@ -29,20 +29,21 @@ private:
 	//HashMap<Condition, Thresholds[]>				(contains environment specific variables)
 	//HashMap<Condition, Mood_Effects[]>
 	 
-	// Condition1 = "HighProductivity"
-
-	// Condition1's threhsolds: 
-	//			{
+	// condition: "HighProductivity"{
+	//		
+	//		threhsolds: {
 	//				sleep >= 5, 
 	//				ate_breakfast = true, 
 	//				social_interactions_today <= 4    (environment specific variable)
-	//			}	
-	 
-	// Condition1's mood effects: 
-	//				{
-	//					happy+1% , 
-	//					stree-1%
-	//				}
+	//			},	
+	//	 
+	//		mood effects: {
+	//				happy+1% , 
+	//				stree-1%
+	//			}
+	// }
+
+
 
 
 

@@ -31,14 +31,11 @@ int main()
 	env1.addPerson(person1);
 
 	// 3. Begin process that lets Person execute decisions
-	//		- Check each threashold for all decisions
-	// 4. Add all decisions to Person's life decision tree
-	//		- update Person's mood based on decisions 
-	// 0. Create simple sim clock
+	//		- Check each threashold for all decisions  
 
+	// 4. Create simple sim clock
 
-
-	// Main simulation loop
+	 
 	while (true) { 
 		Sleep(1000);
 		cout << "." ;
