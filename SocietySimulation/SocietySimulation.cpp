@@ -3,35 +3,49 @@
 
 #include <iostream>
 #include <iostream>
+#include <Windows.h>
 #include "Person.h"
-using std::cout;
+#include "Environment.h"
+using std::cout; 
 
 int main()
 {
 	// ( MVP ) Minimum Viable Product 
-	
+	 
+
 	// 1. Create one Person 
+	Person person1 = Person("Courtney");
+	person1.addTaskToSchedule("MWF 2:00pm Math Class");
+	person1.addTaskToSchedule("T 3:00pm History Class");
+	person1.addTaskToSchedule("TR 4:01pm Science Class");
+
+
+	string p1String = person1.toString();
+
+	cout << p1String << "\n";
+	cout << "Schedule: \n" << person1.getSchedule() << "\n";
+
 	// 2. Create one Environment 
 	//		- Construct the enviorment specific decision tree
+	Environment env1 = Environment("Workplace 1");
+	env1.addPerson(person1);
+
 	// 3. Begin process that lets Person execute decisions
 	//		- Check each threashold for all decisions
 	// 4. Add all decisions to Person's life decision tree
 	//		- update Person's mood based on decisions 
+	// 0. Create simple sim clock
 
 
 
-	Schedule p1Schedule = Schedule();
-	p1Schedule.addTask("MWF 2:00pm Math Class");
-	p1Schedule.addTask("T 3:00pm History Class");
-	p1Schedule.addTask("TR 4:01pm Science Class");
+	// Main simulation loop
+	while (true) { 
+		Sleep(1000);
+		cout << "." ;
 
 
-	Person person1 = Person("Courtney");
-	person1.setSchedule(&p1Schedule);
-	string p1String = person1.toString();
 
-	cout << p1String << "\n";
-	cout << "Schedule: \n" << p1Schedule.toString() << "\n";
+	}
 
 }
 

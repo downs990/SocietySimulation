@@ -9,12 +9,14 @@ class Person
 {
 public:
 	Person(string name);
-	void setSchedule(Schedule *dailySchedule);
+	void addTaskToSchedule(string newTask);
+	void markTaskAsComplete(string taskName);
+	string getSchedule();
 	string toString();
 
 private:
 	string name;
-	Schedule *dailySchedule;
+	Schedule dailySchedule;
 
 
 };
