@@ -8,6 +8,44 @@
 #include "Environment.h"
 using std::cout; 
 
+
+
+
+// Environmental Condition 1
+// condition: "HighProductivity"{
+//		
+//		threhsolds: {
+//				sleep >= 5, 
+//				ate_breakfast = true, 
+//				social_interactions_today <= 4    (environment specific variable)
+//			},	
+//	 
+//		mood effects: {
+//				happy+1% , 
+//				stree-1%
+//			}
+// }
+void highProductivity(Environment env, Person *person) {
+	if (env.getName() == "Work") {
+		if (
+			person->getHoursSlept() >= 5  &&
+			person->getAteBreakfast() == true 
+			) 
+		{
+			person->setHappyOffset(1);   // happy += 1
+			person->setStressOffset(-1); // stress -= 1
+		}
+	}
+}
+
+// Environmental Condition 2
+// Environmental Condition 3
+// Environmental Condition 4
+//            ...
+
+
+
+
 int main()
 {
 	// ( MVP ) Minimum Viable Product 
@@ -21,14 +59,20 @@ int main()
 
 
 	string p1String = person1.toString();
-
-	cout << p1String << "\n";
 	cout << "Schedule: \n" << person1.getSchedule() << "\n";
 
 	// 2. Create one Environment 
 	//		- Construct the enviorment specific decision tree
-	Environment env1 = Environment("Workplace 1");
-	env1.addPerson(person1);
+
+
+	cout << "Person1 Before: " << person1.toString() << "\n";
+
+	Environment env1 = Environment("Work");
+	env1.addPerson(&person1);
+	env1.addCondition(highProductivity);
+	env1.applyConditions();
+
+	cout << "Person1 After: " << person1.toString() << "\n";
 
 	// 3. Begin process that lets Person execute decisions
 	//		- Check each threashold for all decisions  
@@ -36,13 +80,10 @@ int main()
 	// 4. Create simple sim clock
 
 	 
-	while (true) { 
-		Sleep(1000);
-		cout << "." ;
-
-
-
-	}
+	//while (true) { 
+	//	Sleep(1000);
+	//	cout << "." ;
+	//}
 
 }
 
