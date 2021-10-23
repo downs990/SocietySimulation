@@ -9,7 +9,7 @@ class Person
 {
 public:
 	Person(string name);
-	void addTaskToSchedule(string newTask);
+	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	string getSchedule();
 	void setHappyOffset(int offset);

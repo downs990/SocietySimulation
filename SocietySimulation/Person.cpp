@@ -10,8 +10,8 @@ Person::Person(string name ) {
 }
 
 
-void Person::addTaskToSchedule(string newTask) {
-	this->dailySchedule.addTask(newTask);
+void Person::addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName) {
+	this->dailySchedule.addTask(repeatDays, startTime, endTime, locationName);
 }
 
 // TODO: Add subclass in Schedule for a task class.    | Task has: completed, name, time, etc..

@@ -8,17 +8,36 @@ using std::vector;
 
 class Schedule
 {
+	class SimTask {
+	public:
+		SimTask(string repeatDays, string startTime, string endTime, string locationName);
+		string getRepeatDays();
+		string getStartTime();
+		string getEndTime();
+		string getlocationName();
+	private:
+		string repeatDays;
+		string startTime;
+		string endTime;
+		string locationName;
+		//TODO: taskName;
+	};
+
+
 
 public: 
 	Schedule();
-	void addTask(string newTask);
+	void addTask(string repeatDays, string startTime, string endTime, string locationName);
 	void removeTask(int indexToRemove);
 	void updateTask();
 	string toString();
 
-private:
-	// TODO: Create a Task subclass. 
-	// TODO: Task properties: RepeatDays, Time, Location, Name 
-	vector<string> taskList;
+private: 
+	vector<SimTask> taskList;
+
+
+
+
+ 
 };
 
