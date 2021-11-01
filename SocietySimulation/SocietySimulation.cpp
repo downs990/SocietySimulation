@@ -76,11 +76,8 @@ int main()
 
 	Environment env1 = Environment("Work");
 	env1.addPerson(&person1);
-	env1.addCondition(highProductivity);
-	env1.applyConditions();
-
-	cout << "Person1 After: " << person1.toString() << "\n";
-	  
+	env1.addCondition(highProductivity);  
+	 
 
 	// Vector of all environements 
 	vector<Environment> country = { env1 };
@@ -110,6 +107,15 @@ int main()
 
 
 		// 1. .applyConditions() for each env in country. (updates population state/mood)
+		for (Environment currentEnv : country) {
+			currentEnv.applyConditions();
+		}
+
+		cout << "Person1 After: " << person1.toString() << "\n\n\n";
+
+
+
+
 		// 2. Update sim clock by 1 minutes (because shedules are minute specific)
 		// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
 
