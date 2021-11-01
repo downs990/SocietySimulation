@@ -86,37 +86,47 @@ int main()
 	vector<Environment> country = { env1 };
 	 
 
-	//while (true) { 
 
-	//	// 1. .applyConditions() for each env in country. (updates population state/mood)
-	//	// 2. Update sim clock by 1 minutes
-	//	// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
+ 
 
-	//	Sleep(60000); // 1 minute  
-	//	cout << "." ;
-	//	
-	//	// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
-	//	//		for Historic Event threshold properties. 
-	//	// 5. Use those values to check for and keep track of any Historic Event's that occur.  
-	//	
-	//}
+	 
+
+	int const SECONDS_IN_HOUR = 3600;
+	time_t now = time(0);
+
+	while (true) { 
+
+		struct tm newtime; 
+		now += SECONDS_IN_HOUR;
+		localtime_s(&newtime, &now);
+
+		// Simulation clock: 1 second = 1 hour 
+		int month = 1 + newtime.tm_mon;
+		int day = newtime.tm_mday;
+		int year = 1900 + newtime.tm_year;
+		cout << "Date: " << month << ", " << day << " " << year << "\n";
+		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
+	 	
 
 
+		// 1. .applyConditions() for each env in country. (updates population state/mood)
+		// 2. Update sim clock by 1 minutes (because shedules are minute specific)
+		// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
 
 
-	// TODO: Create a sim timestamp incrementer
+		// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
+		//		for Historic Event threshold properties. 
+		// 5. Use those values to check for and keep track of any Historic Event's that occur.  
+		
+		Sleep(1000); 
+	}
 
-	// current date/time based on current system
-	//time_t now = time(0);
-	//cout << "Number of sec since January 1,1970:" << now << "\n";
-	//tm* ltm = localtime(&now);
-	//// print various components of tm structure.
-	//cout << "Year: " << 1900 + ltm->tm_year << "\n";
-	//cout << "Month: " << 1 + ltm->tm_mon << "\n";
-	//cout << "Day: " << ltm->tm_mday << "\n";
-	//cout << "Time: " << 1 + ltm->tm_hour << ":";
-	//cout << 1 + ltm->tm_min << ":";
-	//cout << 1 + ltm->tm_sec << "\n";
+
+	 
+
+	 
+	  
+ 
 
 
 
