@@ -8,7 +8,7 @@ using std::cout;
 using std::string;
 using std::vector;
 using std::map;
-#include "Person.h"
+#include "Person.h" 
 
 class Environment
 {
@@ -21,7 +21,9 @@ public:
 	void addPerson(Person *newPerson);
 	void removePerson(Person *removingPerson);
 	void addCondition(void(*function)(Environment, Person*));
+	void addDecision(void(*function)(Environment, Person*));
 	void applyConditions();
+	void evaluateDecisions();
 
 private:
 	string name;
@@ -29,7 +31,7 @@ private:
 
 	// Vector of function pointers.
 	vector<void (*)(Environment, Person*)> conditionsList;
-
+	vector<void (*)(Environment, Person*)> decisionsList;
  
 
 };

@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "Person.h"
 #include "Environment.h"
+#include "EnvironmentManager.h"
 using std::cout; 
 
 
@@ -76,15 +77,16 @@ int main()
 
 	Environment env1 = Environment("Work");
 	env1.addPerson(&person1);
-	env1.addCondition(highProductivity);  
+	env1.addCondition(highProductivity); 
+	 
 	 
 
 	// Vector of all environements 
 	vector<Environment> country = { env1 };
 	 
-
-
- 
+	// Attaches all decision trees to associated environment types. 
+	EnvironmentManager envManager = EnvironmentManager(country);
+	
 
 	 
 
@@ -109,6 +111,7 @@ int main()
 		// 1. .applyConditions() for each env in country. (updates population state/mood)
 		for (Environment currentEnv : country) {
 			currentEnv.applyConditions();
+			currentEnv.evaluateDecisions();
 		}
 
 		cout << "Person1 After: " << person1.toString() << "\n\n\n";

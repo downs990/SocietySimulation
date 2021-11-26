@@ -5,7 +5,7 @@ Environment::Environment() {
 
 }
 
-Environment::Environment(string n) : name(n) {
+Environment::Environment(string n) : name(n) { 
 }
 
 string Environment::getName() { return this->name; }
@@ -33,7 +33,8 @@ void Environment::applyConditions() {
 			func(*this, firstPerson);
 		}
 	}
-	 
-	 
+}
 
+void Environment::evaluateDecisions() {
+	// TODO: Check/Run the decisions in the decisionsList.
 }

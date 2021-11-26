@@ -18,7 +18,7 @@ void Person::addTaskToSchedule(string repeatDays, string startTime, string endTi
 void Person::markTaskAsComplete(string taskName) {}
 
 
-string Person::getSchedule() { 
+string Person::getSchedule() {  
 	return this->dailySchedule.toString();
 }
 
