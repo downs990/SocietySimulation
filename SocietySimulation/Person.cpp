@@ -17,8 +17,12 @@ void Person::addTaskToSchedule(string repeatDays, string startTime, string endTi
 // TODO: Add subclass in Schedule for a task class.    | Task has: completed, name, time, etc..
 void Person::markTaskAsComplete(string taskName) {}
 
+Schedule Person::getSchedule() {
+	return this->dailySchedule;
+}
 
-string Person::getSchedule() {  
+// TODO: Remove me.
+string Person::getScheduleString() {  
 	return this->dailySchedule.toString();
 }
 

@@ -1,7 +1,4 @@
-#include "Schedule.h"
-
-
- 
+#include "Schedule.h"  
 
 
 
@@ -46,6 +43,12 @@ void Schedule::removeTask(int indexToRemove) {
 
 void Schedule::updateTask() {
 }
+
+
+vector<Schedule::SimTask> Schedule::getTasks() {
+	return taskList;
+}
+
 
 string Schedule::toString() {
 

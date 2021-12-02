@@ -11,7 +11,10 @@ public:
 	Person(string name);
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
-	string getSchedule();
+	
+	Schedule getSchedule();
+	string getScheduleString(); // TODO: Remove me.
+
 	void setHappyOffset(int offset);
 	void setStressOffset(int offset);
 	void setHoursSleptOffset(int offset); // +1 every hour slept 

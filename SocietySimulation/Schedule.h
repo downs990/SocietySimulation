@@ -8,6 +8,13 @@ using std::vector;
 
 class Schedule
 {
+
+
+
+public: 
+
+
+	// TODO: Should this be a struct ?? 
 	class SimTask {
 	public:
 		SimTask(string repeatDays, string startTime, string endTime, string locationName);
@@ -24,12 +31,11 @@ class Schedule
 	};
 
 
-
-public: 
 	Schedule();
 	void addTask(string repeatDays, string startTime, string endTime, string locationName);
 	void removeTask(int indexToRemove);
 	void updateTask();
+	vector<SimTask> getTasks();
 	string toString();
 
 private: 
