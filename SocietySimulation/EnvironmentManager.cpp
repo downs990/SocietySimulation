@@ -29,9 +29,16 @@ void schoolDecisionTree1(Environment env, Person* person) {
 	//			EAT                SLEEP              STUDY 
 	//         /                                        \
 	//  @ school    @ resturant                        subjectA   subjectB
-	//                    \
+	//                    \                        (Exam tomorrow)  (Exam next week)    
 	//         placeA   placeB  placeC
-	// 
+	//          /           |      \
+	//     2miles        1.5miles    4miles
+	//(happy+=1,hungry=0)  (happy+=2,hungry=10%)  (happy+=4,hungry=5%) 
+
+	// TODO: Evaluate each decision against thresholds and adjust Person's state/mood based on choice. 
+
+
+
 }
 
 // schoolDecisionTree2()  // Take Notes 
