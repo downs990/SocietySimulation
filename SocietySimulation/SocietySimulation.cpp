@@ -71,7 +71,7 @@ int main()
 
 
 	string p1String = person1.toString();
-	cout << "Schedule: \n" << person1.getSchedule() << "\n";
+	cout << "Schedule: \n" << person1.getScheduleString() << "\n";
 	 
 	cout << "Person1 Before: " << person1.toString() << "\n";
 

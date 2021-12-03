@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="EnvironmentManager.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="SocietySimulation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Environment.h" />
+    <ClInclude Include="EnvironmentManager.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Schedule.h" />
   </ItemGroup>

@@ -4,7 +4,7 @@
 Environment::Environment() {
 
 } 
-
+ 
 Environment::Environment(string n) : name(n) { 
 }
 
@@ -23,6 +23,11 @@ void Environment::removePerson(Person *removingPerson) { }
 void Environment::addCondition(void (*function)(Environment, Person*)) {
 	conditionsList.push_back(function);
 }
+
+void Environment::addDecision(void (*function)(Environment, Person*)) {
+	decisionsList.push_back(function);
+}
+
 
 void Environment::applyConditions() {
 

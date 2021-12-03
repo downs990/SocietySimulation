@@ -1,27 +1,8 @@
 #include "EnvironmentManager.h"
 
 
-EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
-
-	allEnvironments = myEnvironments;
-
-	for (Environment currentEnv : allEnvironments) {
-
-		if (currentEnv.getName() == "school") {
-			currentEnv.addDecision(schoolDecisionTree1);
-		}
-		else if (currentEnv.getName() == "work") {
-			currentEnv.addDecision(workDecisionTree1);
-		}
-		else if (currentEnv.getName() == "home") {
-			currentEnv.addDecision(homeDecisionTree1);
-		}
-
-	}
 
 
-}
-  
 void schoolDecisionTree1(Environment env, Person* person) {
 
 	string taskName = "Time between classes";
@@ -37,20 +18,22 @@ void schoolDecisionTree1(Environment env, Person* person) {
 			if (person->getHoursSlept() < 5) {              // SLEEP
 
 				// Sleep 2 hours 
-				person->setHoursSleptOffset(2);  
+				person->setHoursSleptOffset(2);
 
-			}else if (person->getAteBreakfast() == false) {	// EAT
-				// Traverse EAT subtree 
+			}
+			else if (person->getAteBreakfast() == false) {	// EAT
+			   // Traverse EAT subtree 
 
-			}else if (true) {                               // STUDY
+			}
+			else if (true) {                               // STUDY
 
-				// TODO: How to know if they have exam tomorrow??? 
+			   // TODO: How to know if they have exam tomorrow??? 
 			}
 
 		}
 	}
 
-	 
+
 	// 2. If time between classes is 3h >= then present the following decisions:  
 	//			EAT                SLEEP              STUDY 
 	//         /                                        \
@@ -77,4 +60,26 @@ void workDecisionTree1(Environment env, Person* person) {
 }
 void homeDecisionTree1(Environment env, Person* person) {
 }
+
+EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
+
+	allEnvironments = myEnvironments;
+
+	for (Environment currentEnv : allEnvironments) {
+
+		if (currentEnv.getName() == "school") {
+			currentEnv.addDecision(schoolDecisionTree1);
+		}
+		else if (currentEnv.getName() == "work") {
+			currentEnv.addDecision(workDecisionTree1);
+		}
+		else if (currentEnv.getName() == "home") {
+			currentEnv.addDecision(homeDecisionTree1);
+		}
+
+	}
+
+
+}
+  
 
