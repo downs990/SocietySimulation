@@ -3,8 +3,9 @@
 
 
 
+// TODO: How to execute this for every person in env??? 
 void schoolDecisionTree1(Environment env, Person* person) {
-
+	 
 	string taskName = "Time between classes";
 	int timeBetweenClasses = 0;
 	string prevClassTime = "12:00pm";
@@ -19,15 +20,19 @@ void schoolDecisionTree1(Environment env, Person* person) {
 
 				// Sleep 2 hours 
 				person->setHoursSleptOffset(2);
-
 			}
 			else if (person->getAteBreakfast() == false) {	// EAT
 			   // Traverse EAT subtree 
-
+				
 			}
 			else if (true) {                               // STUDY
 
-			   // TODO: How to know if they have exam tomorrow??? 
+
+			   // TODO: Check their schedule to see when their exams are for each class
+			   
+			   // - Update schedule gernation class to be able to 
+			   //   add random quizes and a couple of exams at the correct 
+			   //   intervals for each class that this person is in. 
 			}
 
 		}
