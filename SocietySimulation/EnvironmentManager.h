@@ -9,7 +9,7 @@ class EnvironmentManager
 public: 
 
 	// TODO: Based on currentEnv.name, attach the correct decision tree. 
-	EnvironmentManager(vector<Environment> allEnvironments);
+	EnvironmentManager(vector<Environment*> allEnvironments);
 
 	// School Decisions
 	//void schoolDecisionTree1(Environment env, Person* person);
@@ -19,7 +19,7 @@ public:
 	//void homeDecisionTree1(Environment env, Person* person);
 
 private: 
-	vector<Environment> allEnvironments;
+	vector<Environment*> allEnvironments;
 
 
 };

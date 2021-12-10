@@ -1,6 +1,50 @@
 #include "EnvironmentManager.h"
 
 
+// Environmental Condition 1
+// condition: "HighProductivity"{
+//		
+//		threhsolds: {
+//				sleep >= 5, 
+//				ate_breakfast = true, 
+//				social_interactions_today <= 4    (environment specific variable)
+//			},	
+//	 
+//		mood effects: {
+//				happy+1% , 
+//				stree-1%
+//			}
+// }
+void highProductivity(Environment *env, Person *person) {
+	if (env->getName() == "Work") {
+		if (
+			person->getHoursSlept() >= 5 &&
+			person->getAteBreakfast() == true
+			)
+		{
+			person->setHappyOffset(1);   // happy += 1
+			person->setStressOffset(-1); // stress -= 1
+		}
+	}
+}
+
+// Environmental Condition 2
+// Environmental Condition 3
+// Environmental Condition 4
+//            ...
+
+// TODO: Move all Environmental Conditions to their own function files. 
+//		- WorkConditions.cpp
+//	    - SchoolConditions.cpp
+//		- HomeConditions.cpp
+
+
+
+
+
+
+
+
 
 
 // TODO: How to execute this for every person in env??? 
@@ -66,20 +110,34 @@ void workDecisionTree1(Environment env, Person* person) {
 void homeDecisionTree1(Environment env, Person* person) {
 }
 
-EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
+EnvironmentManager::EnvironmentManager(vector<Environment*> myEnvironments){
 
 	allEnvironments = myEnvironments;
+	for (Environment *currentEnv : allEnvironments) {
 
-	for (Environment currentEnv : allEnvironments) {
 
-		if (currentEnv.getName() == "school") {
-			currentEnv.addDecision(schoolDecisionTree1);
+		// Add all environmental conditions first. 
+		for (int i = 0; i < currentEnv->getConditionsList().size(); i++)
+		{
+			string currentCondition = currentEnv->getConditionsList()[i];
+			if (currentCondition == "HIGH_PRODUCTIVITY") {
+
+				Person *firstPerson = currentEnv->getPopulation()[0];
+				highProductivity( currentEnv, firstPerson );
+			}
 		}
-		else if (currentEnv.getName() == "work") {
-			currentEnv.addDecision(workDecisionTree1);
+
+
+
+		// Then add all environmental decisions. 
+		if (currentEnv->getName() == "school") {
+			currentEnv->addDecision(schoolDecisionTree1);
 		}
-		else if (currentEnv.getName() == "home") {
-			currentEnv.addDecision(homeDecisionTree1);
+		else if (currentEnv->getName() == "work") {
+			currentEnv->addDecision(workDecisionTree1);
+		}
+		else if (currentEnv->getName() == "home") {
+			currentEnv->addDecision(homeDecisionTree1);
 		}
 
 	}

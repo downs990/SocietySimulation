@@ -10,45 +10,7 @@ using std::cout;
 
 
 
-// Environmental Condition 1
-// condition: "HighProductivity"{
-//		
-//		threhsolds: {
-//				sleep >= 5, 
-//				ate_breakfast = true, 
-//				social_interactions_today <= 4    (environment specific variable)
-//			},	
-//	 
-//		mood effects: {
-//				happy+1% , 
-//				stree-1%
-//			}
-// }
-void highProductivity(Environment env, Person *person) {
-	if (env.getName() == "Work") {
-		if (
-			person->getHoursSlept() >= 5  &&
-			person->getAteBreakfast() == true 
-			) 
-		{
-			person->setHappyOffset(1);   // happy += 1
-			person->setStressOffset(-1); // stress -= 1
-		}
-	}
-}
-
-// Environmental Condition 2
-// Environmental Condition 3
-// Environmental Condition 4
-//            ...
-
-// TODO: Move all Environmental Conditions to their own function files. 
-//		- WorkConditions.cpp
-//	    - SchoolConditions.cpp
-//		- HomeConditions.cpp
-
-
-
+ 
 
 
 
@@ -72,17 +34,16 @@ int main()
 
 	string p1String = person1.toString();
 	cout << "Schedule: \n" << person1.getScheduleString() << "\n";
-	 
 	cout << "Person1 Before: " << person1.toString() << "\n";
 
 	Environment env1 = Environment("Work");
 	env1.addPerson(&person1);
-	env1.addCondition(highProductivity); 
+	env1.addCondition("HIGH_PRODUCTIVITY");
 	 
-	 
+	  
 
 	// Vector of all environements 
-	vector<Environment> country = { env1 };
+	vector<Environment*> country = { &env1 };
 	 
 	// Attaches all decision trees to associated environment types. 
 	EnvironmentManager envManager = EnvironmentManager(country);
@@ -109,9 +70,9 @@ int main()
 
 
 		// 1. .applyConditions() for each env in country. (updates population state/mood)
-		for (Environment currentEnv : country) {
-			currentEnv.applyConditions();
-			currentEnv.evaluateDecisions();
+		for (Environment *currentEnv : country) {
+			//currentEnv.applyConditions();
+			currentEnv->evaluateDecisions();
 		}
 
 		cout << "Person1 After: " << person1.toString() << "\n\n\n";

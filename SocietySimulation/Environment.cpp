@@ -10,8 +10,8 @@ Environment::Environment(string n) : name(n) {
 
 string Environment::getName() { return this->name; }
 
-int Environment::getPopulationSize() {
-	return population.size();
+vector<Person*> Environment::getPopulation() {
+	return population;
 }
 
 void Environment::addPerson(Person *newPerson) {
@@ -20,25 +20,33 @@ void Environment::addPerson(Person *newPerson) {
 
 void Environment::removePerson(Person *removingPerson) { }
 
-void Environment::addCondition(void (*function)(Environment, Person*)) {
-	conditionsList.push_back(function);
+//void Environment::addCondition(void (*function)(Environment, Person*)) {
+//	conditionsList.push_back(function);
+//}
+
+void Environment::addCondition(string newCondition) {
+	conditionsList.push_back(newCondition);
+}
+
+vector<string> Environment::getConditionsList() {
+	return conditionsList;
 }
 
 void Environment::addDecision(void (*function)(Environment, Person*)) {
 	decisionsList.push_back(function);
 }
 
-
-void Environment::applyConditions() {
-
-	if (population.size() > 0) {
-
-		Person* firstPerson = population[0];
-		for (auto&& func : conditionsList) {
-			func(*this, firstPerson);
-		}
-	}
-}
+//
+//void Environment::applyConditions() {
+//
+//	if (population.size() > 0) {
+//
+//		Person* firstPerson = population[0];
+//		for (auto&& func : conditionsList) {
+//			func(*this, firstPerson);
+//		}
+//	}
+//}
 
 void Environment::evaluateDecisions() {
 	// TODO: Check/Run the decisions in the decisionsList.

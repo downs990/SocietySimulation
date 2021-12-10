@@ -17,12 +17,14 @@ public:
 	Environment();
 	Environment(string name);
 	string getName();
-	int getPopulationSize();
+	vector<Person*> getPopulation();
 	void addPerson(Person *newPerson);
 	void removePerson(Person *removingPerson);
-	void addCondition(void(*function)(Environment, Person*));
+	//void addCondition(void(*function)(Environment, Person*));
+	void addCondition(string newCondition);
+	vector<string> getConditionsList();
 	void addDecision(void(*function)(Environment, Person*));
-	void applyConditions();
+	//void applyConditions();
 	void evaluateDecisions();
 
 private:
@@ -30,7 +32,8 @@ private:
 	vector<Person*> population; 
 
 	// Vector of function pointers.
-	vector<void (*)(Environment, Person*)> conditionsList;
+	//vector<void (*)(Environment, Person*)> conditionsList;
+	vector<string> conditionsList;
 	vector<void (*)(Environment, Person*)> decisionsList;
  
 
