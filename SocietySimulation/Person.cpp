@@ -20,11 +20,7 @@ void Person::markTaskAsComplete(string taskName) {}
 Schedule Person::getSchedule() {
 	return this->dailySchedule;
 }
-
-// TODO: Remove me.
-string Person::getScheduleString() {  
-	return this->dailySchedule.toString();
-}
+ 
 
 void Person::setHappyOffset(int offset) {
 	this->happy += offset;

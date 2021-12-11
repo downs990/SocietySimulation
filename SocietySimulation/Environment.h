@@ -19,22 +19,19 @@ public:
 	string getName();
 	vector<Person*> getPopulation();
 	void addPerson(Person *newPerson);
-	void removePerson(Person *removingPerson);
-	//void addCondition(void(*function)(Environment, Person*));
-	void addCondition(string newCondition);
-	vector<string> getConditionsList();
-	void addDecision(void(*function)(Environment, Person*));
-	//void applyConditions();
-	void evaluateDecisions();
+	void removePerson(Person *removingPerson); 
+	void addCondition(EnvironmentalCondition newCondition);
+	vector<EnvironmentalCondition> getConditionsList();
+	void addDecision(void(*function)(Environment*, Person*));
+	vector<void (*)(Environment*, Person*)> getDecisionsList();
 
 private:
 	string name;
 	vector<Person*> population; 
 
-	// Vector of function pointers.
-	//vector<void (*)(Environment, Person*)> conditionsList;
-	vector<string> conditionsList;
-	vector<void (*)(Environment, Person*)> decisionsList;
+	// Vector of function pointers. 
+	vector<EnvironmentalCondition> conditionsList;
+	vector<void (*)(Environment*, Person*)> decisionsList;
  
 
 };

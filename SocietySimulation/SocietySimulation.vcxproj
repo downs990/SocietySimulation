@@ -148,8 +148,13 @@
   <ItemGroup>
     <ClInclude Include="Environment.h" />
     <ClInclude Include="EnvironmentManager.h" />
+    <ClInclude Include="MyConstants.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Schedule.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SocietySimulation.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

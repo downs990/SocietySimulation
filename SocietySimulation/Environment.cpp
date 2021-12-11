@@ -20,34 +20,20 @@ void Environment::addPerson(Person *newPerson) {
 
 void Environment::removePerson(Person *removingPerson) { }
 
-//void Environment::addCondition(void (*function)(Environment, Person*)) {
-//	conditionsList.push_back(function);
-//}
-
-void Environment::addCondition(string newCondition) {
+ 
+void Environment::addCondition(EnvironmentalCondition newCondition) {
 	conditionsList.push_back(newCondition);
 }
 
-vector<string> Environment::getConditionsList() {
+vector<EnvironmentalCondition> Environment::getConditionsList() {
 	return conditionsList;
 }
 
-void Environment::addDecision(void (*function)(Environment, Person*)) {
+void Environment::addDecision(void (*function)(Environment*, Person*)) {
 	decisionsList.push_back(function);
 }
 
-//
-//void Environment::applyConditions() {
-//
-//	if (population.size() > 0) {
-//
-//		Person* firstPerson = population[0];
-//		for (auto&& func : conditionsList) {
-//			func(*this, firstPerson);
-//		}
-//	}
-//}
-
-void Environment::evaluateDecisions() {
-	// TODO: Check/Run the decisions in the decisionsList.
+vector<void (*)(Environment*, Person*)> Environment::getDecisionsList(){
+	return decisionsList;
 }
+ 

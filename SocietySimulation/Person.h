@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Schedule.h"
+#include "MyConstants.h"
 #include <string>
 using std::string;
 
@@ -12,8 +13,7 @@ public:
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	
-	Schedule getSchedule();
-	string getScheduleString(); // TODO: Remove me.
+	Schedule getSchedule(); 
 
 	void setHappyOffset(int offset);
 	void setStressOffset(int offset);
