@@ -134,7 +134,7 @@ void EnvironmentManager::evaluateDecisions() {
 
 	for (Environment *currentEnv : allEnvironments) {
 		for (auto&& func : currentEnv->getDecisionsList()) {
-			func(currentEnv, currentEnv->getPopulation()[0]); // TODO: Apply to each person in evn???
+			func(currentEnv, currentEnv->getPopulation()[0]); // TODO: Apply to each person in evn
 		}
 	
 	}
