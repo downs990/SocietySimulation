@@ -1,0 +1,26 @@
+{
+  "PopulationSize": 100,
+  "Person": {
+    "PropertiesRanges": {
+      "Age": [ 0, 92 ],
+      "Happy": [ 50, 80 ],
+      "Stress": [ 20, 45 ],
+      "Salary": [ 45000, 500000 ]
+    }
+
+  },
+  "Ennvironments": 4,
+  "Environment": {
+    "Work": {
+      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
+
+    },
+    "Home": {
+     },
+    "School": { 
+      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
+    }
+  }
+
+
+}

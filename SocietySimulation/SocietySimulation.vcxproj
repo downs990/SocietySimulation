@@ -156,6 +156,9 @@
   <ItemGroup>
     <ResourceCompile Include="SocietySimulation.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="WorldConfiguration.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

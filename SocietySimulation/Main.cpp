@@ -9,8 +9,12 @@ using std::cout;
 
 
 
+vector<Environment*> world;
 
- 
+void readWorldDataFromConfigFile() {
+	// TODO: Populates the world variable with objects generated from 
+	//       values in the "WorldConfiguration.json" file. 
+}
 
 
 
@@ -40,16 +44,18 @@ int main()
 	env1.addPerson(&person1);
 	env1.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
 	 
-	vector<Environment*> country = { &env1 };
+	world = { &env1 };
 	 
 	// Attaches all decision trees to associated environment types. 
-	EnvironmentManager envManager = EnvironmentManager(country);
+	EnvironmentManager envManager = EnvironmentManager(world);
 	
-
-	 
 
 	int const SECONDS_IN_HOUR = 3600;
 	time_t now = time(0);
+
+
+
+	readWorldDataFromConfigFile();
 
 	while (true) { 
 
@@ -66,8 +72,8 @@ int main()
 	 	
 
 
-		// 1. .applyConditions() for each env in country. (updates population state/mood)
-		for (Environment *currentEnv : country) {
+		// 1. .applyConditions() for each env in world. (updates population state/mood)
+		for (Environment *currentEnv : world) {
 			envManager.applyConditions();
 			envManager.evaluateDecisions();
 		}
