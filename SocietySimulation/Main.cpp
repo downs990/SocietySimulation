@@ -11,6 +11,12 @@ using std::cout;
 
 vector<Environment*> world;
 
+void createDatabase() {
+	// TODO: Create a MongoDB 
+	// TODO: Create database shcema and designs (update design docs)
+	// TODO: Add logs to this db in main sim loop
+}
+
 void readWorldDataFromConfigFile() {
 	// TODO: Populates the world variable with objects generated from 
 	//       values in the "WorldConfiguration.json" file. 
@@ -56,9 +62,13 @@ int main()
 
 
 	readWorldDataFromConfigFile();
+	createDatabase();
 
 	while (true) { 
 
+
+		// TODO: Log the state of the simulation every frame to a file. 
+		//     Either specific Env/Persons or entire world. 
 		struct tm newtime; 
 		now += SECONDS_IN_HOUR;
 		localtime_s(&newtime, &now);
