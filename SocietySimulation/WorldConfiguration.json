@@ -5,7 +5,8 @@
       "Age": [ 0, 92 ],
       "Happy": [ 50, 80 ],
       "Stress": [ 20, 45 ],
-      "Salary": [ 45000, 500000 ]
+      "Salary": [ 45000, 500000 ],
+      "DailySchedule": ["STUDENT", "EMPLOYEE", "STUDENT_EMPLOYEE"]
     }
 
   },

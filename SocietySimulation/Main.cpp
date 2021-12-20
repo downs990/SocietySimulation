@@ -29,7 +29,7 @@ void createDatabase() {
 
 
 // Populates the world variable with objects generated from 
-//       values in the "WorldConfiguration.json" file. 
+// values in the "WorldConfiguration.json" file. 
 void readWorldDataFromConfigFile() {
 
 	Json::Reader reader;  //for reading the data
