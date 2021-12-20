@@ -1,11 +1,21 @@
 // SocietySimulation.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
   
-#include <Windows.h>
+#include <Windows.h> 
+#include <fstream>
+#include <iostream>
+#include <json\value.h>
+#include <json\json.h>
+
 #include "Person.h"
 #include "Environment.h"
 #include "EnvironmentManager.h"
+
 using std::cout; 
+using std::cin;
+using std::ofstream;
+using std::ifstream;
+
 
 
 
@@ -17,9 +27,43 @@ void createDatabase() {
 	// TODO: Add logs to this db in main sim loop
 }
 
+
+// Populates the world variable with objects generated from 
+//       values in the "WorldConfiguration.json" file. 
 void readWorldDataFromConfigFile() {
-	// TODO: Populates the world variable with objects generated from 
-	//       values in the "WorldConfiguration.json" file. 
+
+	Json::Reader reader;  //for reading the data
+	Json::Value newValue; //for modifying and storing new values
+	Json::StyledStreamWriter writer; //for writing in json files
+	ofstream newFile;
+
+	//opening file using fstream
+	ifstream file("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\WorldConfiguration.json");
+
+	// check if there is any error is getting data from the json file
+	if (!reader.parse(file, newValue)) {
+		cout << reader.getFormattedErrorMessages();
+	} 
+
+	//cout << "\nEntire Json File";
+	//cout << newValue;
+
+	cout << newValue["Person"];
+
+
+
+	////Updating the json data
+	//newValue["Category"] = "Technical";
+
+	////we can add new values as well
+	//newValue["first"] = "Shishank";
+	//newValue["last"] = "Jain";
+
+	//// make the changes in a new file/original file
+	//newFile.open("items.json");
+	//writer.write(newFile, newValue);
+	//newFile.close();
+
 }
 
 
@@ -64,45 +108,53 @@ int main()
 	readWorldDataFromConfigFile();
 	createDatabase();
 
-	while (true) { 
+	//while (true) { 
 
 
-		// TODO: Log the state of the simulation every frame to a file. 
-		//     Either specific Env/Persons or entire world. 
-		struct tm newtime; 
-		now += SECONDS_IN_HOUR;
-		localtime_s(&newtime, &now);
+	//	// TODO: Log the state of the simulation every frame to a file. 
+	//	//     Either specific Env/Persons or entire world. 
+	//	struct tm newtime; 
+	//	now += SECONDS_IN_HOUR;
+	//	localtime_s(&newtime, &now);
 
-		// Simulation clock: 1 second = 1 hour 
-		int month = 1 + newtime.tm_mon;
-		int day = newtime.tm_mday;
-		int year = 1900 + newtime.tm_year;
-		cout << "Date: " << month << ", " << day << " " << year << "\n";
-		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
-	 	
+	//	// Simulation clock: 1 second = 1 hour 
+	//	int month = 1 + newtime.tm_mon;
+	//	int day = newtime.tm_mday;
+	//	int year = 1900 + newtime.tm_year;
+	//	cout << "Date: " << month << ", " << day << " " << year << "\n";
+	//	cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
+	// 	
+	//	// TODO: What the best way to pause the sim? 
+	//	//		1. Non-blocking cin
+	//	//		2. Change value in file that's being constantly read from in main loop
+	//
 
-
-		// 1. .applyConditions() for each env in world. (updates population state/mood)
-		for (Environment *currentEnv : world) {
-			envManager.applyConditions();
-			envManager.evaluateDecisions();
-		}
-
-		cout << "Person1 After: " << person1.toString() << "\n\n\n";
-
+	//	//int num = 0;
+	//	//cout << "Enter a number: ";
+	//	//cin >> num;
 
 
+	//	// 1. .applyConditions() for each env in world. (updates population state/mood)
+	//	for (Environment *currentEnv : world) {
+	//		envManager.applyConditions();
+	//		envManager.evaluateDecisions();
+	//	}
 
-		// 2. Update sim clock by 1 minutes (because shedules are minute specific)
-		// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
+	//	cout << "Person1 After: " << person1.toString() << "\n\n\n";
 
 
-		// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
-		//		for Historic Event threshold properties. 
-		// 5. Use those values to check for and keep track of any Historic Event's that occur.  
-		
-		Sleep(1000); 
-	}
+
+
+	//	// 2. Update sim clock by 1 minutes (because shedules are minute specific)
+	//	// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
+
+
+	//	// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
+	//	//		for Historic Event threshold properties. 
+	//	// 5. Use those values to check for and keep track of any Historic Event's that occur.  
+	//	
+	//	Sleep(1000); 
+	//}
 
 
 	 
