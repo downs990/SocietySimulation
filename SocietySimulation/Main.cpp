@@ -48,7 +48,7 @@ void readWorldDataFromConfigFile() {
 	//cout << "\nEntire Json File";
 	//cout << newValue;
 
-	cout << newValue["Person"];
+	cout << newValue["Environments"][1];
 
 
 

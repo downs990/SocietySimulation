@@ -1,5 +1,5 @@
 {
-  "PopulationSize": 100,
+
   "Person": {
     "PropertiesRanges": {
       "Age": [ 0, 92 ],
@@ -9,18 +9,28 @@
     }
 
   },
-  "Ennvironments": 4,
-  "Environment": {
-    "Work": {
-      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
 
+  "Environments": [
+    {
+      "Type": "WORK",
+      "Count": 1,
+      "PopulationRange": [200,500],
+      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     },
-    "Home": {
-     },
-    "School": { 
+    {
+      "Type": "HOME",
+      "Count": 1,
+      "PopulationRange": [2,5],
+      "Conditions": [ "RELAXED", "EATING", "SLEEPING"]
+    },
+    {
+      "Type": "SCHOOL",
+      "Count": 1,
+      "PopulationRange": [100, 900],
       "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     }
-  }
+
+  ]
 
 
 }
