@@ -13,6 +13,7 @@
 
 using std::cout; 
 using std::cin;
+using std::to_string;
 using std::ofstream;
 using std::ifstream;
 
@@ -32,9 +33,9 @@ void createDatabase() {
 // values in the "WorldConfiguration.json" file. 
 void readWorldDataFromConfigFile() {
 
-	Json::Reader reader;  //for reading the data
-	Json::Value newValue; //for modifying and storing new values
-	Json::StyledStreamWriter writer; //for writing in json files
+	Json::Reader reader;   
+	Json::Value newValue;   
+	Json::StyledStreamWriter writer;  
 	ofstream newFile;
 
 	//opening file using fstream
@@ -44,29 +45,52 @@ void readWorldDataFromConfigFile() {
 	if (!reader.parse(file, newValue)) {
 		cout << reader.getFormattedErrorMessages();
 	} 
+	 
 
-	//cout << "\nEntire Json File";
-	//cout << newValue;
+	// Generate environment objects from Json World file.
+	Json::Value environmentsToCreate = newValue["Environments"];
+	for (Json::Value env : environmentsToCreate) {
+		
+		string type = env["Type"].asString();
+		int count = env["Count"].asInt();
+		int populationSize = env["PopulationSize"].asInt();
+		 
+		for (int i = 0; i < count; i++) {
+			Environment newEnvironment = Environment(i, type);
+			newEnvironment.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
 
-	cout << newValue["Environments"][1];
+			for (int j = 0; j < populationSize; j++) {
+				Person newPerson = Person(i+j);
+				newEnvironment.addPerson(&newPerson);
+			}
 
+			world.push_back(&newEnvironment);
+		}
+	 
+	}
 
+	// Print world for debugging
+	for (Environment *env : world) {
+		cout << env->toString();
+	}
 
-	////Updating the json data
-	//newValue["Category"] = "Technical";
-
-	////we can add new values as well
-	//newValue["first"] = "Shishank";
-	//newValue["last"] = "Jain";
-
-	//// make the changes in a new file/original file
-	//newFile.open("items.json");
-	//writer.write(newFile, newValue);
-	//newFile.close();
+ 
 
 }
 
 
+
+////Updating the json data
+//newValue["Category"] = "Technical";
+
+////we can add new values as well
+//newValue["first"] = "Shishank";
+//newValue["last"] = "Jain";
+
+//// make the changes in a new file/original file
+//newFile.open("items.json");
+//writer.write(newFile, newValue);
+//newFile.close();
 
 
 // ( MVP ) Minimum Viable Product 
@@ -80,7 +104,7 @@ int main()
 	//                 ...
 
 
-	Person person1 = Person("Courtney");
+	Person person1 = Person(1);
 	person1.addTaskToSchedule("S", "9:00a", "5:00p", "Work");
 	person1.addTaskToSchedule("S", "5:40p", "7:40p", "School");
 	person1.addTaskToSchedule("S", "8:00p", "EOD", "Home");
@@ -89,12 +113,8 @@ int main()
 	string p1String = person1.toString();
 	cout << "Schedule: \n" << person1.getSchedule().toString() << "\n";
 	cout << "Person1 Before: " << person1.toString() << "\n";
-
-	Environment env1 = Environment("Work");
-	env1.addPerson(&person1);
-	env1.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
 	 
-	world = { &env1 };
+	  
 	 
 	// Attaches all decision trees to associated environment types. 
 	EnvironmentManager envManager = EnvironmentManager(world);

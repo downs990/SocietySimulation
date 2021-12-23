@@ -15,8 +15,8 @@ class Environment
 
 public:
 	Environment();
-	Environment(string name);
-	string getName();
+	Environment(int id, string type);
+	string getType();
 	vector<Person*> getPopulation();
 	void addPerson(Person *newPerson);
 	void removePerson(Person *removingPerson); 
@@ -24,9 +24,11 @@ public:
 	vector<EnvironmentalCondition> getConditionsList();
 	void addDecision(void(*function)(Environment*, Person*));
 	vector<void (*)(Environment*, Person*)> getDecisionsList();
+	string toString();
 
 private:
-	string name;
+	int id;
+	string type;
 	vector<Person*> population; 
 
 	// Vector of function pointers. 

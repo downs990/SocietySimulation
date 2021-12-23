@@ -1,7 +1,7 @@
 #include "Person.h"
 
-Person::Person(string name ) {
-	this->name = name;
+Person::Person(int id ) {
+	this->id = id;
 	this->dailySchedule = Schedule();
 	this->happy = 100; 
 	this->stress = 0;        
@@ -32,7 +32,7 @@ int Person::getHoursSlept() { return this->hoursSlept; }
 bool Person::getAteBreakfast() { return this->ateBreakfast; }
 
 string Person::toString() {
-	return "Name: " + this->name +
+	return "Id: " + std::to_string(this->id) +
 		"\nHappy: " + std::to_string(this->happy) + 
 		"\nStress: " + std::to_string(this->stress);
 }

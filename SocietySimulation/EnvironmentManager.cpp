@@ -16,7 +16,7 @@
 //			}
 // }
 void highProductivity(Environment *env, Person *person) {
-	if (env->getName() == "Work") {
+	if (env->getType() == "WORK") {
 		if (
 			person->getHoursSlept() >= 5 &&
 			person->getAteBreakfast() == true
@@ -149,13 +149,13 @@ EnvironmentManager::EnvironmentManager(vector<Environment*> myEnvironments){
 
 
 		// Add all environmental decisions. 
-		if (currentEnv->getName() == "school") {
+		if (currentEnv->getType() == "SCHOOL") {
 			currentEnv->addDecision(schoolDecisionTree1);
 		}
-		else if (currentEnv->getName() == "work") {
+		else if (currentEnv->getType() == "WORK") {
 			currentEnv->addDecision(workDecisionTree1);
 		}
-		else if (currentEnv->getName() == "home") {
+		else if (currentEnv->getType() == "HOME") {
 			currentEnv->addDecision(homeDecisionTree1);
 		}
 

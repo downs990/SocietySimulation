@@ -9,7 +9,7 @@ using std::string;
 class Person
 {
 public:
-	Person(string name);
+	Person(int id);
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	
@@ -23,7 +23,7 @@ public:
 	string toString();
 
 private:
-	string name;
+	int id;
 	Schedule dailySchedule;
 	
 	// TODO: Social interactions will require decision trees. Thresholds for their choices 

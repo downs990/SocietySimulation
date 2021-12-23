@@ -5,10 +5,10 @@ Environment::Environment() {
 
 } 
  
-Environment::Environment(string n) : name(n) { 
+Environment::Environment(int i, string t) : id(i) , type(t) { 
 }
 
-string Environment::getName() { return this->name; }
+string Environment::getType() { return type; }
 
 vector<Person*> Environment::getPopulation() {
 	return population;
@@ -37,3 +37,11 @@ vector<void (*)(Environment*, Person*)> Environment::getDecisionsList(){
 	return decisionsList;
 }
  
+
+string Environment::toString() {
+
+	string output = "\nId: " + std::to_string(id) 
+		+ " Type: " + type 
+		+ " PopulationSize: " + std::to_string(population.size() );
+	return output;
+}

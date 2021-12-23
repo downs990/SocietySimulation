@@ -15,19 +15,19 @@
     {
       "Type": "WORK",
       "Count": 1,
-      "PopulationRange": [200,500],
+      "PopulationSize": 250,
       "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     },
     {
       "Type": "HOME",
-      "Count": 1,
-      "PopulationRange": [2,5],
+      "Count": 2,
+      "PopulationSize": 3,
       "Conditions": [ "RELAXED", "EATING", "SLEEPING"]
     },
     {
       "Type": "SCHOOL",
-      "Count": 1,
-      "PopulationRange": [100, 900],
+      "Count": 3,
+      "PopulationSize": 500,
       "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     }
 
