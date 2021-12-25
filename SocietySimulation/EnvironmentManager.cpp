@@ -114,16 +114,16 @@ void homeDecisionTree1(Environment *env, Person* person) {
 }
 
 void EnvironmentManager::applyConditions() {
-	for (Environment* currentEnv : allEnvironments) {
+	for (Environment currentEnv : allEnvironments) {
 
 		// Add all environmental conditions first. 
-		for (int i = 0; i < currentEnv->getConditionsList().size(); i++)
+		for (int i = 0; i < (&currentEnv)->getConditionsList().size(); i++)
 		{
-			EnvironmentalCondition currentCondition = currentEnv->getConditionsList()[i];
+			EnvironmentalCondition currentCondition = (&currentEnv)->getConditionsList()[i];
 			if (currentCondition == EnvironmentalCondition::HIGH_PRODUCTIVITY) {
 				 
-				Person* firstPerson = currentEnv->getPopulation()[0];
-				highProductivity(currentEnv, firstPerson);
+				Person* firstPerson = (&currentEnv)->getPopulation()[0];
+				highProductivity(&currentEnv, firstPerson);
 			}
 		}
 	}
@@ -132,9 +132,9 @@ void EnvironmentManager::applyConditions() {
 
 void EnvironmentManager::evaluateDecisions() {
 
-	for (Environment *currentEnv : allEnvironments) {
-		for (auto&& func : currentEnv->getDecisionsList()) {
-			func(currentEnv, currentEnv->getPopulation()[0]); // TODO: Apply to each person in evn
+	for (Environment currentEnv : allEnvironments) {
+		for (auto&& func : (&currentEnv)->getDecisionsList()) {
+			func(&currentEnv, (&currentEnv)->getPopulation()[0]); // TODO: Apply to each person in evn
 		}
 	
 	}
@@ -142,21 +142,21 @@ void EnvironmentManager::evaluateDecisions() {
 
 
 
-EnvironmentManager::EnvironmentManager(vector<Environment*> myEnvironments){
+EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
 
 	allEnvironments = myEnvironments;
-	for (Environment *currentEnv : allEnvironments) {
+	for (Environment currentEnv : allEnvironments) {
 
 
 		// Add all environmental decisions. 
-		if (currentEnv->getType() == "SCHOOL") {
-			currentEnv->addDecision(schoolDecisionTree1);
+		if ((&currentEnv)->getType() == "SCHOOL") {
+			(&currentEnv)->addDecision(schoolDecisionTree1);
 		}
-		else if (currentEnv->getType() == "WORK") {
-			currentEnv->addDecision(workDecisionTree1);
+		else if ((&currentEnv)->getType() == "WORK") {
+			(&currentEnv)->addDecision(workDecisionTree1);
 		}
-		else if (currentEnv->getType() == "HOME") {
-			currentEnv->addDecision(homeDecisionTree1);
+		else if ((&currentEnv)->getType() == "HOME") {
+			(&currentEnv)->addDecision(homeDecisionTree1);
 		}
 
 	}

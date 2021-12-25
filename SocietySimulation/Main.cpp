@@ -20,7 +20,7 @@ using std::ifstream;
 
 
 
-vector<Environment*> world;
+vector<Environment> world;
 
 void createDatabase() {
 	// TODO: Create a MongoDB 
@@ -48,30 +48,34 @@ void readWorldDataFromConfigFile() {
 	 
 
 	// Generate environment objects from Json World file.
+	int x = 0;
 	Json::Value environmentsToCreate = newValue["Environments"];
 	for (Json::Value env : environmentsToCreate) {
 		
 		string type = env["Type"].asString();
 		int count = env["Count"].asInt();
 		int populationSize = env["PopulationSize"].asInt();
-		 
+		  
+
 		for (int i = 0; i < count; i++) {
-			Environment newEnvironment = Environment(i, type);
+			Environment newEnvironment = Environment(x, type);
 			newEnvironment.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
 
 			for (int j = 0; j < populationSize; j++) {
+				
 				Person newPerson = Person(i+j);
 				newEnvironment.addPerson(&newPerson);
 			}
 
-			world.push_back(&newEnvironment);
+			world.push_back(newEnvironment);
+			x++;
 		}
 	 
 	}
 
 	// Print world for debugging
-	for (Environment *env : world) {
-		cout << env->toString();
+	for (Environment env : world) {
+		cout << env.toString();
 	}
 
  
@@ -113,7 +117,7 @@ int main()
 	string p1String = person1.toString();
 	cout << "Schedule: \n" << person1.getSchedule().toString() << "\n";
 	cout << "Person1 Before: " << person1.toString() << "\n";
-	 
+	   
 	  
 	 
 	// Attaches all decision trees to associated environment types. 

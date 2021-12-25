@@ -6,6 +6,7 @@ Environment::Environment() {
 } 
  
 Environment::Environment(int i, string t) : id(i) , type(t) { 
+	population = {};
 }
 
 string Environment::getType() { return type; }
