@@ -6,11 +6,26 @@
       "Happy": [ 50, 80 ],
       "Stress": [ 20, 45 ],
       "Salary": [ 45000, 500000 ],
-      "DailySchedule": ["STUDENT", "EMPLOYEE", "STUDENT_EMPLOYEE"]
+      "DailySchedule": [ "STUDENT", "EMPLOYEE", "STUDENT_EMPLOYEE" ]
     }
 
   },
+  "CurrentWorldState": 1,
+  "SocietalInterruptions": [
+    {
+      "Type": "NORMAL",
+      "Conditions": []
+    },
+    {
+      "Type": "PANDEMIC",
+      "Conditions": [ "HIGH_STRESS", "LOW_SOCIAL_INTERACTIONS", "LOW_HEALTH"]
+    },
+    {
+      "Type": "RECESSION",
+      "Conditions": ["HIGH_UNEMPLOYMENT", "HIGH_STRESS", "POOR_BUSINESS_RETURNS"]
+    }
 
+  ],
   "Environments": [
     {
       "Type": "WORK",
