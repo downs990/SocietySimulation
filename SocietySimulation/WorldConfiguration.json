@@ -1,5 +1,37 @@
 {
 
+
+  "CurrentWorldState": 1,
+  "SocietalInterruptions": [
+    {
+      "Type": "NORMAL",
+      "Conditions": []
+    },
+    {
+      "Type": "PANDEMIC",
+      "Conditions": [ "HIGH_STRESS", "LOW_SOCIAL_INTERACTIONS", "LOW_HEALTH" ]
+    },
+    {
+      "Type": "RECESSION",
+      "Conditions": [ "HIGH_UNEMPLOYMENT", "HIGH_STRESS", "POOR_BUSINESS_RETURNS" ]
+    }
+
+  ],
+  "HistoricEvents": [
+    {
+      "Name": "FirstWorldCountry",
+      "Thresholds": []
+    },
+    {
+      "Name": "SocialEquality",
+      "Thresholds": []
+    },
+    {
+      "Name": "HighQualityOfHealth",
+      "Thresholds": []
+    }
+
+  ],
   "Person": {
     "PropertiesRanges": {
       "Age": [ 0, 92 ],
@@ -10,22 +42,6 @@
     }
 
   },
-  "CurrentWorldState": 1,
-  "SocietalInterruptions": [
-    {
-      "Type": "NORMAL",
-      "Conditions": []
-    },
-    {
-      "Type": "PANDEMIC",
-      "Conditions": [ "HIGH_STRESS", "LOW_SOCIAL_INTERACTIONS", "LOW_HEALTH"]
-    },
-    {
-      "Type": "RECESSION",
-      "Conditions": ["HIGH_UNEMPLOYMENT", "HIGH_STRESS", "POOR_BUSINESS_RETURNS"]
-    }
-
-  ],
   "Environments": [
     {
       "Type": "WORK",
@@ -37,7 +53,7 @@
       "Type": "HOME",
       "Count": 2,
       "PopulationSize": 3,
-      "Conditions": [ "RELAXED", "EATING", "SLEEPING"]
+      "Conditions": [ "RELAXED", "EATING", "SLEEPING" ]
     },
     {
       "Type": "SCHOOL",
