@@ -120,6 +120,18 @@ void EnvironmentManager::applyConditions() {
 }
 
 
+
+void unemployedCondition(Environment* env, Person* person) {
+	// TODO: Pull conditions from WorldConfig.json
+}
+
+void pandemicCondition(Environment* env, Person* person) {
+	// TODO: Pull conditions from WorldConfig.json
+}
+
+
+
+
 // Precondition: Unemployed
 // Postcondition: Employed, Homeless (Unemployed)
 void unemployedDecisionTree(Environment* env, Person* person) {
