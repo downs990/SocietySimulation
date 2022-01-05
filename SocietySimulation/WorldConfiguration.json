@@ -5,15 +5,29 @@
   "SocietalInterruptions": [
     {
       "Type": "NORMAL",
-      "Conditions": []
-    },
-    {
-      "Type": "PANDEMIC",
-      "Conditions": [ "HIGH_STRESS", "LOW_SOCIAL_INTERACTIONS", "LOW_HEALTH" ]
+      "Conditions": {}
     },
     {
       "Type": "RECESSION",
-      "Conditions": [ "HIGH_UNEMPLOYMENT", "HIGH_STRESS", "POOR_BUSINESS_RETURNS" ]
+      "Conditions": {
+        "UnemploymentPercentage": 0.50,
+        "AverageStress": 0.80,
+        "AverageBusinessPerformance": 0.60
+      }
+    },
+    {
+      "Type": "PANDEMIC",
+      "Conditions": {
+        "percentageOfBusinessesGoingRemote": 0.80,
+        "percentageOfPopulationInfected": 0.67,
+        "lethalityRateOfVirus": 0.45
+      }
+    },
+    {
+      "Type": "WAR",
+      "Conditions": {
+        "percentageOf":  ,
+      }
     }
 
   ],

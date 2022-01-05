@@ -30,19 +30,8 @@ void highProductivity(Environment *env, Person *person) {
 }
 
 // Environmental Condition 2
-// Environmental Condition 3
-// Environmental Condition 4
-//            ...
-
-// TODO: Move all Environmental Conditions to their own function files. 
-//		(However, does making them their own file make it harder to automate ??)
-//		- WorkConditions.cpp
-//	    - SchoolConditions.cpp
-//		- HomeConditions.cpp
-
-
-
-
+// Environmental Condition 3 
+//            ... 
 
 
 
@@ -129,6 +118,39 @@ void EnvironmentManager::applyConditions() {
 	}
 
 }
+
+
+// Precondition: Unemployed
+// Postcondition: Employed, Homeless (Unemployed)
+void unemployedDecisionTree(Environment* env, Person* person) {
+	// 1. Go back to school to change fields
+	// 2. Start new business online
+	// 3. Find another job with lower or same salary.
+	// 4. End up homeless 
+
+	// NOTE: Decision is based on skills and education level.
+}
+
+// Precondition: Infected 
+// Postcondition: Healthy again, Dead 
+void infectedWithVirusDecisionTree(Environment* env, Person* person) {
+	// 1. Social distance and mask up
+	// 2. Get vaccinated 
+	// 3. Alternative treatments 
+
+	// NOTE: Decision is based on education level and underlining health conditions.
+}
+
+
+void warDecisionTree(Environment* env, Person* person) {
+	// 1. 
+
+}
+
+
+
+
+
 
 void EnvironmentManager::evaluateDecisions() {
 

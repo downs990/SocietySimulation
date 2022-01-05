@@ -28,7 +28,8 @@ public:
 
 private:
 	int id;
-	string type;
+	string type;    // ex, Work
+	string subType; // ex, Hospital 
 	vector<Person*> population; 
 
 	// Vector of function pointers. 
