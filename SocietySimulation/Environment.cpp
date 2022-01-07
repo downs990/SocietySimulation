@@ -1,9 +1,5 @@
 #include "Environment.h"
 
-
-Environment::Environment() {
-
-} 
  
 Environment::Environment(int i, string t) : id(i) , type(t) { 
 	population = {};

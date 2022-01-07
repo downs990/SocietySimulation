@@ -26,7 +26,7 @@
     {
       "Type": "WAR",
       "Conditions": {
-        "percentageOf": 0.20,
+        "percentageOf": 0.20
       }
     }
 

@@ -4,9 +4,16 @@ Person::Person(int id ) {
 	this->id = id;
 	this->dailySchedule = Schedule();
 	this->happy = 100; 
-	this->stress = 0;        
+	this->stress = 2;        
 	this->hoursSlept = 8;     
 	this->ateBreakfast = true;  
+
+	
+}
+
+vector<int> Person::getValues() {
+	vector<int> values = {this->happy, this->stress, this->hoursSlept};
+	return values;
 }
 
 
@@ -32,8 +39,14 @@ int Person::getHoursSlept() { return this->hoursSlept; }
 bool Person::getAteBreakfast() { return this->ateBreakfast; }
 
 string Person::toString() {
-	return "Id: " + std::to_string(this->id) +
-		"\nHappy: " + std::to_string(this->happy) + 
-		"\nStress: " + std::to_string(this->stress);
+
+	//cout << this->id << " " << this->happy << " " << this->stress << "\n";
+
+	ostringstream os;
+	os << "Id: " << this->id <<
+		"\nHappy: " << this->happy <<
+		"\nStress: " << this->stress;
+ 
+	return os.str();
 }
 

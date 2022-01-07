@@ -103,20 +103,17 @@ int main()
 
 	// TOOD:  
 	// HistoricEvent he2 = HistoricEvent(<ALL_THRESHOLDS>);
-	//                 ...
+	//                 .. .
 
 
-	Person person1 = Person(1);
-	person1.addTaskToSchedule("S", "9:00a", "5:00p", "Work");
-	person1.addTaskToSchedule("S", "5:40p", "7:40p", "School");
-	person1.addTaskToSchedule("S", "8:00p", "EOD", "Home");
+
+	readWorldDataFromConfigFile();
+	createDatabase();
+
+	vector<int> v = world[0].getPopulation()[0]->getValues();
+	cout << "\n\nPerson1 Before: " << v[0] << " " << v[1] << " " << v[2] << "\n";
 
 
-	string p1String = person1.toString();
-	cout << "Schedule: \n" << person1.getSchedule().toString() << "\n";
-	cout << "Person1 Before: " << person1.toString() << "\n";
-	   
-	  
 	 
 	// Attaches all decision trees to associated environment types. 
 	EnvironmentManager envManager = EnvironmentManager(world);
@@ -126,10 +123,7 @@ int main()
 	time_t now = time(0);
 
 
-
-	readWorldDataFromConfigFile();
-	createDatabase();
-
+	 
 	while (true) { 
 
 
@@ -157,16 +151,17 @@ int main()
 
 
 
-
-		// TODO: Fix these 
+		 
 		envManager.applyConditions();
 		envManager.evaluateDecisions();
 		 
 
 
 
-		cout << "Person1 After: " << world[0].getPopulation()[0]->toString() << "\n\n\n";
+		//cout << "Person1 After: " << world[0].getPopulation()[0]->toString() << "\n\n\n";
 
+		vector<int> w = world[0].getPopulation()[0]->getValues();
+		cout << "\n\nPerson1 After: " << w[0] << " " << w[1] << " " << w[2] << "\n";
 
 
 

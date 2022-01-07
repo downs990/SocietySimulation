@@ -1,6 +1,2 @@
-﻿  EnvironmentManager.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(53,22): warning C4804: '>=': unsafe use of type 'bool' in operation
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(109,21): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  Generating Code...
+﻿  Main.cpp
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

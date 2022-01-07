@@ -3,7 +3,9 @@
 #include "Schedule.h"
 #include "MyConstants.h"
 #include <string>
-using std::string;
+#include <sstream>
+using std::string; 
+using std::ostringstream;
 
 
 class Person
@@ -15,6 +17,7 @@ public:
 	
 	Schedule getSchedule(); 
 
+	vector<int> getValues();
 	void setHappyOffset(int offset);
 	void setStressOffset(int offset);
 	void setHoursSleptOffset(int offset); // +1 every hour slept 

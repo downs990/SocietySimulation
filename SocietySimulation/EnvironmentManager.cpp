@@ -16,7 +16,7 @@
 //			}
 // }
 void highProductivity(Environment *env, Person *person) {
-	if (env->getType() == "WORK") {
+	//if (env->getType() == "WORK") {
 		if (
 			person->getHoursSlept() >= 5 &&
 			person->getAteBreakfast() == true
@@ -26,7 +26,7 @@ void highProductivity(Environment *env, Person *person) {
 			person->setHappyOffset(1);   // happy += 1
 			person->setStressOffset(-1); // stress -= 1
 		}
-	}
+	//}
 }
 
 // Environmental Condition 2
