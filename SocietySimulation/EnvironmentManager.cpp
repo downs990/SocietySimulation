@@ -40,12 +40,12 @@ void highProductivity(Environment& env) {
 
 
  
-void schoolDecisionTree1(Environment* env) { // Chagne * to & 
+void schoolDecisionTree1(Environment& env) { // Chagne * to & 
 	 
 
 
 	// TODO: Loop through env.getPopulation() to apply to every person in env. 
-	Person* person = &(*env->getPopulation())[0];
+	Person* person = &(*env.getPopulation())[0];
 
 
 	string taskName = "Time between classes";
@@ -104,9 +104,9 @@ void schoolDecisionTree1(Environment* env) { // Chagne * to &
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree1(Environment* env) {
+void workDecisionTree1(Environment& env) {
 }
-void homeDecisionTree1(Environment* env) {
+void homeDecisionTree1(Environment& env) {
 }
 
 void EnvironmentManager::applyConditions() {
@@ -134,11 +134,11 @@ void EnvironmentManager::applyConditions() {
 
 
 
-void unemployedCondition(Environment* env) {
+void unemployedCondition(Environment& env) {
 	// TODO: Pull conditions from WorldConfig.json
 }
 
-void pandemicCondition(Environment* env) {
+void pandemicCondition(Environment& env) {
 	// TODO: Pull conditions from WorldConfig.json
 }
 
@@ -147,7 +147,7 @@ void pandemicCondition(Environment* env) {
 
 // Precondition: Unemployed
 // Postcondition: Employed, Homeless (Unemployed)
-void unemployedDecisionTree(Environment* env) {
+void unemployedDecisionTree(Environment& env) {
 	// 1. Go back to school to change fields
 	// 2. Start new business online
 	// 3. Find another job with lower or same salary.
@@ -158,7 +158,7 @@ void unemployedDecisionTree(Environment* env) {
 
 // Precondition: Infected 
 // Postcondition: Healthy again, Dead 
-void infectedWithVirusDecisionTree(Environment* env) {
+void infectedWithVirusDecisionTree(Environment& env) {
 	// 1. Social distance and mask up
 	// 2. Get vaccinated 
 	// 3. Alternative treatments 
@@ -167,7 +167,7 @@ void infectedWithVirusDecisionTree(Environment* env) {
 }
 
 
-void warDecisionTree(Environment* env) {
+void warDecisionTree(Environment& env) {
 	// 1. 
 
 }
@@ -181,7 +181,7 @@ void EnvironmentManager::evaluateDecisions() {
 
 	for (Environment& currentEnv : allEnvironments) {
 		for (auto&& func : currentEnv.getDecisionsList()) {
-			func(&currentEnv ); // TODO: Apply to each person in evn
+			func(currentEnv );
 		}
 	
 	}
@@ -194,7 +194,7 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments): all
 	for (Environment currentEnv : allEnvironments) {
 
 
-		// Add all environmental decisions. 
+		// TODO: Test all environmental decisions. 
 		if (currentEnv.getType() == "SCHOOL") {
 			currentEnv.addDecision(schoolDecisionTree1);
 		}

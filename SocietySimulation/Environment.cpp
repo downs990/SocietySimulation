@@ -35,11 +35,11 @@ vector<EnvironmentalCondition> Environment::getConditionsList() {
 	return conditionsList;
 }
 
-void Environment::addDecision(void (*function)(Environment*)) {
+void Environment::addDecision(void (*function)(Environment&)) {
 	decisionsList.push_back(function);
 }
 
-vector<void (*)(Environment*)> Environment::getDecisionsList(){
+vector<void (*)(Environment&)> Environment::getDecisionsList(){
 	return decisionsList;
 }
  
