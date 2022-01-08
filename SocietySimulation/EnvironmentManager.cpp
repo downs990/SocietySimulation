@@ -15,16 +15,17 @@
 //				stree-1%
 //			}
 // }
-void highProductivity(Environment *env, Person *person) {
+void highProductivity(Environment& env, Person& person) {
+	 
+
 	//if (env->getType() == "WORK") {
 		if (
-			person->getHoursSlept() >= 5 &&
-			person->getAteBreakfast() == true
+			person.getHoursSlept() >= 5 &&
+			person.getAteBreakfast() == true
 			)
-		{
-			cout << "All conditions are met";
-			person->setHappyOffset(1);   // happy += 1
-			person->setStressOffset(-1); // stress -= 1
+		{ 
+			person.setHappyOffset(1);   // happy += 1
+			person.setStressOffset(-1); // stress -= 1
 		}
 	//}
 }
@@ -39,7 +40,7 @@ void highProductivity(Environment *env, Person *person) {
 
 
 // TODO: How to execute this for every person in env??? 
-void schoolDecisionTree1(Environment *env, Person* person) {
+void schoolDecisionTree1(Environment* env, Person* person) {
 	 
 	string taskName = "Time between classes";
 	int timeBetweenClasses = 0;
@@ -97,22 +98,26 @@ void schoolDecisionTree1(Environment *env, Person* person) {
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree1(Environment *env, Person* person) {
+void workDecisionTree1(Environment* env, Person* person) {
 }
-void homeDecisionTree1(Environment *env, Person* person) {
+void homeDecisionTree1(Environment* env, Person* person) {
 }
 
 void EnvironmentManager::applyConditions() {
 	for (Environment currentEnv : allEnvironments) {
 
 		// Add all environmental conditions first. 
-		for (int i = 0; i < (&currentEnv)->getConditionsList().size(); i++)
+		for (int i = 0; i < currentEnv.getConditionsList().size(); i++)
 		{
-			EnvironmentalCondition currentCondition = (&currentEnv)->getConditionsList()[i];
+			EnvironmentalCondition currentCondition = currentEnv.getConditionsList()[i];
 			if (currentCondition == EnvironmentalCondition::HIGH_PRODUCTIVITY) {
 				 
-				Person* firstPerson = (&currentEnv)->getPopulation()[0];
-				highProductivity(&currentEnv, firstPerson);
+				
+				Person firstPerson = currentEnv.getPopulation()[0]; 
+
+				cout << "\n\n\nFirst Person Before: " << firstPerson.toString();
+				highProductivity(currentEnv, firstPerson);
+				cout << "\n\n\nFirst Person After: " << firstPerson.toString();
 			}
 		}
 	}
@@ -166,12 +171,12 @@ void warDecisionTree(Environment* env, Person* person) {
 
 void EnvironmentManager::evaluateDecisions() {
 
-	for (Environment currentEnv : allEnvironments) {
-		for (auto&& func : (&currentEnv)->getDecisionsList()) {
-			func(&currentEnv, (&currentEnv)->getPopulation()[0]); // TODO: Apply to each person in evn
-		}
-	
-	}
+	//for (Environment currentEnv : allEnvironments) {
+	//	for (auto&& func : (&currentEnv)->getDecisionsList()) {
+	//		func(&currentEnv, (&currentEnv)->getPopulation()[0]); // TODO: Apply to each person in evn
+	//	}
+	//
+	//}
 }
 
 
@@ -183,14 +188,14 @@ EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
 
 
 		// Add all environmental decisions. 
-		if ((&currentEnv)->getType() == "SCHOOL") {
-			(&currentEnv)->addDecision(schoolDecisionTree1);
+		if (currentEnv.getType() == "SCHOOL") {
+			currentEnv.addDecision(schoolDecisionTree1);
 		}
-		else if ((&currentEnv)->getType() == "WORK") {
-			(&currentEnv)->addDecision(workDecisionTree1);
+		else if (currentEnv.getType() == "WORK") {
+			currentEnv.addDecision(workDecisionTree1);
 		}
-		else if ((&currentEnv)->getType() == "HOME") {
-			(&currentEnv)->addDecision(homeDecisionTree1);
+		else if (currentEnv.getType() == "HOME") {
+			currentEnv.addDecision(homeDecisionTree1);
 		}
 
 	}

@@ -17,9 +17,9 @@ public:
 	Environment();
 	Environment(int id, string type);
 	string getType();
-	vector<Person*> getPopulation();
-	void addPerson(Person *newPerson);
-	void removePerson(Person *removingPerson); 
+	vector<Person> getPopulation(); 
+	void addPerson(Person newPerson);
+	void removePerson(Person removingPerson); 
 	void addCondition(EnvironmentalCondition newCondition);
 	vector<EnvironmentalCondition> getConditionsList();
 	void addDecision(void(*function)(Environment*, Person*));
@@ -30,7 +30,7 @@ private:
 	int id;
 	string type;    // ex, Work
 	string subType; // ex, Hospital 
-	vector<Person*> population; 
+	vector<Person> population; 
 
 	// Vector of function pointers. 
 	vector<EnvironmentalCondition> conditionsList;

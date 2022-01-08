@@ -64,7 +64,7 @@ void readWorldDataFromConfigFile() {
 			for (int j = 0; j < populationSize; j++) {
 				
 				Person newPerson = Person(i+j);
-				newEnvironment.addPerson(&newPerson);
+				newEnvironment.addPerson(newPerson);
 			}
 
 			world.push_back(newEnvironment);
@@ -110,7 +110,7 @@ int main()
 	readWorldDataFromConfigFile();
 	createDatabase();
 
-	vector<int> v = world[0].getPopulation()[0]->getValues();
+	vector<int> v = world[0].getPopulation()[0].getValues();
 	cout << "\n\nPerson1 Before: " << v[0] << " " << v[1] << " " << v[2] << "\n";
 
 
@@ -157,10 +157,11 @@ int main()
 		 
 
 
+		//Person p1 = world[0].getPopulation()[0];
+		//cout << "Person1 After: " << p1.toString() << "\n\n\n";
 
-		//cout << "Person1 After: " << world[0].getPopulation()[0]->toString() << "\n\n\n";
 
-		vector<int> w = world[0].getPopulation()[0]->getValues();
+		vector<int> w = world[0].getPopulation()[0].getValues();
 		cout << "\n\nPerson1 After: " << w[0] << " " << w[1] << " " << w[2] << "\n";
 
 

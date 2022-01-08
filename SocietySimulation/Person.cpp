@@ -1,5 +1,10 @@
 #include "Person.h"
 
+
+
+
+
+
 Person::Person(int id ) {
 	this->id = id;
 	this->dailySchedule = Schedule();
@@ -43,9 +48,10 @@ string Person::toString() {
 	//cout << this->id << " " << this->happy << " " << this->stress << "\n";
 
 	ostringstream os;
-	os << "Id: " << this->id <<
-		"\nHappy: " << this->happy <<
-		"\nStress: " << this->stress;
+	os << "\nId: " << this->id <<
+		"  Happy: " << this->happy <<
+		"  Stress: " << this->stress <<
+		"  HoursSlept: " << this->hoursSlept;
  
 	return os.str();
 }

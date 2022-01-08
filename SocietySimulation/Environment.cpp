@@ -7,15 +7,19 @@ Environment::Environment(int i, string t) : id(i) , type(t) {
 
 string Environment::getType() { return type; }
 
-vector<Person*> Environment::getPopulation() {
+
+ 
+
+
+vector<Person> Environment::getPopulation() {
 	return population;
 }
 
-void Environment::addPerson(Person *newPerson) {
+void Environment::addPerson(Person newPerson) {
 	population.push_back(newPerson);
 }
 
-void Environment::removePerson(Person *removingPerson) { }
+void Environment::removePerson(Person removingPerson) { }
 
  
 void Environment::addCondition(EnvironmentalCondition newCondition) {
