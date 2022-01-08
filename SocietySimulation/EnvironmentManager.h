@@ -9,13 +9,12 @@ class EnvironmentManager
 public: 
 
 	// TODO: Based on currentEnv.name, attach the correct decision tree. 
-	EnvironmentManager(vector<Environment> allEnvironments);
+	EnvironmentManager(vector<Environment>& allEnvironments);
 	void applyConditions();
 	void evaluateDecisions(); 
 
 private: 
-	vector<Environment> allEnvironments;
-
+	vector<Environment>& allEnvironments; 
 
 };
 

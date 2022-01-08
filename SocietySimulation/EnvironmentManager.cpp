@@ -15,8 +15,9 @@
 //				stree-1%
 //			}
 // }
-void highProductivity(Environment& env, Person& person) {
+void highProductivity(Environment& env) {
 	 
+	Person& person = (*env.getPopulation())[0];
 
 	//if (env->getType() == "WORK") {
 		if (
@@ -38,10 +39,15 @@ void highProductivity(Environment& env, Person& person) {
 
 
 
-
-// TODO: How to execute this for every person in env??? 
-void schoolDecisionTree1(Environment* env, Person* person) {
+ 
+void schoolDecisionTree1(Environment* env) { // Chagne * to & 
 	 
+
+
+	// TODO: Loop through env.getPopulation() to apply to every person in env. 
+	Person* person = &(*env->getPopulation())[0];
+
+
 	string taskName = "Time between classes";
 	int timeBetweenClasses = 0;
 	string prevClassTime = "12:00pm";
@@ -98,26 +104,25 @@ void schoolDecisionTree1(Environment* env, Person* person) {
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree1(Environment* env, Person* person) {
+void workDecisionTree1(Environment* env) {
 }
-void homeDecisionTree1(Environment* env, Person* person) {
+void homeDecisionTree1(Environment* env) {
 }
 
 void EnvironmentManager::applyConditions() {
-	for (Environment currentEnv : allEnvironments) {
+	for (Environment& currentEnv : allEnvironments) {
 
 		// Add all environmental conditions first. 
 		for (int i = 0; i < currentEnv.getConditionsList().size(); i++)
 		{
 			EnvironmentalCondition currentCondition = currentEnv.getConditionsList()[i];
 			if (currentCondition == EnvironmentalCondition::HIGH_PRODUCTIVITY) {
+				  
 				 
-				
-				Person firstPerson = currentEnv.getPopulation()[0]; 
 
-				cout << "\n\n\nFirst Person Before: " << firstPerson.toString();
-				highProductivity(currentEnv, firstPerson);
-				cout << "\n\n\nFirst Person After: " << firstPerson.toString();
+				//cout << "\n\n\nFirst Person Before: " << firstPerson.toString();
+				highProductivity(currentEnv);
+				//cout << "\n\n\nFirst Person After: " << firstPerson.toString();
 			}
 		}
 	}
@@ -125,12 +130,15 @@ void EnvironmentManager::applyConditions() {
 }
 
 
+// TODO: Some Environmental conditions should only be applied once. 
 
-void unemployedCondition(Environment* env, Person* person) {
+
+
+void unemployedCondition(Environment* env) {
 	// TODO: Pull conditions from WorldConfig.json
 }
 
-void pandemicCondition(Environment* env, Person* person) {
+void pandemicCondition(Environment* env) {
 	// TODO: Pull conditions from WorldConfig.json
 }
 
@@ -139,7 +147,7 @@ void pandemicCondition(Environment* env, Person* person) {
 
 // Precondition: Unemployed
 // Postcondition: Employed, Homeless (Unemployed)
-void unemployedDecisionTree(Environment* env, Person* person) {
+void unemployedDecisionTree(Environment* env) {
 	// 1. Go back to school to change fields
 	// 2. Start new business online
 	// 3. Find another job with lower or same salary.
@@ -150,7 +158,7 @@ void unemployedDecisionTree(Environment* env, Person* person) {
 
 // Precondition: Infected 
 // Postcondition: Healthy again, Dead 
-void infectedWithVirusDecisionTree(Environment* env, Person* person) {
+void infectedWithVirusDecisionTree(Environment* env) {
 	// 1. Social distance and mask up
 	// 2. Get vaccinated 
 	// 3. Alternative treatments 
@@ -159,7 +167,7 @@ void infectedWithVirusDecisionTree(Environment* env, Person* person) {
 }
 
 
-void warDecisionTree(Environment* env, Person* person) {
+void warDecisionTree(Environment* env) {
 	// 1. 
 
 }
@@ -171,19 +179,18 @@ void warDecisionTree(Environment* env, Person* person) {
 
 void EnvironmentManager::evaluateDecisions() {
 
-	//for (Environment currentEnv : allEnvironments) {
-	//	for (auto&& func : (&currentEnv)->getDecisionsList()) {
-	//		func(&currentEnv, (&currentEnv)->getPopulation()[0]); // TODO: Apply to each person in evn
-	//	}
-	//
-	//}
+	for (Environment& currentEnv : allEnvironments) {
+		for (auto&& func : currentEnv.getDecisionsList()) {
+			func(&currentEnv ); // TODO: Apply to each person in evn
+		}
+	
+	}
 }
 
-
-
-EnvironmentManager::EnvironmentManager(vector<Environment> myEnvironments){
-
-	allEnvironments = myEnvironments;
+ 
+EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments): allEnvironments(myEnvironments){
+	   
+ 
 	for (Environment currentEnv : allEnvironments) {
 
 

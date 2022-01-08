@@ -5,14 +5,19 @@ Environment::Environment(int i, string t) : id(i) , type(t) {
 	population = {};
 }
 
+
+
+
+
+void Environment::setPopulation(vector<Person> newPopulation) {
+	population = newPopulation;
+}
+
 string Environment::getType() { return type; }
 
 
- 
-
-
-vector<Person> Environment::getPopulation() {
-	return population;
+vector<Person>* Environment::getPopulation() {
+	return &population;
 }
 
 void Environment::addPerson(Person newPerson) {
@@ -30,11 +35,11 @@ vector<EnvironmentalCondition> Environment::getConditionsList() {
 	return conditionsList;
 }
 
-void Environment::addDecision(void (*function)(Environment*, Person*)) {
+void Environment::addDecision(void (*function)(Environment*)) {
 	decisionsList.push_back(function);
 }
 
-vector<void (*)(Environment*, Person*)> Environment::getDecisionsList(){
+vector<void (*)(Environment*)> Environment::getDecisionsList(){
 	return decisionsList;
 }
  

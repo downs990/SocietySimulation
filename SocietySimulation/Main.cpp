@@ -110,14 +110,16 @@ int main()
 	readWorldDataFromConfigFile();
 	createDatabase();
 
-	vector<int> v = world[0].getPopulation()[0].getValues();
-	cout << "\n\nPerson1 Before: " << v[0] << " " << v[1] << " " << v[2] << "\n";
-
+	//vector<int> v = (*world[0].getPopulation())[0].getValues();
+	//cout << "\n\nPerson1 Before: " << v[0] << " " << v[1] << " " << v[2] << "\n";
+	cout << "\nPerson1 Before: " << (*world[0].getPopulation())[0].toString() << "\n";
 
 	 
 	// Attaches all decision trees to associated environment types. 
 	EnvironmentManager envManager = EnvironmentManager(world);
 	
+	//cout << "\nFirst Environment After: " << (*world[0].getPopulation())[0].toString();
+
 
 	int const SECONDS_IN_HOUR = 3600;
 	time_t now = time(0);
@@ -156,13 +158,12 @@ int main()
 		envManager.evaluateDecisions();
 		 
 
+ 
+		cout << "Person1 After: " << (*world[0].getPopulation())[0].toString() << "\n\n\n";
 
-		//Person p1 = world[0].getPopulation()[0];
-		//cout << "Person1 After: " << p1.toString() << "\n\n\n";
 
-
-		vector<int> w = world[0].getPopulation()[0].getValues();
-		cout << "\n\nPerson1 After: " << w[0] << " " << w[1] << " " << w[2] << "\n";
+		//vector<int> w = (*world[0].getPopulation())[0].getValues();
+		//cout << "\n\nPerson1 After: " << w[0] << " " << w[1] << " " << w[2] << "\n";
 
 
 
