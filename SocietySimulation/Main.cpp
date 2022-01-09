@@ -3,9 +3,7 @@
   
 #include <Windows.h> 
 #include <fstream>
-#include <iostream>
-#include <json\value.h>
-#include <json\json.h>
+#include <iostream> 
 
 #include "Person.h"
 #include "Environment.h"
@@ -21,6 +19,7 @@ using std::ifstream;
 
 
 vector<Environment> world;
+Json::Value  worldConfigJSON;
 
 void createDatabase() {
 	// TODO: Create a MongoDB 
@@ -49,6 +48,7 @@ void readWorldDataFromConfigFile() {
 
 	// Generate environment objects from Json World file.
 	int environmentID = 0;
+	worldConfigJSON = newValue;
 	Json::Value environmentsToCreate = newValue["Environments"];
 	for (Json::Value env : environmentsToCreate) {
 		
@@ -59,7 +59,7 @@ void readWorldDataFromConfigFile() {
 
 		for (int i = 0; i < count; i++) {
 			Environment newEnvironment = Environment(environmentID, type);
-			newEnvironment.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
+			//newEnvironment.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
 
 			for (int j = 0; j < populationSize; j++) {
 				
@@ -109,74 +109,73 @@ int main()
 
 	readWorldDataFromConfigFile();
 	createDatabase();
-
-	//vector<int> v = (*world[0].getPopulation())[0].getValues();
-	//cout << "\n\nPerson1 Before: " << v[0] << " " << v[1] << " " << v[2] << "\n";
-	cout << "\nPerson1 Before: " << (*world[0].getPopulation())[0].toString() << "\n";
-
+ 
+	
 	 
 	// Attaches all decision trees to associated environment types. 
-	EnvironmentManager envManager = EnvironmentManager(world);
-	
-	//cout << "\nFirst Environment After: " << (*world[0].getPopulation())[0].toString();
+	EnvironmentManager envManager = EnvironmentManager(world, worldConfigJSON);
+	envManager.applyConditions();
+
+
+	Environment myEnv = world[0];
+	for (int i = 0; i < (*myEnv.getPopulation()).size(); i++) {
+		cout << "\n" << (*myEnv.getPopulation())[i].getEmployment();
+	}
+
+
+
+
 
 
 	int const SECONDS_IN_HOUR = 3600;
 	time_t now = time(0);
-
-
 	 
-	while (true) { 
+	//while (true) { 
 
 
-		// TODO: Log the state of the simulation every frame to a file. 
-		//     Either specific Env/Persons or entire world. 
-		struct tm newtime; 
-		now += SECONDS_IN_HOUR;
-		localtime_s(&newtime, &now);
+	//	// TODO: Log the state of the simulation every frame to a file. 
+	//	//     Either specific Env/Persons or entire world. 
+	//	struct tm newtime; 
+	//	now += SECONDS_IN_HOUR;
+	//	localtime_s(&newtime, &now);
 
-		// Simulation clock: 1 second = 1 hour 
-		int month = 1 + newtime.tm_mon;
-		int day = newtime.tm_mday;
-		int year = 1900 + newtime.tm_year;
-		cout << "Date: " << month << ", " << day << " " << year << "\n";
-		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
-	 	
-		// TODO: What the best way to pause the sim? 
-		//		1. Non-blocking cin
-		//		2. Change value in file that's being constantly read from in main loop
-	
+	//	// Simulation clock: 1 second = 1 hour 
+	//	int month = 1 + newtime.tm_mon;
+	//	int day = newtime.tm_mday;
+	//	int year = 1900 + newtime.tm_year;
+	//	cout << "Date: " << month << ", " << day << " " << year << "\n";
+	//	cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
+	// 	
+	//	// TODO: What the best way to pause the sim? 
+	//	//		1. Non-blocking cin
+	//	//		2. Change value in file that's being constantly read from in main loop
+	//
 
-		//int num = 0;
-		//cout << "Enter a number: ";
-		//cin >> num;
-
-
-
-		 
-		envManager.applyConditions();
-		envManager.evaluateDecisions();
-		 
-
- 
-		cout << "Person1 After: " << (*world[0].getPopulation())[0].toString() << "\n\n\n";
-
-
-		//vector<int> w = (*world[0].getPopulation())[0].getValues();
-		//cout << "\n\nPerson1 After: " << w[0] << " " << w[1] << " " << w[2] << "\n";
+	//	//int num = 0;
+	//	//cout << "Enter a number: ";
+	//	//cin >> num;
 
 
 
-		// 2. Update sim clock by 1 minutes (because shedules are minute specific)
-		// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
+	//	  
+	//	envManager.evaluateDecisions();
+	//	 
+
+ //
+	//	cout << "Person1 After: " << (*world[0].getPopulation())[0].toString() << "\n\n\n";
+
+ //
+
+	//	// 2. Update sim clock by 1 minutes (because shedules are minute specific)
+	//	// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
 
 
-		// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
-		//		for Historic Event threshold properties. 
-		// 5. Use those values to check for and keep track of any Historic Event's that occur.  
-		
-		Sleep(1000); 
-	}
+	//	// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
+	//	//		for Historic Event threshold properties. 
+	//	// 5. Use those values to check for and keep track of any Historic Event's that occur.  
+	//	
+	//	Sleep(1000); 
+	//}
 
 
 	 

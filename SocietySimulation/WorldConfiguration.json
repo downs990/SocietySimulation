@@ -10,9 +10,11 @@
     {
       "Type": "RECESSION",
       "Conditions": {
-        "UnemploymentPercentage": 0.50,
+        "UnemploymentRate": 0.50,
         "AverageStress": 0.80,
-        "AverageBusinessPerformance": 0.60
+        "AverageBusinessPerformance": 0.60,
+        "“AverageSalaryOffset”": -0.30
+
       }
     },
     {
@@ -24,7 +26,7 @@
       }
     },
     {
-      "Type": "WAR",
+      "Type": "CIVIL_WAR",
       "Conditions": {
         "percentageOf": 0.20
       }
@@ -37,11 +39,11 @@
       "Thresholds": []
     },
     {
-      "Name": "SocialEquality",
+      "Name": "HighQualityOfHealth",
       "Thresholds": []
     },
     {
-      "Name": "HighQualityOfHealth",
+      "Name": "SocialEquality",
       "Thresholds": []
     }
 
@@ -60,19 +62,19 @@
     {
       "Type": "WORK",
       "Count": 1,
-      "PopulationSize": 250,
+      "PopulationSize": 10,
       "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     },
     {
       "Type": "HOME",
       "Count": 2,
-      "PopulationSize": 3,
+      "PopulationSize": 4,
       "Conditions": [ "RELAXED", "EATING", "SLEEPING" ]
     },
     {
       "Type": "SCHOOL",
       "Count": 3,
-      "PopulationSize": 500,
+      "PopulationSize": 12,
       "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
     }
 

@@ -16,8 +16,9 @@ public:
 	void markTaskAsComplete(string taskName);
 	
 	Schedule getSchedule(); 
-
-	vector<int> getValues();
+	 
+	void setEmployment(bool employmentStatus);
+	bool getEmployment();
 	void setHappyOffset(int offset);
 	void setStressOffset(int offset);
 	void setHoursSleptOffset(int offset); // +1 every hour slept 
@@ -28,6 +29,7 @@ public:
 private:
 	int id;
 	Schedule dailySchedule;
+	bool isEmployed;
 	
 	// TODO: Social interactions will require decision trees. Thresholds for their choices 
 	//		will be mood.
@@ -38,6 +40,7 @@ private:
 	int stress;        // % 0 - 100
 	int hoursSlept;    // 0 - 15
 	bool ateBreakfast; // true , false
+	 
 
 
 

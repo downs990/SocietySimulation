@@ -12,15 +12,18 @@ Person::Person(int id ) {
 	this->stress = 2;        
 	this->hoursSlept = 8;     
 	this->ateBreakfast = true;  
+	this->isEmployed = true;
 
 	
 }
-
-vector<int> Person::getValues() {
-	vector<int> values = {this->happy, this->stress, this->hoursSlept};
-	return values;
+ 
+void Person::setEmployment(bool employmentStatus) {
+	this->isEmployed = employmentStatus;
 }
 
+bool Person::getEmployment() {
+	return this->isEmployed;
+}
 
 void Person::addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName) {
 	this->dailySchedule.addTask(repeatDays, startTime, endTime, locationName);
@@ -44,11 +47,11 @@ int Person::getHoursSlept() { return this->hoursSlept; }
 bool Person::getAteBreakfast() { return this->ateBreakfast; }
 
 string Person::toString() {
-
-	//cout << this->id << " " << this->happy << " " << this->stress << "\n";
+	 
 
 	ostringstream os;
 	os << "\nId: " << this->id <<
+		"  isEmployed: " << this->isEmployed << 
 		"  Happy: " << this->happy <<
 		"  Stress: " << this->stress <<
 		"  HoursSlept: " << this->hoursSlept;

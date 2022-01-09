@@ -1,47 +1,10 @@
 #include "EnvironmentManager.h"
 
 
-// Environmental Condition 1
-// condition: "HighProductivity"{
-//		
-//		threhsolds: {
-//				sleep >= 5, 
-//				ate_breakfast = true, 
-//				social_interactions_today <= 4    (environment specific variable)
-//			},	
-//	 
-//		mood effects: {
-//				happy+1% , 
-//				stree-1%
-//			}
-// }
-void highProductivity(Environment& env) {
-	 
-	Person& person = (*env.getPopulation())[0];
-
-	//if (env->getType() == "WORK") {
-		if (
-			person.getHoursSlept() >= 5 &&
-			person.getAteBreakfast() == true
-			)
-		{ 
-			person.setHappyOffset(1);   // happy += 1
-			person.setStressOffset(-1); // stress -= 1
-		}
-	//}
-}
-
-// Environmental Condition 2
-// Environmental Condition 3 
-//            ... 
 
 
-
-
-
- 
 void schoolDecisionTree1(Environment& env) { // Chagne * to & 
-	 
+
 
 
 	// TODO: Loop through env.getPopulation() to apply to every person in env. 
@@ -65,13 +28,13 @@ void schoolDecisionTree1(Environment& env) { // Chagne * to &
 			}
 			else if (person->getAteBreakfast() == false) {	// EAT
 			   // Traverse EAT subtree 
-				
+
 			}
 			else if (true) {                               // STUDY
 
 
 			   // TODO: Check their schedule to see when their exams are for each class
-			   
+
 			   // - Update schedule gernation class to be able to 
 			   //   add random quizes and a couple of exams at the correct 
 			   //   intervals for each class that this person is in. 
@@ -109,36 +72,26 @@ void workDecisionTree1(Environment& env) {
 void homeDecisionTree1(Environment& env) {
 }
 
-void EnvironmentManager::applyConditions() {
-	for (Environment& currentEnv : allEnvironments) {
 
-		// Add all environmental conditions first. 
-		for (int i = 0; i < currentEnv.getConditionsList().size(); i++)
-		{
-			EnvironmentalCondition currentCondition = currentEnv.getConditionsList()[i];
-			if (currentCondition == EnvironmentalCondition::HIGH_PRODUCTIVITY) {
-				  
-				 
 
-				//cout << "\n\n\nFirst Person Before: " << firstPerson.toString();
-				highProductivity(currentEnv);
-				//cout << "\n\n\nFirst Person After: " << firstPerson.toString();
-			}
-		}
+
+
+void recessionCondition(Environment& env, Json::Value relatedConditions) {
+
+
+	// Unemploy the percentage of population to match unemploymentRate.
+	double unemploymentRate = relatedConditions["UnemploymentRate"].asDouble();
+	int numberOfUnemployed = (*env.getPopulation()).size() * unemploymentRate;
+
+	for (int i = 0; i < numberOfUnemployed; i++) {
+
+		Person& currentPerson = (*env.getPopulation())[i];
+		currentPerson.setEmployment(false);
 	}
 
 }
 
-
-// TODO: Some Environmental conditions should only be applied once. 
-
-
-
-void unemployedCondition(Environment& env) {
-	// TODO: Pull conditions from WorldConfig.json
-}
-
-void pandemicCondition(Environment& env) {
+void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 	// TODO: Pull conditions from WorldConfig.json
 }
 
@@ -174,6 +127,38 @@ void warDecisionTree(Environment& env) {
 
 
 
+void EnvironmentManager::applyConditions() {
+	for (Environment& currentEnv : allEnvironments) {
+
+
+
+		int currentWorldState = worldConfigJSON["CurrentWorldState"].asInt();
+		Json::Value currentSIConditions = worldConfigJSON["SocietalInterruptions"][currentWorldState]["Conditions"];
+
+		if (currentWorldState == 0) {
+			// Normal 
+		}
+		else if (currentWorldState == 1) {
+			// Recession 
+			recessionCondition(currentEnv, currentSIConditions);
+		}
+		else if (currentWorldState == 2) {
+			// Pandemic 
+			pandemicCondition(currentEnv, currentSIConditions);
+		}
+		else if (currentWorldState == 3) {
+			// Civil War
+		}
+
+
+		// TODO: Remove currentEnv.getConditionsList()
+		// TODO: Remove conditionsList from Environment.cpp and .h
+		// TODO: Should you have Environmental Conditions be different for Home, work, school and sub environments? 
+
+	}
+
+}
+
 
 
 
@@ -181,18 +166,19 @@ void EnvironmentManager::evaluateDecisions() {
 
 	for (Environment& currentEnv : allEnvironments) {
 		for (auto&& func : currentEnv.getDecisionsList()) {
-			func(currentEnv );
+			func(currentEnv);
 		}
-	
+
 	}
 }
 
- 
-EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments): allEnvironments(myEnvironments){
-	   
- 
-	for (Environment currentEnv : allEnvironments) {
 
+EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
+	Json::Value  worldConfig) : allEnvironments(myEnvironments), worldConfigJSON(worldConfig) {
+
+
+
+	for (Environment currentEnv : allEnvironments) {
 
 		// TODO: Test all environmental decisions. 
 		if (currentEnv.getType() == "SCHOOL") {
@@ -209,5 +195,5 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments): all
 
 
 }
-  
+
 
