@@ -19,28 +19,28 @@ void schoolDecisionTree1(Environment& env) { // Chagne * to &
 	for (Schedule::SimTask currentTask : person->getSchedule().getTasks()) {
 		string currClassTime = currentTask.getStartTime();
 
-		// TODO: Properly compare times  
-		if ((currClassTime < prevClassTime) >= 3) {
-			if (person->getHoursSlept() < 5) {              // SLEEP
+		//// TODO: Properly compare times  
+		//if ((currClassTime < prevClassTime) >= 3) {
+		//	if (person->getHoursSinceSlept() > 15) {              // SLEEP
 
-				// Sleep 2 hours 
-				person->setHoursSleptOffset(2);
-			}
-			else if (person->getAteBreakfast() == false) {	// EAT
-			   // Traverse EAT subtree 
+		//		// Sleep 2 hours 
+		//		//person->setHoursSinceSlept(0);
+		//	}
+		//	else if (person->getAteBreakfast() == false) {	// EAT
+		//	   // Traverse EAT subtree 
 
-			}
-			else if (true) {                               // STUDY
+		//	}
+		//	else if (true) {                               // STUDY
 
 
-			   // TODO: Check their schedule to see when their exams are for each class
+		//	   // TODO: Check their schedule to see when their exams are for each class
 
-			   // - Update schedule gernation class to be able to 
-			   //   add random quizes and a couple of exams at the correct 
-			   //   intervals for each class that this person is in. 
-			}
+		//	   // - Update schedule gernation class to be able to 
+		//	   //   add random quizes and a couple of exams at the correct 
+		//	   //   intervals for each class that this person is in. 
+		//	}
 
-		}
+		//}
 	}
 
 
@@ -129,8 +129,6 @@ void warDecisionTree(Environment& env) {
 
 void EnvironmentManager::applyConditions() {
 	for (Environment& currentEnv : allEnvironments) {
-
-
 
 		int currentWorldState = worldConfigJSON["CurrentWorldState"].asInt();
 		Json::Value currentSIConditions = worldConfigJSON["SocietalInterruptions"][currentWorldState]["Conditions"];

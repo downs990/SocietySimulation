@@ -11,35 +11,47 @@ using std::ostringstream;
 class Person
 {
 public:
-	Person(int id);
+	Person(int id, struct tm currentDateTime);
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	
 	Schedule getSchedule(); 
 	 
+	double getFocus(struct tm currentDateTime); // NOTE: No setFocus() needed.
 	void setEmployment(bool employmentStatus);
 	bool getEmployment();
-	void setHappyOffset(int offset);
-	void setStressOffset(int offset);
-	void setHoursSleptOffset(int offset); // +1 every hour slept 
-	int getHoursSlept();
-	bool getAteBreakfast();
+	void setHappyOffset(int offset); 
+	
+	// TODO: How to use strcut as arg? 
+	//Or use string instead and convert string to struct inside. 
+	void setLastSlept(struct tm lastSlept); 
+
+	// TODO: Calculate using lastSlept DateTime object
+	//and current time.
+	int getHoursSinceSlept(struct tm currentDateTime); 
+	int getHoursSlept(struct tm currentDateTime);
+	
+	void setLastAte(struct tm lastAte);
+
+	// TODO: Calculate using lastSlept DateTime 
+	//object and current time.
+	int getHoursSinceAte(struct tm currentDateTime);
+	int getHoursSpentEating(struct tm currentDateTime);
+	 
 	string toString();
 
 private:
 	int id;
 	Schedule dailySchedule;
 	bool isEmployed;
+	  
+	double happy; // %              
+	double focus; // %   Determines school/work performance. Is based on hoursSinceSlept, hoursSinceAte. 
 	
-	// TODO: Social interactions will require decision trees. Thresholds for their choices 
-	//		will be mood.
-
-
-	// moods / health state
-	int happy;         // % 0 - 100 
-	int stress;        // % 0 - 100
-	int hoursSlept;    // 0 - 15
-	bool ateBreakfast; // true , false
+	// NOTE: These are date-time objects just like what's used in main.
+	//		Date-time objects allow you to easily calculate both "Hours since slept" and how many hours you've slept. 
+	struct tm lastSlept;     
+	struct tm lastAte; 
 	 
 
 

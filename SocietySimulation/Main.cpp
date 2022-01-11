@@ -63,7 +63,7 @@ void readWorldDataFromConfigFile() {
 
 			for (int j = 0; j < populationSize; j++) {
 				
-				Person newPerson = Person(i+j);
+				Person newPerson = Person(i + j, {});
 				newEnvironment.addPerson(newPerson);
 			}
 

@@ -1,4 +1,8 @@
 ﻿  EnvironmentManager.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(23,22): warning C4804: '>=': unsafe use of type 'bool' in operation
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(84,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Person.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(38,63): warning C4554: '^': check operator precedence for possible error; use parentheses to clarify precedence
+  Main.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Main.cpp(121,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe
