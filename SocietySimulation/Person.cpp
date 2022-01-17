@@ -3,8 +3,6 @@
 
 
 
-
-
 Person::Person(int id, struct tm currentDateTime) {
 	this->id = id;
 	this->dailySchedule = Schedule();
@@ -15,15 +13,14 @@ Person::Person(int id, struct tm currentDateTime) {
 
 	// TODO: Every hour update sleepy and hungry by some percentage (2-5%) 
 	//		 and let those ratios affect focus % 
-	 
+
 	this->isEmployed = true;
 
-	
 }
 
 double Person::getFocus(struct tm currentDateTime) {
-	int MANY_HOURS_NO_SLEEP = 15;// AND UP
-	int MANY_HOURS_NO_EAT = 5;   // AND UP 
+	int MANY_HOURS_NO_SLEEP = 15;
+	int MANY_HOURS_NO_EAT = 5;   
 
 	// a = Hours since slept 
 	// b = Hours since ate
