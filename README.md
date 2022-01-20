@@ -63,7 +63,7 @@ The level 1 diagram below shows a slightly more low level design compared to lev
 
 Inside of the Sim Object you&#39;ll notice the **World Builder.** This object will be able to read a **WorldConfig.json** file and create the listed objects with their desired properties and pass those objects to the **Sim Manager.**
 
-![](RackMultipart20220120-4-1b23n82_html_7123f96811db7d40.png)
+![](/Images/level1-dfd.drawio.png)
 
 Level 2
 
@@ -76,7 +76,7 @@ In the level 2 diagram below you&#39;ll notice the following new items: **Enviro
 3. State Injector
   1. The objective of this object is to be able to add random **Societal Interruptions**. This will most likely be done by modifying the **WorldConfig.json** with values associated with the given Societal Interruption. (pandemic, war, riots, etc..)
 
-![](RackMultipart20220120-4-1b23n82_html_e7ab4d399107a8b2.png)
+![](/Images/level2-dfd.drawio.png)
 
 1.
 # CSCIs (Computer Software Configuration Items)
@@ -350,7 +350,7 @@ These conditions are applied to the simulation through the WorldConfig.json file
 1.
 # Main Flow
 
-![](RackMultipart20220120-4-1b23n82_html_f4ba52aed5f10e6c.png)
+![](/Images/main_flow.drawio.png)
 
 The main flow of this simulation will be decided by the current Societal Interruption (S.I) that is applied to the world state in the World Config file. That S.I will have associated conditions that will be applied to specific environments and a percentage or all of the population. These conditions will affect how those individuals make decisions in their environment. All of those decisions should eventually lead to a **corresponding Historic Event (H.E).** As the decisions are made they are logged to the database for **post analysis.**
 
