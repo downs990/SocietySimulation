@@ -55,7 +55,7 @@ Level 0
 
 The level 0 diagram below shows the highest possible level of the overall simulation. The main two components are the **Controller** and the **Sim Object**. The controller feeds commands into the sim object and the sim object executes internal processes and stores all results.
 
-![](RackMultipart20220120-4-1b23n82_html_6ff7d32b8cc85f3.png)
+![](level0-dfd.drawio.png)
 
 Level 1
 
