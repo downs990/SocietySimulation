@@ -1,8 +1,5 @@
 # Society Simulation
 
-# Software Documentation
-
-#
 
 Draft 0
 
@@ -10,29 +7,6 @@ Courtney Downs, Rayfuzu Software
 
 Idea Conceived: 4/14/21
 
-**[Overview](#_o4ijvrtdb44i) 2**
-
-**[CSCIs (Computer Software Configuration Items)](#_cevy6tft5gmh) 5**
-
-**[Person](#_1reaf06pvh5y) 5**
-
-**[Historic Event](#_8rwk6wrdg3dk) 6**
-
-**[Schedule](#_dehxecncag24) 8**
-
-**[Decision Tree](#_aoinsvjjm70i) 9**
-
-**[Environment](#_4xpm676rlci1) 12**
-
-**[Societal Interruptions](#_cmwrd4578rmc) 12**
-
-**[Main Flow](#_lsp4gjvid47g) 13**
-
-**[User Interface Mocks](#_4dj8k4l637ob) 14**
-
-**[System Logs &amp; Database](#_vwc1g1eww2h9) 14**
-
-1.
 # Overview
 
 The purpose of this simulation is to figure out how to build a utopian society. This society should be able to sustain a balanced state for many generations once it is achieved and also bounce back from random societal interruptions very quickly. The program will be able to model a society with specified environmental characteristics and common personality traits of individuals. People can be affected by the type of environment and other people that they interact with frequently.
