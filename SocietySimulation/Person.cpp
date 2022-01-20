@@ -6,6 +6,7 @@
 Person::Person(int id, struct tm currentDateTime) {
 	this->id = id;
 	this->dailySchedule = Schedule();
+	this->healthState = StateOfHealth::HEALTHY;
 	this->happy = 0.99;			  // To show opposite of happy, just --happy
 	this->focus = 0.99;
 	this->lastSlept = currentDateTime;    
@@ -17,6 +18,16 @@ Person::Person(int id, struct tm currentDateTime) {
 	this->isEmployed = true;
 
 }
+
+
+void Person::setHealthState(StateOfHealth healthState) {
+	this->healthState = healthState;
+}
+
+StateOfHealth Person::getHealthState() {
+	return this->healthState;
+}
+
 
 double Person::getFocus(struct tm currentDateTime) {
 	int MANY_HOURS_NO_SLEEP = 15;

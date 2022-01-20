@@ -16,6 +16,9 @@ public:
 	void markTaskAsComplete(string taskName);
 	
 	Schedule getSchedule(); 
+
+	void setHealthState(StateOfHealth healthState);
+	StateOfHealth getHealthState();
 	 
 	double getFocus(struct tm currentDateTime); // NOTE: No setFocus() needed.
 	void setEmployment(bool employmentStatus);
@@ -43,6 +46,7 @@ public:
 private:
 	int id;
 	Schedule dailySchedule;
+	StateOfHealth healthState;
 	bool isEmployed;
 	  
 	double happy; // %              

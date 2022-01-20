@@ -93,7 +93,13 @@ void recessionCondition(Environment& env, Json::Value relatedConditions) {
 }
 
 void pandemicCondition(Environment& env, Json::Value relatedConditions) {
-	// TODO: Pull conditions from WorldConfig.json
+	
+	double rateOfInfection = relatedConditions["percentageOfPopulationInfected"].asDouble();
+	int numberOfInfected = (*env.getPopulation()).size() * rateOfInfection;
+	for (int i = 0; i < numberOfInfected; i++) {
+		Person& currentPerson = (*env.getPopulation())[i];
+		currentPerson.setHealthState(StateOfHealth::PANDEMIC_VIRUS);
+	}
 }
 
 
