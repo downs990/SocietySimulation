@@ -5,6 +5,6 @@ C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation
   Main.cpp
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Main.cpp(121,20): warning C4018: '<': signed/unsigned mismatch
   Person.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(46,63): warning C4554: '^': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(59,63): warning C4554: '^': check operator precedence for possible error; use parentheses to clarify precedence
   Generating Code...
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

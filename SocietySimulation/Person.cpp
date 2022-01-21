@@ -7,13 +7,11 @@ Person::Person(int id, struct tm currentDateTime) {
 	this->id = id;
 	this->dailySchedule = Schedule();
 	this->healthState = StateOfHealth::HEALTHY;
-	this->happy = 0.99;			  // To show opposite of happy, just --happy
-	this->focus = 0.99;
+
+	// TODO: Init dsspg and disciplined 
 	this->lastSlept = currentDateTime;    
 	this->lastAte = currentDateTime;      
-
-	// TODO: Every hour update sleepy and hungry by some percentage (2-5%) 
-	//		 and let those ratios affect focus % 
+	 
 
 	this->isEmployed = true;
 
@@ -29,7 +27,22 @@ StateOfHealth Person::getHealthState() {
 }
 
 
+// If dsspg reaches 10 then happy = 0 
+// If dsspg > 10 then happy < 0 
+double Person::getHappy(struct tm currentDateTime) {
+	
+	// Converts dsspg to percentage and subtracts that percentage of f from f
+	double f = getFocus(currentDateTime);
+ 	double happy = f - ((dsspg * 0.10) * f);
+
+	return happy;
+}
+
+
+// TODO: Turn into formula instead of conditionals.
 double Person::getFocus(struct tm currentDateTime) {
+
+	double focus = 0;
 	int MANY_HOURS_NO_SLEEP = 15;
 	int MANY_HOURS_NO_EAT = 5;   
 
@@ -40,20 +53,20 @@ double Person::getFocus(struct tm currentDateTime) {
 	if (this->getHoursSinceSlept(currentDateTime) >= MANY_HOURS_NO_SLEEP 	&&
 		this->getHoursSinceAte(currentDateTime) >= MANY_HOURS_NO_EAT) {
 
-		this->focus = 0.15; // Very low focus 
+		focus = 0.15; // Very low focus 
 	}
 	else if (this->getHoursSinceSlept(currentDateTime) >= MANY_HOURS_NO_SLEEP 	^
 		this->getHoursSinceAte(currentDateTime) >= MANY_HOURS_NO_EAT) {
 		
 		// ^ is Exclusive OR 
 		// If Either a is many or b is many but if both are many then don't execute this condition 
-		this->focus = 0.50;
+		focus = 0.50;
 	}
 	else {
 		// TODO: Set to random value between 80 - 99
-		this->focus = 85;
+		focus = 85;
 	}
-	return this->focus;
+	return focus;
 }
  
 void Person::setEmployment(bool employmentStatus) {
@@ -75,10 +88,7 @@ Schedule Person::getSchedule() {
 	return this->dailySchedule;
 }
  
-
-void Person::setHappyOffset(int offset) {
-	this->happy += offset;
-}
+ 
  
 void Person::setLastSlept(struct tm lastSlept) { this->lastSlept; }
 int Person::getHoursSinceSlept(struct tm currentDateTime) { return 0; }
@@ -91,11 +101,13 @@ int Person::getHoursSpentEating(struct tm currentDateTime) { return 0; }
 
 
 string Person::toString() {
+	// TODO: Pass current tm currentDateTime to this function.
 	 
 	ostringstream os;
 	os << "\nId: " << this->id <<
-		"  isEmployed: " << this->isEmployed <<
-		"  Happy: " << this->happy;
+		"  isEmployed: " << this->isEmployed;
+	//	"  Happy: " << this->getHappy() << 
+	//	"  Focus: " << this->getFocus() <<
 	//	"  HoursSinceSlept: " << this->lastSlept <<
 	//	"  HoursSinceAte: " << this->lastAte;
  

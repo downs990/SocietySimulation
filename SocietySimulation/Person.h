@@ -20,6 +20,7 @@ public:
 	void setHealthState(StateOfHealth healthState);
 	StateOfHealth getHealthState();
 	 
+	double getHappy(struct tm currentDateTime);
 	double getFocus(struct tm currentDateTime); // NOTE: No setFocus() needed.
 	void setEmployment(bool employmentStatus);
 	bool getEmployment();
@@ -43,22 +44,37 @@ public:
 	 
 	string toString();
 
+
 private:
 	int id;
 	Schedule dailySchedule;
 	StateOfHealth healthState;
 	bool isEmployed;
+	 
+	// Used to calculate happy % 
+	double disciplined; // %
+	int dsspg;          // Days since made significant process on person goals
 	  
-	double happy; // %              
-	double focus; // %   Determines school/work performance. Is based on hoursSinceSlept, hoursSinceAte. 
-	
-	// NOTE: These are date-time objects just like what's used in main.
-	//		Date-time objects allow you to easily calculate both "Hours since slept" and how many hours you've slept. 
+	// Used to calculate focus %  
 	struct tm lastSlept;     
 	struct tm lastAte; 
-	 
+	// ^
+	// NOTE: These are date-time objects just like what's used in main.
+	//		Date-time objects allow you to easily calculate both "Hours since slept" and how many hours you've slept. 
 
 
+
+
+
+
+
+	//double happy; // %              
+	//double focus; // %   Determines school/work performance. Is based on hoursSinceSlept, hoursSinceAte. 
+
+	// ^
+	// NOTE: Don't need explicit variables for these. They are 
+	//		calculated/derived only and exactly when needed using
+	//		implicit variables below. 
 
 };
 
