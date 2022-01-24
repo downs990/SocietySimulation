@@ -87,20 +87,20 @@ double Person::getFocus(struct tm currentDateTime) {
 		double chosenWeight =  (b >= (MAX_HOURS_NO_EAT / 2)) ? fWeightHigh : fWeightLow;
  
 
+
+		// TODO: Fix formula to make these values non-negative  
+		//     a: 10.2852    b : 17    Weight : 51.828    Focus : -1
+		//          .
+		//          .
+		//          .
+		//     a : 44.5692    b : 77    Weight : 10.788    Focus : -2
+
+
+
 		focus = 89 - ((2 * a * 0.10) + (chosenWeight * b * 0.10));
 		cout << " a: " << a << "    b: " << b << "    Weight: " << chosenWeight << "    Focus: " << focus << "\n";
 	}
-
-
-
-	// TODO: Fix formula to make these values non-negative  
-	//     a: 10.2852    b : 17    Weight : 51.828    Focus : -1
-	//          .
-	//          .
-	//          .
-	//     a : 44.5692    b : 77    Weight : 10.788    Focus : -2
- 
-
+	 
 
 	 /*
 			 Examples: 
