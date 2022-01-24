@@ -1,10 +1,4 @@
-﻿  Environment.cpp
-  EnvironmentManager.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(85,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(98,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Main.cpp(121,20): warning C4018: '<': signed/unsigned mismatch
-  Person.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(59,63): warning C4554: '^': check operator precedence for possible error; use parentheses to clarify precedence
-  Generating Code...
+﻿  Person.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(80,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(93,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

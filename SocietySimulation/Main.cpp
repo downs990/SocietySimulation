@@ -122,8 +122,8 @@ int main()
 		cout << "\n" << (*myEnv.getPopulation())[i].getEmployment();
 	}
 
-
-
+	Person testPerson = (*myEnv.getPopulation())[0];
+	cout << "\nTest Person: \n\n" << testPerson.getFocus({});
 
 
 
