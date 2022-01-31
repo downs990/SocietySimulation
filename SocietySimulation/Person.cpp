@@ -88,6 +88,7 @@ double Person::getFocus(struct tm currentDateTime) {
  
 
 
+
 		// TODO: Fix formula to make these values non-negative  
 		//     a: 10.2852    b : 17    Weight : 51.828    Focus : -1
 		//          .
