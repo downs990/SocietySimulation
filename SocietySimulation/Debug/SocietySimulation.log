@@ -1,4 +1,4 @@
 ﻿  Person.cpp
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(77,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(100,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(101,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe
