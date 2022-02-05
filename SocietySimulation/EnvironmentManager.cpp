@@ -3,7 +3,7 @@
 
 
 
-void schoolDecisionTree1(Environment& env) { // Chagne * to & 
+void schoolDecisionTree1(Environment& env, struct tm currentDateTime) { // Chagne * to & 
 
 
 
@@ -68,9 +68,9 @@ void schoolDecisionTree1(Environment& env) { // Chagne * to &
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree1(Environment& env) {
+void workDecisionTree1(Environment& env, struct tm currentDateTime) {
 }
-void homeDecisionTree1(Environment& env) {
+void homeDecisionTree1(Environment& env, struct tm currentDateTime) {
 }
 
 
@@ -107,18 +107,68 @@ void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 
 // Precondition: Unemployed
 // Postcondition: Employed, Homeless (Unemployed)
-void unemployedDecisionTree(Environment& env) {
+void unemployedDecisionTree(Environment& env, time_t currentDateTime) {
 	// 1. Go back to school to change fields
 	// 2. Start new business online
 	// 3. Find another job with lower or same salary.
 	// 4. End up homeless 
 
 	// NOTE: Decision is based on skills and education level.
+
+ 
+	int const SECONDS_IN_HOUR = 3600;
+	time_t nowA = currentDateTime;//time(0);
+	time_t nowB = currentDateTime;//time(0);
+
+	struct tm newtimeA;
+	struct tm newtimeB;
+	nowA -= (SECONDS_IN_HOUR * 5); // 96 horus ago 
+	nowB -= (SECONDS_IN_HOUR * 15); // 168 horus ago      // weight = 4  Focus=2
+	localtime_s(&newtimeA, &nowA);
+	localtime_s(&newtimeB, &nowB);
+
+
+
+	struct tm lastSlept = newtimeA;
+	struct tm lastAte = newtimeB;
+	
+
+	Person& p1 = (*env.getPopulation())[0];
+	p1.setLastSlept(lastSlept);
+	p1.setLastAte(lastAte);
+	 
+
+	// Converts time to tm struct 
+	struct tm myDateTimeStruct;
+	localtime_s(&myDateTimeStruct, &currentDateTime);
+
+
+	double hoursSinceSlept = calculateHoursDifference(lastSlept, myDateTimeStruct);
+	double hoursSinceAte = calculateHoursDifference(lastAte, myDateTimeStruct);
+
+	cout << "\nhoursSinceSlept: " << hoursSinceSlept << "\n";
+	cout << "hoursSinceAte: " << hoursSinceAte << "\n";
+
+	//double focus = p1.getFocus(currentDateTime);
+	//cout << "\n\nFocus: " << focus;
+
+
+	char buffer[26];
+	char buffer2[26];
+	strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", &lastSlept);
+	strftime(buffer2, 26, "%Y-%m-%d %H:%M:%S", &lastAte);
+	puts(buffer);
+	puts(buffer2);
+
+	 
+
+
+
 }
 
 // Precondition: Infected 
 // Postcondition: Healthy again, Dead 
-void infectedWithVirusDecisionTree(Environment& env) {
+void infectedWithVirusDecisionTree(Environment& env, struct tm currentDateTime) {
 	// 1. Social distance and mask up
 	// 2. Get vaccinated 
 	// 3. Alternative treatments 
@@ -127,7 +177,7 @@ void infectedWithVirusDecisionTree(Environment& env) {
 }
 
 
-void warDecisionTree(Environment& env) {
+void warDecisionTree(Environment& env, struct tm currentDateTime) {
 	// 1. 
 
 }
@@ -169,12 +219,20 @@ void EnvironmentManager::applyConditions() {
 
 void EnvironmentManager::evaluateDecisions() {
 
-	for (Environment& currentEnv : allEnvironments) {
+	 
+	for (Environment& currentEnv : allEnvironments) { 
+
 		for (auto&& func : currentEnv.getDecisionsList()) {
-			func(currentEnv);
+			func(currentEnv, simClockTValue);
 		}
 
 	}
+}
+
+
+void EnvironmentManager::getSimClockTime(struct tm newSimClockStruct, time_t newSimClockTValue) {
+	simClockStruct = newSimClockStruct;
+	simClockTValue = newSimClockTValue;
 }
 
 
@@ -183,18 +241,27 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 
 
-	for (Environment currentEnv : allEnvironments) {
+	for (Environment& currentEnv : allEnvironments) {
+
+
+		// TODO: Just testing simClock and getFocus() 
+		currentEnv.addDecision(unemployedDecisionTree);
+
+
+
+
 
 		// TODO: Test all environmental decisions. 
-		if (currentEnv.getType() == "SCHOOL") {
-			currentEnv.addDecision(schoolDecisionTree1);
-		}
-		else if (currentEnv.getType() == "WORK") {
-			currentEnv.addDecision(workDecisionTree1);
-		}
-		else if (currentEnv.getType() == "HOME") {
-			currentEnv.addDecision(homeDecisionTree1);
-		}
+		//if (currentEnv.getType() == "SCHOOL") {
+		//	currentEnv.addDecision(schoolDecisionTree1);
+		//}
+		//else if (currentEnv.getType() == "WORK") {
+		//	currentEnv.addDecision(workDecisionTree1);
+		//}
+		//else if (currentEnv.getType() == "HOME") {
+		//	currentEnv.addDecision(homeDecisionTree1);
+		//}
+		 
 
 	}
 

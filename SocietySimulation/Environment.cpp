@@ -25,21 +25,16 @@ void Environment::addPerson(Person newPerson) {
 }
 
 void Environment::removePerson(Person removingPerson) { }
-
  
-void Environment::addCondition(EnvironmentalCondition newCondition) {
-	conditionsList.push_back(newCondition);
-}
 
-vector<EnvironmentalCondition> Environment::getConditionsList() {
-	return conditionsList;
-}
-
-void Environment::addDecision(void (*function)(Environment&)) {
+void Environment::addDecision(void(*function)(Environment&, time_t currrentDateTime))
+{
 	decisionsList.push_back(function);
 }
+ 
+ 
 
-vector<void (*)(Environment&)> Environment::getDecisionsList(){
+vector<void (*)(Environment&, time_t currentDateTime)> Environment::getDecisionsList(){
 	return decisionsList;
 }
  

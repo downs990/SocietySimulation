@@ -41,7 +41,7 @@ public:
 	//object and current time.
 	int getHoursSinceAte(struct tm currentDateTime);
 	int getHoursSpentEating(struct tm currentDateTime);
-	 
+	//static double calculateHoursDifference(struct tm dateA, struct tm dateB);
 	string toString();
 
 

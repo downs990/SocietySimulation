@@ -38,7 +38,28 @@ double Person::getHappy(struct tm currentDateTime) {
 	return happy;
 }
 
-  
+// Pre-Condition: A < B 
+//double Person::calculateHoursDifference(struct tm dateA, struct tm dateB) {
+//
+//
+//	int const SECONDS_IN_HOUR = 3600;
+//
+//	int hourA = dateA.tm_hour;
+//	int dayA = dateA.tm_mday;
+//	int monthA = 1 + dateA.tm_mon;
+//	int yearA = 1900 + dateA.tm_year;
+//
+//
+//	int hourB = dateB.tm_hour;
+//	int dayB = dateB.tm_mday;
+//	int monthB = 1 + dateB.tm_mon;
+//	int yearB = 1900 + dateB.tm_year;
+//
+//	// TODO: Calculate B - A and return difference in hours. 
+//
+//	return 0;
+
+//}
 
 // If a >= many && b >= many   c = very low
 // If a >= many || b >= many   c = low 

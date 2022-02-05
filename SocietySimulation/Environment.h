@@ -21,11 +21,9 @@ public:
 	string getType();
 	vector<Person>* getPopulation(); 
 	void addPerson(Person newPerson);
-	void removePerson(Person removingPerson); 
-	void addCondition(EnvironmentalCondition newCondition);
-	vector<EnvironmentalCondition> getConditionsList();
-	void addDecision(void(*function)(Environment&));
-	vector<void (*)(Environment&)> getDecisionsList();
+	void removePerson(Person removingPerson);  
+	void addDecision(void(*function)(Environment&, time_t currrentDateTime));
+	vector<void (*)(Environment&, time_t currentDateTime)> getDecisionsList();
 	string toString();
 
 private:
@@ -34,9 +32,8 @@ private:
 	string subType; // ex, Hospital 
 	vector<Person> population; 
 
-	// Vector of function pointers. 
-	vector<EnvironmentalCondition> conditionsList;
-	vector<void (*)(Environment&)> decisionsList;
+	// Vector of function pointers.  
+	vector<void (*)(Environment&, time_t currentDateTime)> decisionsList;
  
 
 };

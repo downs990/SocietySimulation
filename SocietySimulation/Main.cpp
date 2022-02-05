@@ -15,9 +15,8 @@ using std::to_string;
 using std::ofstream;
 using std::ifstream;
 
+ 
 
-// TODO: Make this current sim time global to all files. 
-//struct tm newtime;
 vector<Environment> world;
 Json::Value  worldConfigJSON;
 
@@ -58,8 +57,7 @@ void readWorldDataFromConfigFile() {
 		  
 
 		for (int i = 0; i < count; i++) {
-			Environment newEnvironment = Environment(environmentID, type);
-			//newEnvironment.addCondition(EnvironmentalCondition::HIGH_PRODUCTIVITY);
+			Environment newEnvironment = Environment(environmentID, type); 
 
 			for (int j = 0; j < populationSize; j++) {
 				
@@ -131,7 +129,7 @@ int main()
 	time_t now = time(0);
 	 
 	while (true) { 
-
+		
 
 		// TODO: Log the state of the simulation every frame to a file. 
 		//     Either specific Env/Persons or entire world. 
@@ -154,15 +152,13 @@ int main()
 		//int num = 0;
 		//cout << "Enter a number: ";
 		//cin >> num;
-
-
-
-		  
-		envManager.evaluateDecisions();
 		 
 
- 
-		cout << "Person1 After: " << (*world[0].getPopulation())[0].toString() << "\n\n\n";
+		envManager.getSimClockTime(newtime, now);
+		envManager.evaluateDecisions();
+		 
+		 
+		cout << "Person1 After: " << (*world[0].getPopulation())[2].toString() << "\n\n\n";
 
  
 
