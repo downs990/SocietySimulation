@@ -3,7 +3,7 @@
 
 
 
-Person::Person(int id, struct tm currentDateTime) {
+Person::Person(int id, time_t currentDateTime) {
 	this->id = id;
 	this->dailySchedule = Schedule();
 	this->healthState = StateOfHealth::HEALTHY;
@@ -29,7 +29,7 @@ StateOfHealth Person::getHealthState() {
 
 // If dsspg reaches 10 then happy = 0 
 // If dsspg > 10 then happy < 0 
-double Person::getHappy(struct tm currentDateTime) {
+double Person::getHappy(time_t currentDateTime) {
 	
 	// Converts dsspg to percentage and subtracts that percentage of f from f
 	double f = getFocus(currentDateTime);
@@ -64,10 +64,17 @@ double Person::getHappy(struct tm currentDateTime) {
 // If a >= many && b >= many   c = very low
 // If a >= many || b >= many   c = low 
 // Else						   c = high  
-double Person::getFocus(struct tm currentDateTime) {
+double Person::getFocus(time_t currentDateTime) {
 
-	int focus = 89;
+
+
+
 	// TODO: Set focus to random value between 0.89-0.99
+	int focus = 89; 
+
+
+	int hoursSinceSlept = calculateHoursDifference(this->lastSlept, currentDateTime);
+	int hoursSinceAte = calculateHoursDifference(this->lastAte, currentDateTime);
 
 
 	//int MANY_HOURS_NO_SLEEP = 15; // range {0 - 96}  // 4 days 
@@ -175,14 +182,12 @@ Schedule Person::getSchedule() {
  
  
  
-void Person::setLastSlept(struct tm lastSlept) { this->lastSlept; }
-int Person::getHoursSinceSlept(struct tm currentDateTime) { return 0; }
-int Person::getHoursSlept(struct tm currentDateTime) { return 0; }
+void Person::setLastSlept(time_t lastSlept) { this->lastSlept; } 
+time_t Person::getLastSlept() { return this->lastSlept; }
 
  
-void Person::setLastAte(struct tm lastAte) { this->lastAte; }
-int Person::getHoursSinceAte(struct tm currentDateTime) { return 0; }
-int Person::getHoursSpentEating(struct tm currentDateTime) { return 0; }
+void Person::setLastAte(time_t lastAte) { this->lastAte; } 
+time_t Person::getLastAte() { return this->lastAte; }
 
 
 string Person::toString() {

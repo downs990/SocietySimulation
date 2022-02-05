@@ -11,7 +11,7 @@ using std::ostringstream;
 class Person
 {
 public:
-	Person(int id, struct tm currentDateTime);
+	Person(int id, time_t currentDateTime);
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	
@@ -20,28 +20,21 @@ public:
 	void setHealthState(StateOfHealth healthState);
 	StateOfHealth getHealthState();
 	 
-	double getHappy(struct tm currentDateTime);
-	double getFocus(struct tm currentDateTime); // NOTE: No setFocus() needed.
+	double getHappy(time_t currentDateTime);
+	double getFocus(time_t currentDateTime); // NOTE: No setFocus() needed.
 	void setEmployment(bool employmentStatus);
 	bool getEmployment();
 	void setHappyOffset(int offset); 
+	 
+	void setLastSlept(time_t lastSlept);
+	time_t getLastSlept ();
+	void setLastAte(time_t lastAte);
+	time_t getLastAte();
 	
-	// TODO: How to use strcut as arg? 
-	//Or use string instead and convert string to struct inside. 
-	void setLastSlept(struct tm lastSlept); 
-
-	// TODO: Calculate using lastSlept DateTime object
-	//and current time.
-	int getHoursSinceSlept(struct tm currentDateTime); 
-	int getHoursSlept(struct tm currentDateTime);
+	// TODO: Can I get away with not having this variable???
+	//int getHoursSpentEating(time_t currentDateTime); 
 	
-	void setLastAte(struct tm lastAte);
-
-	// TODO: Calculate using lastSlept DateTime 
-	//object and current time.
-	int getHoursSinceAte(struct tm currentDateTime);
-	int getHoursSpentEating(struct tm currentDateTime);
-	//static double calculateHoursDifference(struct tm dateA, struct tm dateB);
+	
 	string toString();
 
 
@@ -56,8 +49,8 @@ private:
 	int dsspg;          // Days since made significant process on person goals
 	  
 	// Used to calculate focus %  
-	struct tm lastSlept;     
-	struct tm lastAte; 
+	time_t lastSlept;     
+	time_t lastAte; 
 	// ^
 	// NOTE: These are date-time objects just like what's used in main.
 	//		Date-time objects allow you to easily calculate both "Hours since slept" and how many hours you've slept. 

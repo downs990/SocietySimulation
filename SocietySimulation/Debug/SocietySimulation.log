@@ -1,4 +1,15 @@
-﻿  EnvironmentManager.cpp
+﻿  Environment.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(48,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  EnvironmentManager.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(48,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(85,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(98,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Main.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(48,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Main.cpp(119,20): warning C4018: '<': signed/unsigned mismatch
+  Person.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(48,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(105,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(129,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe
