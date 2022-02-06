@@ -1,7 +1,10 @@
 #pragma once 
 
  
-// TODO: How to make these global ??? Why would that be bad??? What's the best alternative ????
+// TODO: - How to make these global ??? 
+//		 - Why would that be bad??? 
+//       - What's the best alternative ????
+
 //static time_t *myCurrentDateTime;
 //static struct tm *myDateTimeStruct;
 
@@ -45,6 +48,8 @@ static void notesSection(time_t dateA, time_t dateB) {
 // Post-Condition: Hours difference calculated and returned. 
 static int calculateHoursDifference(time_t dateA, time_t dateB) {
  	   
+
+	// TODO: Test this more with different edge cases. 
 	return difftime(dateB, dateA) / SECONDS_IN_HOUR;
 	 
 }

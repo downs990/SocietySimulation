@@ -115,54 +115,6 @@ void unemployedDecisionTree(Environment& env, time_t currentDateTime) {
 
 	// NOTE: Decision is based on skills and education level.
 
- 
-	int const SECONDS_IN_HOUR = 3600;
-	time_t nowA = currentDateTime;//time(0);
-	time_t nowB = currentDateTime;//time(0);
- 
-
-	struct tm newtimeA;
-	struct tm newtimeB; 
-	nowA -= (SECONDS_IN_HOUR * 96); // 96 hours ago 
-	nowB -= (SECONDS_IN_HOUR * 160); // 168 hours ago      // weight = 4  Focus=2
-	 
-
-	localtime_s(&newtimeA, &nowA);
-	localtime_s(&newtimeB, &nowB); 
-
-
-	struct tm lastSlept = newtimeA;
-	struct tm lastAte = newtimeB;
-	
-
-	Person& p1 = (*env.getPopulation())[0];
-	p1.setLastSlept(nowA);
-	p1.setLastAte(nowB);
-	  
-
-	int hoursSinceSlept = calculateHoursDifference(nowA, currentDateTime);
-	int hoursSinceAte = calculateHoursDifference(nowB, currentDateTime);
-
-	cout << "\nhoursSinceSlept: " << hoursSinceSlept << "\n";
-	cout << "hoursSinceAte: " << hoursSinceAte << "\n";
-
-
-
-	//double focus = p1.getFocus(currentDateTime);
-	//cout << "\n\nFocus: " << focus;
-
-
-	char buffer[26];
-	char buffer2[26]; 
-	strftime(buffer, 26, "A: %Y-%m-%d %H:%M:%S", &lastSlept);
-	strftime(buffer2, 26, "B: %Y-%m-%d %H:%M:%S", &lastAte); 
-	puts(buffer);
-	puts(buffer2);  
-
-	 
-
-
-
 }
 
 // Precondition: Infected 

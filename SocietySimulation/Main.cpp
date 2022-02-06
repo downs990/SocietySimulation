@@ -61,7 +61,8 @@ void readWorldDataFromConfigFile() {
 
 			for (int j = 0; j < populationSize; j++) {
 				
-				Person newPerson = Person(i + j, {});
+				//time_t now = time(0);
+				Person newPerson = Person(i + j);//, now);
 				newEnvironment.addPerson(newPerson);
 			}
 
@@ -98,13 +99,9 @@ void readWorldDataFromConfigFile() {
 // ( MVP ) Minimum Viable Product 
 int main()
 {
+	 
 
-	// TOOD:  
-	// HistoricEvent he2 = HistoricEvent(<ALL_THRESHOLDS>);
-	//                 .. .
-
-
-
+	// TODO: Update WorldConfig.json to be more flexible.
 	readWorldDataFromConfigFile();
 	createDatabase();
  
@@ -115,14 +112,10 @@ int main()
 	envManager.applyConditions();
 
 
-	Environment myEnv = world[0];
-	for (int i = 0; i < (*myEnv.getPopulation()).size(); i++) {
-		cout << "\n" << (*myEnv.getPopulation())[i].getEmployment();
-	}
-
-	Person testPerson = (*myEnv.getPopulation())[0];
-	cout << "\nTest Person: \n\n" << testPerson.getFocus({});
-
+	//Environment myEnv = world[0];
+	//for (int i = 0; i < (*myEnv.getPopulation()).size(); i++) {
+	//	cout << "\n" << (*myEnv.getPopulation())[i].getEmployment();
+	//} 
 
 
 	int const SECONDS_IN_HOUR = 3600;
@@ -141,24 +134,17 @@ int main()
 		int month = 1 + newtime.tm_mon;
 		int day = newtime.tm_mday;
 		int year = 1900 + newtime.tm_year;
-		cout << "Date: " << month << ", " << day << " " << year << "\n";
+		cout << "\nDate: " << month << ", " << day << " " << year << "\n";
 		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
 	 	
-		// TODO: What the best way to pause the sim? 
-		//		1. Non-blocking cin
-		//		2. Change value in file that's being constantly read from in main loop
-	
 
-		//int num = 0;
-		//cout << "Enter a number: ";
-		//cin >> num;
 		 
 
 		envManager.getSimClockTime(newtime, now);
 		envManager.evaluateDecisions();
 		 
 		 
-		cout << "Person1 After: " << (*world[0].getPopulation())[2].toString() << "\n\n\n";
+		//cout << "Person1 After: " << (*world[0].getPopulation())[2].toString();
 
  
 
@@ -170,6 +156,65 @@ int main()
 		//		for Historic Event threshold properties. 
 		// 5. Use those values to check for and keep track of any Historic Event's that occur.  
 		
+
+
+
+
+
+// **************************************************************************************
+// Testing Focus Function 
+
+		int const SECONDS_IN_HOUR = 3600;
+		time_t nowA = now;//time(0);
+		time_t nowB = now;//time(0);
+
+		//a = 96    b = 168    weight = 4     Focus = 2
+		//a = 48    b = 84     weight = 6     Focus = 28
+		//a = 3     b = 5      weight = 60    Focus = 58
+		struct tm newtimeA;
+		struct tm newtimeB;
+		nowA -= (SECONDS_IN_HOUR * 48); // 96 hours ago 
+		nowB -= (SECONDS_IN_HOUR * 84); // 168 hours ago      // weight = 4  Focus=2
+
+
+		localtime_s(&newtimeA, &nowA);
+		localtime_s(&newtimeB, &nowB);
+
+
+		struct tm lastSlept = newtimeA;
+		struct tm lastAte = newtimeB;
+
+
+		Person* p1 = &(* (&world[0])->getPopulation())[0];
+		p1->setLastSlept(nowA);
+		p1->setLastAte(nowB);
+
+
+		int hoursSinceSlept = calculateHoursDifference(nowA, now);
+		int hoursSinceAte = calculateHoursDifference(nowB, now);
+
+		cout << "hoursSinceSlept: " << hoursSinceSlept << "\n";
+		cout << "hoursSinceAte: " << hoursSinceAte << "\n";
+
+		 
+
+		char buffer[26];
+		char buffer2[26];
+		strftime(buffer, 26, "A: %Y-%m-%d %H:%M:%S", &lastSlept);
+		strftime(buffer2, 26, "B: %Y-%m-%d %H:%M:%S", &lastAte);
+		puts(buffer);
+		puts(buffer2);
+		cout << "\n";
+
+
+
+		double focus = p1->getFocus(now);
+		cout << "Focus: " << focus << "\n\n";
+
+// *********************************************************************************
+
+
+
 		Sleep(1000); 
 	}
 

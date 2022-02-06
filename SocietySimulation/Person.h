@@ -11,7 +11,8 @@ using std::ostringstream;
 class Person
 {
 public:
-	Person(int id, time_t currentDateTime);
+
+	Person(int id);
 	void addTaskToSchedule(string repeatDays, string startTime, string endTime, string locationName);
 	void markTaskAsComplete(string taskName);
 	
@@ -44,12 +45,13 @@ private:
 	StateOfHealth healthState;
 	bool isEmployed;
 	 
+
 	// Used to calculate happy % 
 	double disciplined; // %
 	int dsspg;          // Days since made significant process on person goals
 	  
 	// Used to calculate focus %  
-	time_t lastSlept;     
+	time_t lastSlept;
 	time_t lastAte; 
 	// ^
 	// NOTE: These are date-time objects just like what's used in main.
