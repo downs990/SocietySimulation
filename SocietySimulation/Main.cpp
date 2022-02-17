@@ -96,7 +96,6 @@ void readWorldDataFromConfigFile() {
 //newFile.close();
 
 
-// ( MVP ) Minimum Viable Product 
 int main()
 {
 	 
@@ -111,12 +110,7 @@ int main()
 	EnvironmentManager envManager = EnvironmentManager(world, worldConfigJSON);
 	envManager.applyConditions();
 
-
-	//Environment myEnv = world[0];
-	//for (int i = 0; i < (*myEnv.getPopulation()).size(); i++) {
-	//	cout << "\n" << (*myEnv.getPopulation())[i].getEmployment();
-	//} 
-
+	 
 
 	int const SECONDS_IN_HOUR = 3600;
 	time_t now = time(0);

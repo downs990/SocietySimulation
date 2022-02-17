@@ -181,6 +181,7 @@ void EnvironmentManager::evaluateDecisions() {
 }
 
 
+// TODO: Why these parameters ? 
 void EnvironmentManager::getSimClockTime(struct tm newSimClockStruct, time_t newSimClockTValue) {
 	simClockStruct = newSimClockStruct;
 	simClockTValue = newSimClockTValue;
