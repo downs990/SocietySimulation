@@ -1,4 +1,6 @@
-﻿  Person.cpp
+﻿  DataAnalyzer.cpp
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(128,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Main.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

@@ -1,0 +1,19 @@
+{
+  "HistoricEvents": [
+    {
+      "Name": "FirstWorldCountry",
+      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES>" ]
+    },
+    {
+      "Name": "HighQualityOfHealth",
+      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" ]
+    },
+    {
+      "Name": "SocialEquality",
+      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" ]
+    }
+
+  ],
+
+  "//Comment": "// These running values will be updated in real time and compared to their thresholds in WorldConfig.json"
+}

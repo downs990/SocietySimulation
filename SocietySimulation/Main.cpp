@@ -8,6 +8,7 @@
 #include "Person.h"
 #include "Environment.h"
 #include "EnvironmentManager.h"
+#include "DataAnalyzer.h"
 
 using std::cout; 
 using std::cin;
@@ -210,6 +211,10 @@ int main()
 
 
 		Sleep(1000); 
+
+		// Check for Historic Events and logs any other important events. 
+		DataAnalyzer myDataAnalyzer = DataAnalyzer(world);
+		myDataAnalyzer.updateEventLogs();
 	}
 
 
