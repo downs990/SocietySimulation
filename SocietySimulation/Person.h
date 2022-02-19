@@ -44,7 +44,9 @@ private:
 	Schedule dailySchedule;
 	StateOfHealth healthState;
 	bool isEmployed;
-	 
+	// TODO: Create a simple scaled numbering system that can be incremented when they study/learn new things.
+	//		This variable can be considered when they are looking for new employment. 
+	int literacy; 
 
 	// Used to calculate happy % 
 	double disciplined; // %
