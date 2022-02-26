@@ -14,9 +14,9 @@ A secondary objective for this project is to observe how a society evolves over 
 
 
 
-*Note:
-- The ratios and values of this simulation do not have to be correct at first, just the architecture. Research will be needed to get correct values and behavior.
-- EPA (Environmental Protection Agency) has databases and research articles that you can use to make this simulation more accurate.*
+*Note:*
+- *The ratios and values of this simulation do not have to be correct at first, just the architecture. Research will be needed to get correct values and behavior.*
+- *EPA (Environmental Protection Agency) has databases and research articles that you can use to make this simulation more accurate.*
 
 
 
