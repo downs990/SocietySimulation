@@ -31,6 +31,8 @@ public:
 	time_t getLastSlept ();
 	void setLastAte(time_t lastAte);
 	time_t getLastAte();
+
+	// TODO: Add function for updating dsspg
 	
 	// TODO: Can I get away with not having this variable???
 	//int getHoursSpentEating(time_t currentDateTime); 

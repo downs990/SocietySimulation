@@ -36,7 +36,15 @@
   "HistoricEvents": [
     {
       "Name": "FirstWorldCountry",
-      "Thresholds": []
+      "Thresholds": [
+        {"Stable Democracies":  true},
+        {"High Standard of Living":  true},
+        {"Capitalist Economy": true },
+        {"Economic Stability":  true},
+        {"Gross Domestic Product":  100},
+        { "Literacy Rate": 100 }
+       
+      ]
     },
     {
       "Name": "HighQualityOfHealth",
