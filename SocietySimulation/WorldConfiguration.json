@@ -13,7 +13,7 @@
         "UnemploymentRate": 0.50,
         "AverageStress": 0.80,
         "AverageBusinessPerformance": 0.60,
-        "“AverageSalaryOffset”": -0.30
+        "AverageSalaryOffset": -0.30
 
       }
     },
@@ -36,23 +36,32 @@
   "HistoricEvents": [
     {
       "Name": "FirstWorldCountry",
-      "Thresholds": [
-        {"Stable Democracies":  true},
-        {"High Standard of Living":  true},
-        {"Capitalist Economy": true },
-        {"Economic Stability":  true},
-        {"Gross Domestic Product":  100},
-        { "Literacy Rate": 100 }
-       
-      ]
+      "Thresholds": {
+        "Stable Democracies": true,
+        "High Standard of Living": true,
+        "Capitalist Economy": true,
+        "Economic Stability": true,
+        "Gross Domestic Product": 1000000000000,
+        "Literacy Rate": 0.75
+
+      }
     },
     {
       "Name": "HighQualityOfHealth",
-      "Thresholds": []
+      "Thresholds": {
+        "Average Life Expectancy": 90,
+        "Healthy meals per week": 0.80,
+        "Average days workout per week": 3,
+        "Vaccine for Pandemic x": true,
+        "Global Sickness Immunity":  0.90
+      }
     },
     {
       "Name": "SocialEquality",
-      "Thresholds": []
+      "Thresholds": {
+        "": 0
+
+      }
     }
 
   ],

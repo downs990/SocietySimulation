@@ -9,6 +9,7 @@
 #include "Environment.h"
 #include "EnvironmentManager.h"
 #include "DataAnalyzer.h"
+#include "AdaptationEngine.h"
 
 using std::cout; 
 using std::cin;
@@ -107,9 +108,19 @@ int main()
  
 	
 	 
+	 
 	// Attaches all decision trees to associated environment types. 
 	EnvironmentManager envManager = EnvironmentManager(world, worldConfigJSON);
 	envManager.applyConditions();
+
+	// Steps: 
+	// - Reads the current S.I from the WorldConfig.json file 
+	// - Starts trying random values for each person's variables associated with how they make decisions. 
+	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
+	//      counter the effects of the current S.I 
+	AdaptationEngine myAdaptor = AdaptationEngine(envManager);
+	myAdaptor.adaptToSocietalInterruption();
+
 
 	 
 
