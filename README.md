@@ -39,7 +39,7 @@ The level 1 diagram below shows a slightly more low level design compared to lev
 
 Inside of the Sim Object you&#39;ll notice the **World Builder.** This object will be able to read a **WorldConfig.json** file and create the listed objects with their desired properties and pass those objects to the **Sim Manager.**
 
-![](/Images/level1-dfd.drawio.png)
+![](/Images/level01-dfd.drawio.png)
 
 Level 2
 
