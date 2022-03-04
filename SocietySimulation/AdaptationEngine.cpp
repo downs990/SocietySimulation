@@ -5,7 +5,11 @@ AdaptationEngine::AdaptationEngine(EnvironmentManager currentEnvManager) {
 	// TODO: Use the vector<Environment>& allEnvironments; in EnvironmentManager to access entire population of people.
 }
 
-string AdaptationEngine::adaptToSocietalInterruption() {
+
+
+// TODO: Based on the positive and negative markers that are passed, adjust/adapt the next values
+// that you generate for each state/mood variable for a Person. 
+string AdaptationEngine::adaptToSocietalInterruption(vector<string> positiveAndNegativeMarkers, vector<Environment> world) {
 	return "";
 }
 

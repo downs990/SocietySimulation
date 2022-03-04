@@ -13,7 +13,8 @@ public:
 	EnvironmentManager(vector<Environment>& allEnvironments, Json::Value  worldConfigJSON);
 	void applyConditions();
 	void evaluateDecisions(); 
-	void getSimClockTime(struct tm simClockStruct, time_t simClockTValue);
+	void executeBehaviors(struct tm simClockStruct, time_t simClockTValue);
+	void executeScheduleTasks();
 
 private: 
 	vector<Environment>& allEnvironments; 

@@ -180,11 +180,27 @@ void EnvironmentManager::evaluateDecisions() {
 	}
 }
 
+void EnvironmentManager::executeScheduleTasks() {
+
+}
 
 // TODO: Why these parameters ? 
-void EnvironmentManager::getSimClockTime(struct tm newSimClockStruct, time_t newSimClockTValue) {
+void EnvironmentManager::executeBehaviors(struct tm newSimClockStruct, time_t newSimClockTValue) {
 	simClockStruct = newSimClockStruct;
 	simClockTValue = newSimClockTValue;
+
+	// The time period for each environment type that is for making decisions in the design doc.
+	// Environmental Decisions section Decision Flow. 
+	bool decisionPeriod = true;
+	if (decisionPeriod) {
+		evaluateDecisions();
+	}
+	else {
+		executeScheduleTasks();
+	}
+	 
+	
+
 }
 
 

@@ -9,9 +9,9 @@
 class DataAnalyzer
 {
 public:
-	DataAnalyzer(vector<Environment> world);
+	DataAnalyzer();
 	Json::Value getEventLogs();
-	void updateEventLogs();
+	vector<string> updateEventLogs(vector<Environment> world);
 	void compareCurrentDataToEventThresholds();
 private:
 	Json::Value currentEventLogs;

@@ -113,13 +113,16 @@ int main()
 	EnvironmentManager envManager = EnvironmentManager(world, worldConfigJSON);
 	envManager.applyConditions();
 
+	DataAnalyzer myDataAnalyzer = DataAnalyzer();
+
 	// Steps: 
 	// - Reads the current S.I from the WorldConfig.json file 
 	// - Starts trying random values for each person's variables associated with how they make decisions. 
 	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
 	//      counter the effects of the current S.I 
 	AdaptationEngine myAdaptor = AdaptationEngine(envManager);
-	myAdaptor.adaptToSocietalInterruption();
+ 
+
 
 
 	 
@@ -144,26 +147,17 @@ int main()
 		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
 	 	
 
-		 
-
-		envManager.getSimClockTime(newtime, now);
-		envManager.evaluateDecisions();
-		 
-		 
-		//cout << "Person1 After: " << (*world[0].getPopulation())[2].toString();
-
- 
-
-		// 2. Update sim clock by 1 minutes (because shedules are minute specific)
-		// 3. Check each Person in each env population for Schedule next task. (change location or social interaction)
-
-
-		// 4. Loop through country to check all Person's state (salary, literacy, etc.) 
-		//		for Historic Event threshold properties. 
-		// 5. Use those values to check for and keep track of any Historic Event's that occur.  
 		
+		envManager.executeBehaviors(newtime, now);
+
+		// Checks for Historic Events. 
+		vector<string> positiveAndNegativeMarkers = myDataAnalyzer.updateEventLogs(world);
+
+		// Adapts world population. 
+		myAdaptor.adaptToSocietalInterruption(positiveAndNegativeMarkers, world);
 
 
+		
 
 
 
@@ -222,10 +216,6 @@ int main()
 
 
 		Sleep(1000); 
-
-		// Check for Historic Events and logs any other important events. 
-		DataAnalyzer myDataAnalyzer = DataAnalyzer(world);
-		myDataAnalyzer.updateEventLogs();
 	}
 
 

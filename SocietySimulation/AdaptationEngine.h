@@ -8,7 +8,7 @@ class AdaptationEngine
 public:
 
 	AdaptationEngine(EnvironmentManager currentEnvManager);
-	string adaptToSocietalInterruption();
+	string adaptToSocietalInterruption(vector<string> positiveAndNegativeMarkers, vector<Environment> world);
 	vector<string> getAllAdaptations();
 
 	// NOTE: string is returned with the JSON dictionary containing the
