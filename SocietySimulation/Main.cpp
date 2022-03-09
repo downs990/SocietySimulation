@@ -85,19 +85,6 @@ void readWorldDataFromConfigFile() {
 
 
 
-////Updating the json data
-//newValue["Category"] = "Technical";
-
-////we can add new values as well
-//newValue["first"] = "Shishank";
-//newValue["last"] = "Jain";
-
-//// make the changes in a new file/original file
-//newFile.open("items.json");
-//writer.write(newFile, newValue);
-//newFile.close();
-
-
 int main()
 {
 	 

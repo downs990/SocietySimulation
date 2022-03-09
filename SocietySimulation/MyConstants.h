@@ -6,7 +6,7 @@
 //       - What's the best alternative ????
 
 //static time_t *myCurrentDateTime;
-//static struct tm *myDateTimeStruct;
+//static struct tm *myDateTimeStruct; 
 
 static int const SECONDS_IN_HOUR = 3600;
 
