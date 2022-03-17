@@ -1,17 +1,3 @@
-﻿  AdaptationEngine.cpp
+﻿  Main.cpp
 C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  DataAnalyzer.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Environment.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  EnvironmentManager.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(85,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(98,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Person.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(128,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe
