@@ -8,7 +8,7 @@
 //static time_t *myCurrentDateTime;
 //static struct tm *myDateTimeStruct; 
 
-static int const SECONDS_IN_HOUR = 3600;
+static int const SECONDS_IN_HOUR = 3600;  
 
 enum class StateOfHealth {
 	HEALTHY,

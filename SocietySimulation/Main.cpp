@@ -9,6 +9,7 @@
 #include "Environment.h"
 #include "EnvironmentManager.h"
 #include "DataAnalyzer.h"
+#include "DataLogger.h"
 #include "AdaptationEngine.h"
 
 using std::cout; 
@@ -89,6 +90,9 @@ int main()
 {
 	 
 
+	DataLogger sessionDataLogger = DataLogger();
+
+
 	// TODO: Update WorldConfig.json to be more flexible.
 	readWorldDataFromConfigFile();
 	createDatabase();
@@ -119,6 +123,10 @@ int main()
 	 
 	while (true) { 
 		
+		// Memory leak test
+		//double* p = (double*)malloc(10000000* sizeof(double));
+
+
 
 		// TODO: Log the state of the simulation every frame to a file. 
 		//     Either specific Env/Persons or entire world. 
@@ -130,10 +138,23 @@ int main()
 		int month = 1 + newtime.tm_mon;
 		int day = newtime.tm_mday;
 		int year = 1900 + newtime.tm_year;
-		cout << "\nDate: " << month << ", " << day << " " << year << "\n";
-		cout << "Time: " << newtime.tm_hour << ":" << newtime.tm_min << ":" << newtime.tm_sec << "\n";
-	 	
 
+		string dateString = "\nDate: " + to_string(month) + ", " + to_string(day) + " " + to_string(year) + "\n";
+		string timeString = "Time: " + to_string(newtime.tm_hour) + ":" + to_string(newtime.tm_min) + ":" + to_string(newtime.tm_sec) + "\n";
+
+		cout << dateString; 
+		cout << timeString;
+
+		
+		 
+		// TODO: Log time to log file each frame 
+		sessionDataLogger.saveSessionData(timeString);
+		
+		
+		
+		
+		
+		
 		
 		envManager.executeBehaviors(newtime, now);
 
