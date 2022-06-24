@@ -39,6 +39,9 @@
     <ClCompile Include="AdaptationEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -71,6 +74,9 @@
     <ClInclude Include="AdaptationEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SocietySimulation.rc">
@@ -80,5 +86,8 @@
   <ItemGroup>
     <None Include="WorldConfiguration.json" />
     <None Include="EventLogs.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SessionDataLogs.txt" />
   </ItemGroup>
 </Project>

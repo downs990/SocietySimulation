@@ -147,6 +147,11 @@ int main()
 
 		
 		 
+		// TODO: Create some kind of whole simulation "state" that has all important values and can 
+		//     be logged each frame. (only values that have chanced since last frame are logged)
+
+
+
 		// TODO: Log time to log file each frame 
 		sessionDataLogger.saveSessionData(timeString);
 		

@@ -11,6 +11,7 @@ string DataLogger::createNewSessionLog() {
 	// 1. Create file name (Session ID ++ from last session .txt) 
 	// 2. Create file 
 	// 3. Return file name direct path 
+	return "";
 }
 
 void DataLogger::saveSessionData(string dataToSave) {
