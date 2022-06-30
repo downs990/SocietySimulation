@@ -1,5 +1,8 @@
 #include "DataLogger.h"
+#include <iostream>
+#include <fstream>
 
+using namespace std;
 
 DataLogger::DataLogger() {
 	this->currentSessionLogFile = createNewSessionLog();
@@ -15,10 +18,11 @@ string DataLogger::createNewSessionLog() {
 }
 
 void DataLogger::saveSessionData(string dataToSave) {
-
-	// 1. Open file 
-	// 2. Write data 
-	// 3. Close file 
+	 
+	ofstream myfile;
+	myfile.open("SessionDataLogs.txt", ios_base::app);// ios_base::app means append to file instead of overwrite. 
+	myfile << dataToSave;
+	myfile.close();
 
 
 }
