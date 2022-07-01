@@ -1,2 +1,3 @@
-﻿  DataLogger.cpp
+﻿  Main.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

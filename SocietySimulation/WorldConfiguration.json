@@ -79,20 +79,17 @@
     {
       "Type": "WORK",
       "Count": 1,
-      "PopulationSize": 10,
-      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
+      "PopulationSize": 10
     },
     {
       "Type": "HOME",
       "Count": 2,
-      "PopulationSize": 4,
-      "Conditions": [ "RELAXED", "EATING", "SLEEPING" ]
+      "PopulationSize": 4
     },
     {
       "Type": "SCHOOL",
       "Count": 3,
-      "PopulationSize": 12,
-      "Conditions": [ "HIGH_PRODUCTIVITY", "LOW_PRODUCTIVITY" ]
+      "PopulationSize": 12
     }
 
   ]

@@ -1,5 +1,4 @@
-// SocietySimulation.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
   
 #include <Windows.h> 
 #include <fstream>
@@ -42,8 +41,9 @@ void readWorldDataFromConfigFile() {
 	//opening file using fstream
 	ifstream file("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\WorldConfiguration.json");
 
-	// check if there is any error is getting data from the json file
-	if (!reader.parse(file, newValue)) {
+	// check if there is any error in getting data from the json file
+	// newValue - stores file contents.
+	if (!reader.parse(file, newValue)) { 
 		cout << reader.getFormattedErrorMessages();
 	} 
 	 
@@ -57,7 +57,6 @@ void readWorldDataFromConfigFile() {
 		string type = env["Type"].asString();
 		int count = env["Count"].asInt();
 		int populationSize = env["PopulationSize"].asInt();
-		  
 
 		for (int i = 0; i < count; i++) {
 			Environment newEnvironment = Environment(environmentID, type); 
@@ -89,23 +88,20 @@ void readWorldDataFromConfigFile() {
 int main()
 {
 	 
-
+	// 1. Init databases / datastores
+	createDatabase();
 	DataLogger sessionDataLogger = DataLogger();
 
-
-	// TODO: Update WorldConfig.json to be more flexible.
+	// 2. Build world objects from config
 	readWorldDataFromConfigFile();
-	createDatabase();
- 
-	
 	 
-	 
-	// Attaches all decision trees to associated environment types. 
+	// 3. Attach Societal Interruption conditions to each Environment 
 	EnvironmentManager envManager = EnvironmentManager(world, worldConfigJSON);
 	envManager.applyConditions();
 
-	DataAnalyzer myDataAnalyzer = DataAnalyzer();
+ 
 
+	// 4. Start adapting to Societal Interruptions
 	// Steps: 
 	// - Reads the current S.I from the WorldConfig.json file 
 	// - Starts trying random values for each person's variables associated with how they make decisions. 
@@ -115,21 +111,19 @@ int main()
  
 
 
+	// 5. Start checking for Historic Events 
+	DataAnalyzer myDataAnalyzer = DataAnalyzer();
 
+
+	// TODO: Above steps 4 and 5 should be somewhere in the main loop below. 
 	 
 
 	int const SECONDS_IN_HOUR = 3600;
 	time_t now = time(0);
 	 
-	while (true) { 
-		
-		// Memory leak test
-		//double* p = (double*)malloc(10000000* sizeof(double));
+	while (true) {  
 
-
-
-		// TODO: Log the state of the simulation every frame to a file. 
-		//     Either specific Env/Persons or entire world. 
+		 
 		struct tm newtime; 
 		now += SECONDS_IN_HOUR;
 		localtime_s(&newtime, &now);
@@ -151,8 +145,7 @@ int main()
 		//     be logged each frame. (only values that have chanced since last frame are logged)
 
 
-
-		// TODO: Log time to log file each frame 
+		// TODO: Log compressed JSON of each Person and Environment each frame. 
 		sessionDataLogger.saveSessionData(timeString);
 		
 		
