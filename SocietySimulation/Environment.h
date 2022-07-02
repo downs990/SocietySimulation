@@ -24,6 +24,8 @@ public:
 	void removePerson(Person removingPerson);  
 	void addDecision(void(*function)(Environment&, time_t currrentDateTime));
 	vector<void (*)(Environment&, time_t currentDateTime)> getDecisionsList();
+	void setEnvironmentSpecificVars(map<string, float> environmentSpecificVars);
+	map<string, float> getEnvironmentSpecificVars();
 	string toString();
 
 private:
@@ -35,6 +37,11 @@ private:
 	// Vector of function pointers.  
 	vector<void (*)(Environment&, time_t currentDateTime)> decisionsList;
  
+
+	// TODO: use JSON dictionary instead of map<string, int>
+	map<string, float> environmentSpecificVars = {};
+
+
 
 };
 

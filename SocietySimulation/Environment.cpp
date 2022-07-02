@@ -39,6 +39,14 @@ vector<void (*)(Environment&, time_t currentDateTime)> Environment::getDecisions
 }
  
 
+void Environment::setEnvironmentSpecificVars(map<string, float> environmentSpecificVariables) {
+	environmentSpecificVars = environmentSpecificVariables;
+}
+
+map<string, float> Environment::getEnvironmentSpecificVars() {
+	return environmentSpecificVars;
+}
+
 string Environment::toString() {
 
 	string output = "\nId: " + std::to_string(id) 

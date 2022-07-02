@@ -1,5 +1,5 @@
 #include "EnvironmentManager.h"
-
+#include <map>
 
 
 
@@ -89,6 +89,30 @@ void recessionCondition(Environment& env, Json::Value relatedConditions) {
 		Person& currentPerson = (*env.getPopulation())[i];
 		currentPerson.setEmployment(false);
 	}
+
+	 
+	double marketPerformanceDecline = relatedConditions["StockMarketPerformanceDecline"].asDouble();
+
+	// Implement this by setting each Business Enviornment's performance returns to decline by 22% 
+	if (env.getType() == "WORK") {
+
+
+		// TODO: use JSON dictionary instead of map<string, int> !!!
+		map<string, float> envSpecificVars = env.getEnvironmentSpecificVars();
+		
+
+
+
+		// Calculate new value 
+		//float currentProfit = (float)envSpecificVars.find("QuarterlyProfitDollars");
+		//float newProfit = currentProfit - (currentProfit * marketPerformanceDecline);
+		
+		// Update existing value
+		//envSpecificVars["QuarterlyProfitDollars"] = newProfit;
+		env.setEnvironmentSpecificVars(envSpecificVars);
+	}
+	 
+
 
 }
 
@@ -218,17 +242,35 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 
 
+	
+		map<string, float> environmentSpecificVars = {};
 
-		// TODO: Test all environmental decisions. 
-		//if (currentEnv.getType() == "SCHOOL") {
-		//	currentEnv.addDecision(schoolDecisionTree1);
-		//}
-		//else if (currentEnv.getType() == "WORK") {
-		//	currentEnv.addDecision(workDecisionTree1);
-		//}
-		//else if (currentEnv.getType() == "HOME") {
-		//	currentEnv.addDecision(homeDecisionTree1);
-		//}
+
+
+		// TODO: Add and test all environment specific decisions. 
+		if (currentEnv.getType() == "WORK") {
+			//currentEnv.addDecision(workDecisionTree1);
+
+			environmentSpecificVars["QuarterlyProfitDollars"] = 100000;
+			currentEnv.setEnvironmentSpecificVars(environmentSpecificVars);
+			// ...
+
+
+
+		}
+		else if (currentEnv.getType() == "HOME") {
+			//currentEnv.addDecision(homeDecisionTree1);
+
+			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
+			// ...
+		}
+		else if (currentEnv.getType() == "SCHOOL") {
+			//currentEnv.addDecision(schoolDecisionTree1);
+
+
+			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
+			// ...
+		}
 		 
 
 	}

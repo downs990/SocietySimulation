@@ -10,25 +10,22 @@
     {
       "Type": "RECESSION",
       "Conditions": {
-        "UnemploymentRate": 0.50,
-        "AverageStress": 0.80,
-        "AverageBusinessPerformance": 0.60,
-        "AverageSalaryOffset": -0.30
-
+        "UnemploymentRate": 0.10,
+        "StockMarketPerformanceDecline": 0.22
       }
     },
     {
       "Type": "PANDEMIC",
       "Conditions": {
-        "percentageOfBusinessesGoingRemote": 0.80,
-        "percentageOfPopulationInfected": 0.67,
-        "lethalityRateOfVirus": 0.45
+        "MortalityRate": 0.10,
+        "PopulationInfected": 0.08,
+        "NewCasesPerDayByPopulationPercentage": [0.01, 0.03]  
       }
     },
     {
       "Type": "CIVIL_WAR",
       "Conditions": {
-        "percentageOf": 0.20
+        
       }
     }
 
