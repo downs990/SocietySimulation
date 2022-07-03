@@ -96,19 +96,16 @@ void recessionCondition(Environment& env, Json::Value relatedConditions) {
 	// Implement this by setting each Business Enviornment's performance returns to decline by 22% 
 	if (env.getType() == "WORK") {
 
-
-		// TODO: use JSON dictionary instead of map<string, int> !!!
-		map<string, float> envSpecificVars = env.getEnvironmentSpecificVars();
+		 
+		Json::Value envSpecificVars = env.getEnvironmentSpecificVars();
 		
-
-
 
 		// Calculate new value 
-		//float currentProfit = (float)envSpecificVars.find("QuarterlyProfitDollars");
-		//float newProfit = currentProfit - (currentProfit * marketPerformanceDecline);
+		float currentProfit = envSpecificVars["QuarterlyProfitDollars"].asFloat();
+		float newProfit = currentProfit - (currentProfit * marketPerformanceDecline);
 		
-		// Update existing value
-		//envSpecificVars["QuarterlyProfitDollars"] = newProfit;
+		// update existing value
+		envSpecificVars["QuarterlyProfitDollars"] = newProfit;
 		env.setEnvironmentSpecificVars(envSpecificVars);
 	}
 	 
@@ -243,7 +240,7 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 
 	
-		map<string, float> environmentSpecificVars = {};
+		Json::Value environmentSpecificVars = {};
 
 
 

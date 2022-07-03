@@ -39,11 +39,11 @@ vector<void (*)(Environment&, time_t currentDateTime)> Environment::getDecisions
 }
  
 
-void Environment::setEnvironmentSpecificVars(map<string, float> environmentSpecificVariables) {
+void Environment::setEnvironmentSpecificVars(Json::Value environmentSpecificVariables) {
 	environmentSpecificVars = environmentSpecificVariables;
 }
 
-map<string, float> Environment::getEnvironmentSpecificVars() {
+Json::Value Environment::getEnvironmentSpecificVars() {
 	return environmentSpecificVars;
 }
 

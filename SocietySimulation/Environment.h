@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <json\value.h>
+#include <json\json.h>
 using std::cout;
 using std::string;
 using std::vector;
@@ -24,8 +26,8 @@ public:
 	void removePerson(Person removingPerson);  
 	void addDecision(void(*function)(Environment&, time_t currrentDateTime));
 	vector<void (*)(Environment&, time_t currentDateTime)> getDecisionsList();
-	void setEnvironmentSpecificVars(map<string, float> environmentSpecificVars);
-	map<string, float> getEnvironmentSpecificVars();
+	void setEnvironmentSpecificVars(Json::Value environmentSpecificVars);
+	Json::Value getEnvironmentSpecificVars();
 	string toString();
 
 private:
@@ -37,9 +39,8 @@ private:
 	// Vector of function pointers.  
 	vector<void (*)(Environment&, time_t currentDateTime)> decisionsList;
  
-
-	// TODO: use JSON dictionary instead of map<string, int>
-	map<string, float> environmentSpecificVars = {};
+	 
+	Json::Value environmentSpecificVars = {};
 
 
 
