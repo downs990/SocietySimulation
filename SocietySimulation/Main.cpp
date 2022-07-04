@@ -114,8 +114,7 @@ int main()
 	// 5. Start checking for Historic Events 
 	DataAnalyzer myDataAnalyzer = DataAnalyzer();
 
-
-	// TODO: Above steps 4 and 5 should be somewhere in the main loop below. 
+ 
 	 
 
 	int const SECONDS_IN_HOUR = 3600;
@@ -141,26 +140,19 @@ int main()
 
 		
 		 
-		// TODO: Create some kind of whole simulation "state" that has all important values and can 
+		// TODO: Create some kind of whole simulation "state" variable that has all important values and can 
 		//     be logged each frame. (only values that have chanced since last frame are logged)
 
 
 		// TODO: Log compressed JSON of each Person and Environment each frame. 
 		sessionDataLogger.saveSessionData(timeString);
-		
-		
-		
-		
-		
-		
-		
 		envManager.executeBehaviors(newtime, now);
 
 		// Checks for Historic Events. 
 		vector<string> positiveAndNegativeMarkers = myDataAnalyzer.updateEventLogs(world);
 
 		// Adapts world population. 
-		myAdaptor.adaptToSocietalInterruption(positiveAndNegativeMarkers, world);
+		myAdaptor.adapt(worldConfigJSON, world);
 
 
 		

@@ -6,12 +6,46 @@ AdaptationEngine::AdaptationEngine(EnvironmentManager currentEnvManager) {
 }
 
 
+ 
+void AdaptationEngine::adapt(Json::Value worldConfigJSON, vector<Environment> world) {
 
-// TODO: Based on the positive and negative markers that are passed, adjust/adapt the next values
-// that you generate for each state/mood variable for a Person. 
-string AdaptationEngine::adaptToSocietalInterruption(vector<string> positiveAndNegativeMarkers, vector<Environment> world) {
-	return "";
+	// TOOO: Turn all of these strings/keys into enums ??? 
+	int worldStateIndex = worldConfigJSON["CurrentWorldState"].asInt();
+	Json::Value currentSocietalInterruption = worldConfigJSON["SocietalInterruptions"];
+	
+	string societalInterruptiontype = currentSocietalInterruption["Type"].asString();
+	Json::Value societalInterruptionConditions = currentSocietalInterruption["Conditions"];
+
+
+	if (societalInterruptiontype == "RECESSION") {
+		adaptToRecession(societalInterruptionConditions);
+	}
+	else if (societalInterruptiontype == "PANDEMIC") {
+		adaptToPandemic(societalInterruptionConditions);
+	}
+	else if (societalInterruptiontype == "CIVIL_WAR") {
+		adaptToWar(societalInterruptionConditions);
+	}
+
+	 
 }
+
+
+
+// TODO: Each decision will have a positive/negative marker cooresponding to the associated S.I. ???
+void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditions) {
+
+
+
+}
+
+
+
+
+void AdaptationEngine::adaptToPandemic(Json::Value societalInterruptionConditions) {}
+void AdaptationEngine::adaptToWar(Json::Value societalInterruptionConditions) {}
+
+
 
 
 // TODO: Returns all Adaptations string JSONs for each S.I that was set during the 

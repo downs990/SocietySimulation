@@ -3,13 +3,11 @@
 
 
 
-void schoolDecisionTree1(Environment& env, struct tm currentDateTime) { // Chagne * to & 
-
+void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * to & 
 
 
 	// TODO: Loop through env.getPopulation() to apply to every person in env. 
 	Person* person = &(*env.getPopulation())[0];
-
 
 	string taskName = "Time between classes";
 	int timeBetweenClasses = 0;
@@ -21,26 +19,16 @@ void schoolDecisionTree1(Environment& env, struct tm currentDateTime) { // Chagn
 
 		//// TODO: Properly compare times  
 		//if ((currClassTime < prevClassTime) >= 3) {
-		//	if (person->getHoursSinceSlept() > 15) {              // SLEEP
+		//	if (person->getHoursSinceSlept() > 15) {           // SLEEP
 
 		//		// Sleep 2 hours 
 		//		//person->setHoursSinceSlept(0);
 		//	}
-		//	else if (person->getAteBreakfast() == false) {	// EAT
-		//	   // Traverse EAT subtree 
-
-
+		//	else if (person->getAteBreakfast() == false) {	   // EAT
+		//		// Traverse EAT subtree 
 		//	}
-		//	else if (true) {                               // STUDY
-
-
-		//	   // TODO: Check their schedule to see when their exams are for each class
-
-		//	   // - Update schedule gernation class to be able to 
-		//	   //   add random quizes and a couple of exams at the correct 
-		//	   //   intervals for each class that this person is in. 
+		//	else if (true) {								   // STUDY
 		//	}
-
 		//}
 	}
 
@@ -56,7 +44,6 @@ void schoolDecisionTree1(Environment& env, struct tm currentDateTime) { // Chagn
 	//(happy+=1,hungry=0)  (happy+=2,hungry=10%)  (happy+=4,hungry=5%) 
 
 
-
 	// TODO: Evaluate each decision against thresholds and adjust Person's state/mood based on choice. 
 	// TODO: Evaulate if/else nest v. Real Decision Trees
 	//		https://stats.stackexchange.com/questions/398322/what-is-the-purpose-of-using-a-decision-tree
@@ -68,9 +55,9 @@ void schoolDecisionTree1(Environment& env, struct tm currentDateTime) { // Chagn
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree1(Environment& env, struct tm currentDateTime) {
+void workDecisionTree(Environment& env, time_t currentDateTime) {
 }
-void homeDecisionTree1(Environment& env, struct tm currentDateTime) {
+void homeDecisionTree(Environment& env, time_t currentDateTime) {
 }
 
 
@@ -123,35 +110,7 @@ void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 }
 
 
-
-
-// Precondition: Unemployed
-// Postcondition: Employed, Homeless (Unemployed)
-void unemployedDecisionTree(Environment& env, time_t currentDateTime) {
-	// 1. Go back to school to change fields
-	// 2. Start new business online
-	// 3. Find another job with lower or same salary.
-	// 4. End up homeless 
-
-	// NOTE: Decision is based on skills and education level.
-
-}
-
-// Precondition: Infected 
-// Postcondition: Healthy again, Dead 
-void infectedWithVirusDecisionTree(Environment& env, struct tm currentDateTime) {
-	// 1. Social distance and mask up
-	// 2. Get vaccinated 
-	// 3. Alternative treatments 
-
-	// NOTE: Decision is based on education level and underlining health conditions.
-}
-
-
-void warDecisionTree(Environment& env, struct tm currentDateTime) {
-	// 1. 
-
-}
+ 
 
 
 
@@ -231,12 +190,7 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 	for (Environment& currentEnv : allEnvironments) {
 
-
-		// TODO: Just testing simClock and getFocus() 
-		currentEnv.addDecision(unemployedDecisionTree);
-
-
-
+		  
 
 	
 		Json::Value environmentSpecificVars = {};
@@ -245,7 +199,7 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 		// TODO: Add and test all environment specific decisions. 
 		if (currentEnv.getType() == "WORK") {
-			//currentEnv.addDecision(workDecisionTree1);
+			currentEnv.addDecision(workDecisionTree);
 
 			environmentSpecificVars["QuarterlyProfitDollars"] = 100000;
 			currentEnv.setEnvironmentSpecificVars(environmentSpecificVars);
@@ -255,13 +209,13 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 		}
 		else if (currentEnv.getType() == "HOME") {
-			//currentEnv.addDecision(homeDecisionTree1);
+			currentEnv.addDecision(homeDecisionTree);
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
 			// ...
 		}
 		else if (currentEnv.getType() == "SCHOOL") {
-			//currentEnv.addDecision(schoolDecisionTree1);
+			currentEnv.addDecision(schoolDecisionTree);
 
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
