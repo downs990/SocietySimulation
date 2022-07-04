@@ -90,16 +90,13 @@ void recessionCondition(Environment& env, Json::Value relatedConditions) {
 		currentPerson.setEmployment(false);
 	}
 
-	 
+	// Implement this by setting each Business Enviornment's performance returns to decline by 22%
 	double marketPerformanceDecline = relatedConditions["StockMarketPerformanceDecline"].asDouble();
 
-	// Implement this by setting each Business Enviornment's performance returns to decline by 22% 
+	  
 	if (env.getType() == "WORK") {
-
-		 
 		Json::Value envSpecificVars = env.getEnvironmentSpecificVars();
 		
-
 		// Calculate new value 
 		float currentProfit = envSpecificVars["QuarterlyProfitDollars"].asFloat();
 		float newProfit = currentProfit - (currentProfit * marketPerformanceDecline);
@@ -108,19 +105,21 @@ void recessionCondition(Environment& env, Json::Value relatedConditions) {
 		envSpecificVars["QuarterlyProfitDollars"] = newProfit;
 		env.setEnvironmentSpecificVars(envSpecificVars);
 	}
-	 
 
 
 }
 
+
 void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 	
-	double rateOfInfection = relatedConditions["percentageOfPopulationInfected"].asDouble();
+	double rateOfInfection = relatedConditions["PopulationInfected"].asDouble();
 	int numberOfInfected = (*env.getPopulation()).size() * rateOfInfection;
 	for (int i = 0; i < numberOfInfected; i++) {
 		Person& currentPerson = (*env.getPopulation())[i];
 		currentPerson.setHealthState(StateOfHealth::PANDEMIC_VIRUS);
 	}
+
+
 }
 
 
