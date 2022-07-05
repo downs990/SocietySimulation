@@ -3,6 +3,82 @@
 
 
 
+// TODO: Only execute work decisions @ 12 Noon)
+void workDecisionTree1(Environment& env, time_t currentDateTime) {
+	// Eat Lunch 
+	
+	vector<Person>* population = env.getPopulation();
+	for (Person &p : *population) {
+		if (p.getHappy(currentDateTime) < 0.80) {
+			 
+			time_t hoursSinceAte = p.getLastAte() - currentDateTime; // TODO: Calculate this correctly.
+			if(hoursSinceAte >= 5 ){
+				// Eat 
+				p.setLastAte(currentDateTime);
+				p.setHappyOffset(10);
+			}
+		}
+	}
+}
+
+ 
+
+// TODO: Only execute work decisions @ 12 Noon)
+void workDecisionTree2(Environment& env, time_t currentDateTime) {
+	// Socialize 
+
+	vector<Person>* population = env.getPopulation();
+	for (Person& p : *population) {
+
+		int max = 100, max1 = 1;
+		int min = 1, min1 = 0;
+
+		int range = max - min + 1;
+		int range1 = max1 - min1 + 1;
+
+		int compatibilityScore = rand() % range + min;
+		int sign = rand() % range1 + min1; // + or -
+
+		double currentHappy = p.getHappy(currentDateTime);
+
+		if (sign == 0) {
+			// Negative 
+			p.setHappyOffset( -(compatibilityScore*10) );
+		}
+		else {
+			// Positive 
+			p.setHappyOffset( compatibilityScore * 10 );
+		}
+	}
+}
+
+// TODO: Only execute work decisions @ 12 Noon)
+void workDecisionTree3(Environment& env, time_t currentDateTime) {
+	// Work 
+
+	vector<Person>* population = env.getPopulation();
+	for (Person& p : *population) {
+		if (p.getHappy(currentDateTime) > 0.90) {
+
+			time_t hoursSinceAte = p.getLastAte() - currentDateTime; // TODO: Calculate this correctly.
+			if (hoursSinceAte < 5) {
+				// Perform more work 
+				p.setHappyOffset(5);
+
+				// Increment business profits by 2% 
+				Json::Value environmentSpecificVars = env.getEnvironmentSpecificVars();
+				float currentProfits = environmentSpecificVars["QuarterlyProfitDollars"].asFloat();
+
+				environmentSpecificVars["QuarterlyProfitDollars"] = currentProfits + (currentProfits * 0.02);
+				env.setEnvironmentSpecificVars(environmentSpecificVars);
+			}
+		}
+	}
+
+}
+
+
+
 void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * to & 
 
 
@@ -55,8 +131,6 @@ void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * 
 // schoolDecisionTree3()  // Ask Questions 
 
 
-void workDecisionTree(Environment& env, time_t currentDateTime) {
-}
 void homeDecisionTree(Environment& env, time_t currentDateTime) {
 }
 
@@ -199,9 +273,9 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 		// TODO: Add and test all environment specific decisions. 
 		if (currentEnv.getType() == "WORK") {
-			currentEnv.addDecision(workDecisionTree);
+			currentEnv.addDecision(workDecisionTree1);
 
-			environmentSpecificVars["QuarterlyProfitDollars"] = 100000;
+			environmentSpecificVars["QuarterlyProfitDollars"] = 100000.00;
 			currentEnv.setEnvironmentSpecificVars(environmentSpecificVars);
 			// ...
 

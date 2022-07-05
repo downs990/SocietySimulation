@@ -159,6 +159,10 @@ double Person::getFocus(time_t currentDateTime) {
 
 	return focus;
 }
+void Person::setHappyOffset(int offset) {
+	// TODO: Finish me.
+}
+
 
 void Person::setEmployment(bool employmentStatus) {
 	this->isEmployed = employmentStatus;
