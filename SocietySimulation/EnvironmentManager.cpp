@@ -77,10 +77,9 @@ void workDecisionTree3(Environment& env, time_t currentDateTime) {
 
 }
 
-map<string, void (*)(Environment&, time_t currentDateTime)> EnvironmentManager::getAllWorkDecisions() {
- 
+map<string, void (*)(Environment&, time_t)> EnvironmentManager::getAllWorkDecisions() {
 
-	map<string, void (*)(Environment&, time_t currentDateTime)> workDecisions;
+	map<string, void (*)(Environment&, time_t)> workDecisions;
 	workDecisions["workDecisionTree1"] = workDecisionTree1;
 	workDecisions["workDecisionTree2"] = workDecisionTree2;
 	workDecisions["workDecisionTree3"] = workDecisionTree3;
@@ -192,15 +191,25 @@ void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 
 
  
-
-// Removes all decisions functions from "decisionsList" for each Env of type "envType"
 void EnvironmentManager::clearAllDecisions(string envType) {
 
+	for (Environment& env : allEnvironments) {
+		if (env.getType() == envType) {
+			// Removes all decisions from "decisionsList" for each Env of type "envType"
+			env.clearDecisions();
+		}
+	}
 }
 
-// Adds the specified decision function to all Environments of type "envType"
-void EnvironmentManager::addDecision(string envType, void (*)(Environment&, time_t currentDateTime)) {
+ 
+void EnvironmentManager::addDecision(string envType, void (*newDecision)(Environment&, time_t)) {
 
+	for (Environment& env : allEnvironments) {
+		if (env.getType() == envType) {
+			// Adds the specified decision function to all Environments of type "envType"
+			env.addDecision(newDecision);
+		}
+	}
 
 }
 

@@ -37,7 +37,11 @@ void Environment::addDecision(void(*function)(Environment&, time_t))
 vector<void (*)(Environment&, time_t)> Environment::getDecisionsList(){
 	return decisionsList;
 }
- 
+
+void Environment::clearDecisions() {
+	decisionsList = {};
+}
+  
 
 void Environment::setEnvironmentSpecificVars(Json::Value environmentSpecificVariables) {
 	environmentSpecificVars = environmentSpecificVariables;

@@ -1,7 +1,6 @@
 #include "DataAnalyzer.h" 
 
-DataAnalyzer::DataAnalyzer(vector<Environment> currentWorld) {
-	world = currentWorld;
+DataAnalyzer::DataAnalyzer(vector<Environment>& currentWorld) : world(currentWorld) { 
 }
 
 
@@ -40,7 +39,7 @@ double DataAnalyzer::averageEnvSpecificProperty(string envType, string propertyN
 
 	double sum = 0;
 	double envTypeCount = 0;
-	for (Environment env : world) {
+	for (Environment& env : world) {
 		if (env.getType() == "WORK") {
 			envTypeCount++;
 			double profit = env.getEnvironmentSpecificVars()[propertyName].asDouble();

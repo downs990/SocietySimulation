@@ -41,15 +41,16 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	float unemploymentRate = societalInterruptionConditions["UnemploymentRate"].asFloat();
 	float marketPerformanceDecline = societalInterruptionConditions["StockMarketPerformanceDecline"].asFloat();
 
-	 
 	vector<double> decisionResults = {}; 
 	map<string, void (*)(Environment&, time_t currentDateTime)> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
-	 
+	
+	// TODO: Find cleaner simpler way to get .keys() and .values() of map<>
 	vector<string> decisionMapKeys = {};
 	vector<void (*)(Environment&, time_t currentDateTime)> decisionMapValues = {};
-
-
 	map<string, void (*)(Environment&, time_t currentDateTime)>::iterator it;
+
+
+
 	for (it = allWorkDecisions.begin(); it != allWorkDecisions.end(); it++) {
 		decisionMapKeys.push_back(it->first);
 		decisionMapValues.push_back(it->second);
@@ -60,24 +61,20 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	for (void(*workDecision)(Environment&, time_t) : decisionMapValues) {
 				
 		currentEnvManager->clearAllDecisions("WORK");
-		currentEnvManager->addDecision("WORK", workDecision);
-
-		// Execute attached decisions 
+		currentEnvManager->addDecision("WORK", workDecision); 
 		currentEnvManager->executeBehaviors(currentDateTime);
 
 		// Tell data analyzer to calculate current average "QuarterlyProfitDollars" 
-		double result = currentDataAnalyzer->averageEnvSpecificProperty("WORK","QuarterlyProfitDollars");
-		 
+		double result = currentDataAnalyzer->averageEnvSpecificProperty( 
+			"WORK",
+			"QuarterlyProfitDollars");
 		decisionResults.push_back(result);
 	} 
 	 
 	double indexOfMaxValue = maxValueIndex(decisionResults);  
-	string functionName = decisionMapKeys[indexOfMaxValue];
-
-	// Log found results 
+	string functionName = decisionMapKeys[indexOfMaxValue]; 
 	currentDataLogger->log("RECESSION: AdaptationFound: " + functionName + "\n");
 	  
-
 }
 
 

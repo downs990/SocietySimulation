@@ -126,7 +126,7 @@ double Person::getFocus(time_t currentDateTime) {
 
 
 	focus = 89 - ((2 * a * 0.10) + (chosenWeight * b * 0.10));
-	cout << "a: " << a << " b: " << b << " Weight: " << chosenWeight << " Focus: " << focus << "\n";
+	//cout << "a: " << a << " b: " << b << " Weight: " << chosenWeight << " Focus: " << focus << "\n";
 	//}
 
 	//cout << "\nWorld: " << world[0].toString() << "\n";

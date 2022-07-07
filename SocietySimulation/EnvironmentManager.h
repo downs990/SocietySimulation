@@ -22,7 +22,7 @@ public:
 	void clearAllDecisions(string envType);
 
 	// Adds the specified decision function to all Environments of type "envType"
-	void addDecision(string envType, void (*)(Environment&, time_t currentDateTime));
+	void addDecision(string envType, void (*newDecision)(Environment&, time_t) );
 
 private: 
 	vector<Environment>& allEnvironments; 

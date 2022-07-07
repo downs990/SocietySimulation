@@ -9,14 +9,14 @@
 class DataAnalyzer
 {
 public:
-	DataAnalyzer(vector<Environment> currentWorld);
+	DataAnalyzer(vector<Environment>& currentWorld);
 	Json::Value getEventLogs();
 	vector<string> updateEventLogs();
 	void compareCurrentDataToEventThresholds();
 	double averageEnvSpecificProperty(string envType, string propertyName);
 
 private:
-	vector<Environment> world;
+	vector<Environment>& world;
 	Json::Value currentEventLogs;
 
 

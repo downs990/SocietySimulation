@@ -25,6 +25,7 @@ public:
 	void addPerson(Person newPerson);
 	void removePerson(Person removingPerson);  
 	void addDecision(void(*function)(Environment&, time_t));
+	void clearDecisions();
 	vector<void (*)(Environment&, time_t)> getDecisionsList();
 	void setEnvironmentSpecificVars(Json::Value environmentSpecificVars);
 	Json::Value getEnvironmentSpecificVars();

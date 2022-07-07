@@ -1,12 +1,161 @@
-Time: 15:33:24
-RECESSION: AdaptationFound: workDecisionTree1
-Time: 16:33:24
-RECESSION: AdaptationFound: workDecisionTree1
-Time: 17:33:24
-RECESSION: AdaptationFound: workDecisionTree1
-Time: 15:35:41
-RECESSION: AdaptationFound: workDecisionTree1
-Time: 16:35:41
-RECESSION: AdaptationFound: workDecisionTree1
-Time: 17:35:41
-RECESSION: AdaptationFound: workDecisionTree1
+Time: 17:56:57
+Time: 17:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 21:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 22:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 23:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 0:59:3
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 17:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 21:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 22:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 23:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 0:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 1:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 2:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 3:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 4:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 5:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 6:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 7:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 8:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 9:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 10:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 11:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 12:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 13:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 14:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 15:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 16:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 17:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 21:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 22:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 23:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 0:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 1:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 2:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 3:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 4:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 5:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 6:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 7:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 8:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 9:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 10:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 11:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 12:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 13:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 14:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 15:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 16:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 17:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 21:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 22:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 23:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 0:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 1:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 2:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 3:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 4:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 5:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 6:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 7:59:27
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 21:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 22:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 23:0:33
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 18:3:41
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 19:3:41
+RECESSION: AdaptationFound: workDecisionTree3
+Time: 20:3:41
+RECESSION: AdaptationFound: workDecisionTree3
