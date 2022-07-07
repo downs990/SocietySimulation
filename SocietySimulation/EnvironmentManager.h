@@ -12,7 +12,7 @@ public:
 	EnvironmentManager(vector<Environment>& allEnvironments, Json::Value  worldConfigJSON);
 	
 	 
-	vector<void (*)(Environment&, time_t currentDateTime)> getAllWorkDecisions();
+	map<string, void (*)(Environment&, time_t currentDateTime)> getAllWorkDecisions();
 	void applyConditions();
 	void evaluateDecisions(); 
 	void executeBehaviors(time_t simClockTValue);

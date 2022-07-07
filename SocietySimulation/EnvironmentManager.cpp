@@ -77,12 +77,13 @@ void workDecisionTree3(Environment& env, time_t currentDateTime) {
 
 }
 
-vector<void (*)(Environment&, time_t currentDateTime)> EnvironmentManager::getAllWorkDecisions() {
+map<string, void (*)(Environment&, time_t currentDateTime)> EnvironmentManager::getAllWorkDecisions() {
+ 
 
-	vector<void (*)(Environment&, time_t currentDateTime)> workDecisions;
-	workDecisions.push_back(workDecisionTree1);
-	workDecisions.push_back(workDecisionTree2);
-	workDecisions.push_back(workDecisionTree3);
+	map<string, void (*)(Environment&, time_t currentDateTime)> workDecisions;
+	workDecisions["workDecisionTree1"] = workDecisionTree1;
+	workDecisions["workDecisionTree2"] = workDecisionTree2;
+	workDecisions["workDecisionTree3"] = workDecisionTree3;
 
 	return workDecisions;
 

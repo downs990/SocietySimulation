@@ -1,6 +1,7 @@
 #include "DataAnalyzer.h" 
 
-DataAnalyzer::DataAnalyzer() {
+DataAnalyzer::DataAnalyzer(vector<Environment> currentWorld) {
+	world = currentWorld;
 }
 
 
@@ -12,7 +13,7 @@ Json::Value DataAnalyzer::getEventLogs() {
 
 // TODO: Loop through world and check each persons state/mood variables and evnironment and update
 //     EventLogs.json data with the current running values for expected thresholds. 
-vector<string> DataAnalyzer::updateEventLogs(vector<Environment> world) {
+vector<string> DataAnalyzer::updateEventLogs() {
 
 
 	compareCurrentDataToEventThresholds();
@@ -32,5 +33,22 @@ vector<string> DataAnalyzer::updateEventLogs(vector<Environment> world) {
 //     any expected HistoricEvents. 
 void DataAnalyzer::compareCurrentDataToEventThresholds() {
 
+}
+
+// TODO: Make type T
+double DataAnalyzer::averageEnvSpecificProperty(string envType, string propertyName) {
+
+	double sum = 0;
+	double envTypeCount = 0;
+	for (Environment env : world) {
+		if (env.getType() == "WORK") {
+			envTypeCount++;
+			double profit = env.getEnvironmentSpecificVars()[propertyName].asDouble();
+			sum += profit;
+		}
+	}
+
+	double average = sum / envTypeCount;
+	return average;
 }
 

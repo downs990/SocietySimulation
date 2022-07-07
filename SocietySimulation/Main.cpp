@@ -107,8 +107,8 @@ int main()
 	// - Starts trying random values for each person's variables associated with how they make decisions. 
 	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
 	//      counter the effects of the current S.I 
-	DataAnalyzer myDataAnalyzer = DataAnalyzer();
-	AdaptationEngine myAdaptorEngine = AdaptationEngine(sessionDataLogger, myDataAnalyzer, envManager);
+	DataAnalyzer myDataAnalyzer = DataAnalyzer(world);
+	AdaptationEngine myAdaptorEngine = AdaptationEngine(&sessionDataLogger, &myDataAnalyzer, &envManager);
   
 
 
@@ -150,7 +150,7 @@ int main()
 		envManager.executeBehaviors(now);
 
 		// Checks for Historic Events. 
-		vector<string> positiveAndNegativeMarkers = myDataAnalyzer.updateEventLogs(world);
+		vector<string> positiveAndNegativeMarkers = myDataAnalyzer.updateEventLogs();
 
 		// Adapts world population. 
 		myAdaptorEngine.adapt(worldConfigJSON, now);

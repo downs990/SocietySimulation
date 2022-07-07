@@ -3,9 +3,10 @@
 #include "EnvironmentManager.h"
 #include "DataLogger.h"
 #include "DataAnalyzer.h"
-#include <string>
 
-using std::string;
+#include <string>   
+
+using std::string; 
 
 class AdaptationEngine
 {
@@ -13,7 +14,7 @@ class AdaptationEngine
  
 public:
 
-	AdaptationEngine(DataLogger dataLogger, DataAnalyzer dataAnalyzer, EnvironmentManager currentEnvManager);
+	AdaptationEngine(DataLogger* dataLogger, DataAnalyzer* dataAnalyzer, EnvironmentManager* currentEnvManager);
 	void adapt(Json::Value worldConfigJSON, time_t currentDateTime);
 	vector<string> getAllAdaptations();
 
@@ -22,8 +23,8 @@ public:
 
 private:
 
-	DataLogger currentDataLogger;
-	DataAnalyzer currentDataAnalyzer;
+	DataLogger* currentDataLogger;
+	DataAnalyzer* currentDataAnalyzer;
 	EnvironmentManager* currentEnvManager;
 
 	void adaptToRecession(Json::Value societalInterruptionConditions, time_t currentDateTime);

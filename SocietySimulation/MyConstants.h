@@ -48,10 +48,26 @@ static void notesSection(time_t dateA, time_t dateB) {
 // Post-Condition: Hours difference calculated and returned. 
 static int calculateHoursDifference(time_t dateA, time_t dateB) {
  	   
-
 	// TODO: Test this more with different edge cases. 
 	return difftime(dateB, dateA) / SECONDS_IN_HOUR;
 	 
+}
+
+static double maxValueIndex(vector<double> myList) {
+
+	double currentMaxIndex = 0;
+	double currentMaxValue = myList[0];
+
+	for (int index = 1; index < myList.size(); index++) {
+		double value = myList[index];
+
+		if (value > currentMaxValue) {
+			currentMaxValue = value;
+			currentMaxIndex = index;
+		}
+	}
+
+	return currentMaxIndex;
 }
 
 

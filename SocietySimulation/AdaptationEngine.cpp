@@ -1,11 +1,11 @@
 #include "AdaptationEngine.h"
 
 
-AdaptationEngine::AdaptationEngine(DataLogger dataLogger, DataAnalyzer dataAnalyzer, EnvironmentManager envManager) {
+AdaptationEngine::AdaptationEngine(DataLogger* dataLogger, DataAnalyzer* dataAnalyzer, EnvironmentManager* envManager) {
 	
 	currentDataLogger = dataLogger;
 	currentDataAnalyzer = dataAnalyzer;
-	currentEnvManager = &envManager;
+	currentEnvManager = envManager;
 }
 
 
@@ -40,36 +40,42 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	
 	float unemploymentRate = societalInterruptionConditions["UnemploymentRate"].asFloat();
 	float marketPerformanceDecline = societalInterruptionConditions["StockMarketPerformanceDecline"].asFloat();
- 
 
-	
-	vector<double> decisionResults = {}; 
-	vector<void (*)(Environment&, time_t)> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
 	 
+	vector<double> decisionResults = {}; 
+	map<string, void (*)(Environment&, time_t currentDateTime)> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
+	 
+	vector<string> decisionMapKeys = {};
+	vector<void (*)(Environment&, time_t currentDateTime)> decisionMapValues = {};
+
+
+	map<string, void (*)(Environment&, time_t currentDateTime)>::iterator it;
+	for (it = allWorkDecisions.begin(); it != allWorkDecisions.end(); it++) {
+		decisionMapKeys.push_back(it->first);
+		decisionMapValues.push_back(it->second);
+	}
+
+
 	// Apply each available decision() to each "work" environment and check outcomes. 
-	for (void(*workDecision)(Environment&, time_t) : allWorkDecisions) {
+	for (void(*workDecision)(Environment&, time_t) : decisionMapValues) {
 				
 		currentEnvManager->clearAllDecisions("WORK");
 		currentEnvManager->addDecision("WORK", workDecision);
 
-		// 1. Execute attached decisions 
-		// TODO: Causes ERROR !
-		// currentEnvManager->executeBehaviors(currentDateTime);
+		// Execute attached decisions 
+		currentEnvManager->executeBehaviors(currentDateTime);
 
-		// 2. Tell data analyzer to calculate current average "QuarterlyProfitDollars" 
-		// (i.e StockMarketPerfrmance) for each Business (i.e. Work)
-		//currentDataAnalyzer.calculate("Average", "QuarterlyProfitDollars");
-
-		// 3. DecisionResults.append(results)
-	}
-
-	int maxValueIndex = 0;  // TODO: decisionResults.getIndexOfMaxValue();
-	void(*bestDecisionToCounterRecession)(Environment&, time_t) = allWorkDecisions[maxValueIndex];
-
-	string functionName = "";// TODO: bestDecisionToCounterRecession.Name;
+		// Tell data analyzer to calculate current average "QuarterlyProfitDollars" 
+		double result = currentDataAnalyzer->averageEnvSpecificProperty("WORK","QuarterlyProfitDollars");
+		 
+		decisionResults.push_back(result);
+	} 
+	 
+	double indexOfMaxValue = maxValueIndex(decisionResults);  
+	string functionName = decisionMapKeys[indexOfMaxValue];
 
 	// Log found results 
-	currentDataLogger.log("RECESSION: AdaptationFound: " + functionName);
+	currentDataLogger->log("RECESSION: AdaptationFound: " + functionName + "\n");
 	  
 
 }

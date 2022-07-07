@@ -1,6 +1,5 @@
 ﻿  AdaptationEngine.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Environment.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(53,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\AdaptationEngine.cpp(75,40): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe
