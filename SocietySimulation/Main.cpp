@@ -107,12 +107,13 @@ int main()
 	// - Starts trying random values for each person's variables associated with how they make decisions. 
 	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
 	//      counter the effects of the current S.I 
-	AdaptationEngine myAdaptor = AdaptationEngine(envManager);
- 
+	DataAnalyzer myDataAnalyzer = DataAnalyzer();
+	AdaptationEngine myAdaptorEngine = AdaptationEngine(sessionDataLogger, myDataAnalyzer, envManager);
+  
 
 
 	// 5. Start checking for Historic Events 
-	DataAnalyzer myDataAnalyzer = DataAnalyzer();
+ 
 
  
 	 
@@ -145,14 +146,14 @@ int main()
 
 
 		// TODO: Log compressed JSON of each Person and Environment each frame. 
-		sessionDataLogger.saveSessionData(timeString);
-		envManager.executeBehaviors(newtime, now);
+		sessionDataLogger.log(timeString);
+		envManager.executeBehaviors(now);
 
 		// Checks for Historic Events. 
 		vector<string> positiveAndNegativeMarkers = myDataAnalyzer.updateEventLogs(world);
 
 		// Adapts world population. 
-		myAdaptor.adapt(worldConfigJSON, world);
+		myAdaptorEngine.adapt(worldConfigJSON, now);
 
 
 		

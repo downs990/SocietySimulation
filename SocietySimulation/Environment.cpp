@@ -27,14 +27,14 @@ void Environment::addPerson(Person newPerson) {
 void Environment::removePerson(Person removingPerson) { }
  
 
-void Environment::addDecision(void(*function)(Environment&, time_t currrentDateTime))
+void Environment::addDecision(void(*function)(Environment&, time_t))
 {
 	decisionsList.push_back(function);
 }
  
  
 
-vector<void (*)(Environment&, time_t currentDateTime)> Environment::getDecisionsList(){
+vector<void (*)(Environment&, time_t)> Environment::getDecisionsList(){
 	return decisionsList;
 }
  

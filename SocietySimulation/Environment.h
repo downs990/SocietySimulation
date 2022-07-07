@@ -24,8 +24,8 @@ public:
 	vector<Person>* getPopulation(); 
 	void addPerson(Person newPerson);
 	void removePerson(Person removingPerson);  
-	void addDecision(void(*function)(Environment&, time_t currrentDateTime));
-	vector<void (*)(Environment&, time_t currentDateTime)> getDecisionsList();
+	void addDecision(void(*function)(Environment&, time_t));
+	vector<void (*)(Environment&, time_t)> getDecisionsList();
 	void setEnvironmentSpecificVars(Json::Value environmentSpecificVars);
 	Json::Value getEnvironmentSpecificVars();
 	string toString();
@@ -37,7 +37,7 @@ private:
 	vector<Person> population; 
 
 	// Vector of function pointers.  
-	vector<void (*)(Environment&, time_t currentDateTime)> decisionsList;
+	vector<void (*)(Environment&, time_t)> decisionsList;
  
 	 
 	Json::Value environmentSpecificVars = {};

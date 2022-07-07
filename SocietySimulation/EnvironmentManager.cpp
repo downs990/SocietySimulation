@@ -77,7 +77,16 @@ void workDecisionTree3(Environment& env, time_t currentDateTime) {
 
 }
 
+vector<void (*)(Environment&, time_t currentDateTime)> EnvironmentManager::getAllWorkDecisions() {
 
+	vector<void (*)(Environment&, time_t currentDateTime)> workDecisions;
+	workDecisions.push_back(workDecisionTree1);
+	workDecisions.push_back(workDecisionTree2);
+	workDecisions.push_back(workDecisionTree3);
+
+	return workDecisions;
+
+}
 
 void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * to & 
 
@@ -125,10 +134,7 @@ void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * 
 	//		https://stats.stackexchange.com/questions/398322/what-is-the-purpose-of-using-a-decision-tree
 
 
-}
-
-// schoolDecisionTree2()  // Take Notes 
-// schoolDecisionTree3()  // Ask Questions 
+} 
 
 
 void homeDecisionTree(Environment& env, time_t currentDateTime) {
@@ -186,6 +192,20 @@ void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 
  
 
+// Removes all decisions functions from "decisionsList" for each Env of type "envType"
+void EnvironmentManager::clearAllDecisions(string envType) {
+
+}
+
+// Adds the specified decision function to all Environments of type "envType"
+void EnvironmentManager::addDecision(string envType, void (*)(Environment&, time_t currentDateTime)) {
+
+
+}
+
+
+
+
 
 
 void EnvironmentManager::applyConditions() {
@@ -236,10 +256,9 @@ void EnvironmentManager::evaluateDecisions() {
 void EnvironmentManager::executeScheduleTasks() {
 
 }
+ 
 
-// TODO: Why these parameters ? 
-void EnvironmentManager::executeBehaviors(struct tm newSimClockStruct, time_t newSimClockTValue) {
-	simClockStruct = newSimClockStruct;
+void EnvironmentManager::executeBehaviors(time_t newSimClockTValue) { 
 	simClockTValue = newSimClockTValue;
 
 	// The time period for each environment type that is for making decisions in the design doc.

@@ -11,7 +11,7 @@ public:
 
 	DataLogger();
 	string createNewSessionLog();  // return session log file
-	void saveSessionData(string dataToSave);
+	void log(string dataToSave);
 
 private: 
 

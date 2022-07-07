@@ -1,13 +1,16 @@
 #include "AdaptationEngine.h"
 
 
-AdaptationEngine::AdaptationEngine(EnvironmentManager currentEnvManager) {
-	// TODO: Use the vector<Environment>& allEnvironments; in EnvironmentManager to access entire population of people.
+AdaptationEngine::AdaptationEngine(DataLogger dataLogger, DataAnalyzer dataAnalyzer, EnvironmentManager envManager) {
+	
+	currentDataLogger = dataLogger;
+	currentDataAnalyzer = dataAnalyzer;
+	currentEnvManager = &envManager;
 }
 
 
  
-void AdaptationEngine::adapt(Json::Value worldConfigJSON, vector<Environment> world) {
+void AdaptationEngine::adapt(Json::Value worldConfigJSON, time_t currentDateTime) {
 
 	// TOOO: Turn all of these strings/keys into enums ??? 
 	int worldStateIndex = worldConfigJSON["CurrentWorldState"].asInt();
@@ -18,13 +21,13 @@ void AdaptationEngine::adapt(Json::Value worldConfigJSON, vector<Environment> wo
 
 
 	if (societalInterruptiontype == "RECESSION") {
-		adaptToRecession(societalInterruptionConditions);
+		adaptToRecession(societalInterruptionConditions, currentDateTime);
 	}
 	else if (societalInterruptiontype == "PANDEMIC") {
-		adaptToPandemic(societalInterruptionConditions);
+		adaptToPandemic(societalInterruptionConditions, currentDateTime);
 	}
 	else if (societalInterruptiontype == "CIVIL_WAR") {
-		adaptToWar(societalInterruptionConditions);
+		adaptToWar(societalInterruptionConditions, currentDateTime);
 	}
 
 	 
@@ -33,51 +36,49 @@ void AdaptationEngine::adapt(Json::Value worldConfigJSON, vector<Environment> wo
 
 
 // TODO: Each decision will have a positive/negative marker cooresponding to the associated S.I. ???
-void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditions) {
+void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditions, time_t currentDateTime) {
 	
 	float unemploymentRate = societalInterruptionConditions["UnemploymentRate"].asFloat();
 	float marketPerformanceDecline = societalInterruptionConditions["StockMarketPerformanceDecline"].asFloat();
  
 
-	// TODO: Apply each available decision() to each "work" environment and check outcomes.
-
-	/*
-		vector<double> decisionResults = [];
-
-		// NOTE: Does this has to be done for every work env? Or just one? 
-		for(Environment env : world){
-			if(env.getType() == "WORK"){
+	
+	vector<double> decisionResults = {}; 
+	vector<void (*)(Environment&, time_t)> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
+	 
+	// Apply each available decision() to each "work" environment and check outcomes. 
+	for (void(*workDecision)(Environment&, time_t) : allWorkDecisions) {
 				
-				env.removeAllDecisions();
-				 
-				for (function workDecision : workDecisionsFuncList ){
-					
-					env.addDecision(workDecision)
+		currentEnvManager->clearAllDecisions("WORK");
+		currentEnvManager->addDecision("WORK", workDecision);
 
-					// wait a few frames
+		// 1. Execute attached decisions 
+		// TODO: Causes ERROR !
+		// currentEnvManager->executeBehaviors(currentDateTime);
 
-					// Tell data analyzer to calculate current average "QuarterlyProfitDollars" (i.e StockMarketPerfrmance) for 
-					// each Business (i.e. Work)
+		// 2. Tell data analyzer to calculate current average "QuarterlyProfitDollars" 
+		// (i.e StockMarketPerfrmance) for each Business (i.e. Work)
+		//currentDataAnalyzer.calculate("Average", "QuarterlyProfitDollars");
 
-					// decisionResults.append(results)
-				}
-			}
-		}
+		// 3. DecisionResults.append(results)
+	}
 
-		int maxValueIndex = decisionResults.getIndexOfMaxValue();
-		function bestDecisionToCounterRecession = workDecisionsFuncList[maxValueIndex];
+	int maxValueIndex = 0;  // TODO: decisionResults.getIndexOfMaxValue();
+	void(*bestDecisionToCounterRecession)(Environment&, time_t) = allWorkDecisions[maxValueIndex];
 
-		// Log found results 
-		dataLogger.log("RECESSION", "AdaptationFound: " + bestDecisionToCounterRecession);
-	*/
+	string functionName = "";// TODO: bestDecisionToCounterRecession.Name;
+
+	// Log found results 
+	currentDataLogger.log("RECESSION: AdaptationFound: " + functionName);
+	  
 
 }
 
 
 
 
-void AdaptationEngine::adaptToPandemic(Json::Value societalInterruptionConditions) {}
-void AdaptationEngine::adaptToWar(Json::Value societalInterruptionConditions) {}
+void AdaptationEngine::adaptToPandemic(Json::Value societalInterruptionConditions, time_t currentDateTime) {}
+void AdaptationEngine::adaptToWar(Json::Value societalInterruptionConditions, time_t currentDateTime) {}
 
 
 

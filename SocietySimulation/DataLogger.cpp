@@ -17,7 +17,7 @@ string DataLogger::createNewSessionLog() {
 	return "";
 }
 
-void DataLogger::saveSessionData(string dataToSave) {
+void DataLogger::log(string dataToSave) {
 	 
 	ofstream myfile;
 	myfile.open("SessionDataLogs.txt", ios_base::app);// ios_base::app means append to file instead of overwrite. 
