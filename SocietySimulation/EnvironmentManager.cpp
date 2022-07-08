@@ -105,7 +105,6 @@ void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * 
 		//// TODO: Properly compare times  
 		//if ((currClassTime < prevClassTime) >= 3) {
 		//	if (person->getHoursSinceSlept() > 15) {           // SLEEP
-
 		//		// Sleep 2 hours 
 		//		//person->setHoursSinceSlept(0);
 		//	}

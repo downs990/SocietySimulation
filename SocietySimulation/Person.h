@@ -37,7 +37,7 @@ public:
 	// TODO: Can I get away with not having this variable???
 	//int getHoursSpentEating(time_t currentDateTime); 
 	
-	
+	string getEducationLevel();
 	string toString();
 
 
@@ -48,7 +48,14 @@ private:
 	bool isEmployed;
 	// TODO: Create a simple scaled numbering system that can be incremented when they study/learn new things.
 	//		This variable can be considered when they are looking for new employment. 
-	int literacy; 
+	
+	
+	
+	
+	int knowledgeScore;
+
+
+
 
 	// Used to calculate happy % 
 	double disciplined; // %
@@ -62,11 +69,6 @@ private:
 	//		Date-time objects allow you to easily calculate both "Hours since slept" and how many hours you've slept. 
 
 
-
-
-
-
-
 	//double happy; // %              
 	//double focus; // %   Determines school/work performance. Is based on hoursSinceSlept, hoursSinceAte. 
 
@@ -74,6 +76,8 @@ private:
 	// NOTE: Don't need explicit variables for these. They are 
 	//		calculated/derived only and exactly when needed using
 	//		implicit variables below. 
+
+
 
 };
 

@@ -33,13 +33,9 @@
   "HistoricEvents": [
     {
       "Name": "FirstWorldCountry",
-      "Thresholds": {
-        "Stable Democracies": true,
-        "High Standard of Living": true,
-        "Capitalist Economy": true,
-        "Economic Stability": true,
-        "Gross Domestic Product": 1000000000000,
-        "Literacy Rate": 0.75
+      "Thresholds": { 
+        "GrossDomesticProduct": 200000000000,
+        "AverageEducationLevel": "BACHELORS"
 
       }
     },

@@ -42,12 +42,12 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	float marketPerformanceDecline = societalInterruptionConditions["StockMarketPerformanceDecline"].asFloat();
 
 	vector<double> decisionResults = {}; 
-	map<string, void (*)(Environment&, time_t currentDateTime)> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
+	map<string, void (*)(Environment&, time_t )> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
 	
 	// TODO: Find cleaner simpler way to get .keys() and .values() of map<>
 	vector<string> decisionMapKeys = {};
-	vector<void (*)(Environment&, time_t currentDateTime)> decisionMapValues = {};
-	map<string, void (*)(Environment&, time_t currentDateTime)>::iterator it;
+	vector<void (*)(Environment&, time_t )> decisionMapValues = {};
+	map<string, void (*)(Environment&, time_t )>::iterator it;
 
 
 
@@ -58,7 +58,7 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 
 
 	// Apply each available decision() to each "work" environment and check outcomes. 
-	for (void(*workDecision)(Environment&, time_t) : decisionMapValues) {
+	for (void(*workDecision)(Environment&, time_t ) : decisionMapValues) {
 				
 		currentEnvManager->clearAllDecisions("WORK");
 		currentEnvManager->addDecision("WORK", workDecision); 

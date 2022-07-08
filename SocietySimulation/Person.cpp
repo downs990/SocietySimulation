@@ -36,6 +36,25 @@ double Person::getHappy(time_t currentDateTime) {
 	return happy;
 }
 
+
+string Person::getEducationLevel() {
+	string education = "ELEMENTARY";
+
+	if (knowledgeScore > 12960) {
+		education = "HIGH_SCHOOL";
+	}
+	else if (knowledgeScore > 17280) {
+		education = "BACHELORS";
+	}
+	else if (knowledgeScore > 19440) {
+		education = "MASTERS";
+	}
+
+	return education;
+}
+
+
+
 // Pre-Condition: A < B 
 //double Person::calculateHoursDifference(struct tm dateA, struct tm dateB) {
 //
