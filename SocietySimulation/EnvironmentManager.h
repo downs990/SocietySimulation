@@ -29,5 +29,10 @@ private:
 	Json::Value  worldConfigJSON; 
 	time_t simClockTValue;
 
+
+	// NOTE: Avoids me having to write accessors and mutators for "allEnvironments" 
+	//	   and "worldConfigJSON". Also, I'll be able to keep those variables 
+	//	   encapsulated into EnvironmentManager class;
+	friend class DataAnalyzer;
 };
 

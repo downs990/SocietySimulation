@@ -4,6 +4,11 @@
 #include "MyConstants.h"
 #include <string>
 #include <sstream>
+
+#include <fstream>
+#include <iostream> 
+using std::ofstream;
+using std::ifstream;
 using std::string; 
 using std::ostringstream;
 

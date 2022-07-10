@@ -1,12 +1,45 @@
 #include "DataAnalyzer.h" 
 
-DataAnalyzer::DataAnalyzer(vector<Environment>& currentWorld) : world(currentWorld) { 
+DataAnalyzer::DataAnalyzer(EnvironmentManager envManager) {
+	world = envManager.allEnvironments;
+	worldConfigJSON = envManager.worldConfigJSON;
+
+	runningEventLogsJSON = {};
+
+	// TOOD: Remove "EventLogs.json" and just keep track of those thresholds in a variable. 
+	Json::Value historicEventThresholds = {
+		// Initialized running threashold values. 
+		// {
+		//  "Name": "FirstWorldCountry",
+		//	  "Thresholds" : {
+		//		"GrossDomesticProduct": 0,
+		//		"AverageEducationLevel" : "ELEMENTARY"
+		//	  }
+		// }
+
+		// .... 
+	};
+	 
+
 }
 
 
 // TODO: Read all events from EventLogs.json and store it in currentEventsLogs variable
 Json::Value DataAnalyzer::getEventLogs() {
-	return currentEventLogs;
+
+	Json::Reader reader;
+	Json::Value eventLogsJSON;
+
+	//opening file using fstream
+	ifstream file("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\EventLogs.json");
+
+	// check if there is any error in getting data from the json file 
+	if (!reader.parse(file, eventLogsJSON)) {
+		cout << reader.getFormattedErrorMessages();
+	}
+
+	runningEventLogsJSON = eventLogsJSON;
+	return runningEventLogsJSON;
 }
 
 
@@ -31,6 +64,8 @@ vector<string> DataAnalyzer::updateEventLogs() {
 // TODO: Check if values in EventLogs.json match the thresholds in WorldConfig.json for 
 //     any expected HistoricEvents. 
 void DataAnalyzer::compareCurrentDataToEventThresholds() {
+
+
 
 }
 

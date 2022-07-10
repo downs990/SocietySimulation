@@ -96,7 +96,7 @@ void schoolDecisionTree3(Environment& env, time_t currentDateTime) {
 			// 3. Time between those classes is when this decision will execute. 
 		}
 
-		time_t hoursSinceAte = p.getLastAte() - currentDateTime; // TODO: Calculate this correctly.
+		time_t hoursSinceAte = p.getLastAte() - currentDateTime;     // TODO: Calculate this correctly.
 		time_t hoursSinceSlept = p.getLastSlept() - currentDateTime; // TODO: Calculate this correctly.
 
 		if (hoursSinceAte < 5) {
@@ -107,9 +107,8 @@ void schoolDecisionTree3(Environment& env, time_t currentDateTime) {
 			}
 		}
 	}
-	 
-
 }
+
 void schoolDecisionTree4(Environment& env, time_t currentDateTime) {}
 
 void homeDecisionTree1(Environment& env, time_t currentDateTime) {}
@@ -117,43 +116,32 @@ void homeDecisionTree2(Environment& env, time_t currentDateTime) {}
 void homeDecisionTree3(Environment& env, time_t currentDateTime) {}
 
 
-
 // TODO: Evaulate if/else decision nest v. Real Decision Trees
 //		https://stats.stackexchange.com/questions/398322/what-is-the-purpose-of-using-a-decision-tree
 
 
-
 map<string, void (*)(Environment&, time_t)> EnvironmentManager::getAllDecisions(string envType) {
 
-	if (envType == "WORK") {
-		map<string, void (*)(Environment&, time_t)> workDecisions;
-		workDecisions["workDecisionTree1"] = workDecisionTree1;
-		workDecisions["workDecisionTree2"] = workDecisionTree2;
-		workDecisions["workDecisionTree3"] = workDecisionTree3;
+	map<string, void (*)(Environment&, time_t)> envDecisions;
 
-		return workDecisions;
-	
+	if (envType == "WORK") { 
+		envDecisions["workDecisionTree1"] = workDecisionTree1;
+		envDecisions["workDecisionTree2"] = workDecisionTree2;
+		envDecisions["workDecisionTree3"] = workDecisionTree3;
 	}
-	else if (envType == "SCHOOL") {
-		map<string, void (*)(Environment&, time_t)> schoolDecisions;
-		schoolDecisions["schoolDecisionTree1"] = schoolDecisionTree1;
-		schoolDecisions["schoolDecisionTree2"] = schoolDecisionTree2;
-		schoolDecisions["schoolDecisionTree3"] = schoolDecisionTree3;
-		schoolDecisions["schoolDecisionTree4"] = schoolDecisionTree4;
-
-		return schoolDecisions;
+	else if (envType == "SCHOOL") { 
+		envDecisions["schoolDecisionTree1"] = schoolDecisionTree1;
+		envDecisions["schoolDecisionTree2"] = schoolDecisionTree2;
+		envDecisions["schoolDecisionTree3"] = schoolDecisionTree3;
+		envDecisions["schoolDecisionTree4"] = schoolDecisionTree4;
 	}
-	else if (envType == "HOME") {
-		map<string, void (*)(Environment&, time_t)> homeDecisions;
-		homeDecisions["homeDecisionTree1"] = homeDecisionTree1;
-		homeDecisions["homeDecisionTree2"] = homeDecisionTree2;
-		homeDecisions["homeDecisionTree3"] = homeDecisionTree3;
-
-		return homeDecisions;
-	
+	else if (envType == "HOME") { 
+		envDecisions["homeDecisionTree1"] = homeDecisionTree1;
+		envDecisions["homeDecisionTree2"] = homeDecisionTree2;
+		envDecisions["homeDecisionTree3"] = homeDecisionTree3;
 	}
 	 
-	 
+	return envDecisions;
 
 }
 

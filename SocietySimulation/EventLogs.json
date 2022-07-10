@@ -2,18 +2,22 @@
   "HistoricEvents": [
     {
       "Name": "FirstWorldCountry",
-      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES>" ]
+      "Thresholds": {
+        "GrossDomesticProduct": 0,
+        "AverageEducationLevel": "ELEMENTARY"
+      }
+
     },
     {
       "Name": "HighQualityOfHealth",
-      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" ]
+      "Thresholds": { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
     },
     {
       "Name": "SocialEquality",
-      "Thresholds": [ "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" ]
+      "Thresholds": { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
     }
+  
+  
+  ] 
 
-  ],
-
-  "//Comment": "// These running values will be updated in real time and compared to their thresholds in WorldConfig.json"
 }

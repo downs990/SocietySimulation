@@ -1,8 +1,6 @@
 
   
-#include <Windows.h> 
-#include <fstream>
-#include <iostream> 
+#include <Windows.h>  
 
 #include "Person.h"
 #include "Environment.h"
@@ -14,8 +12,7 @@
 using std::cout; 
 using std::cin;
 using std::to_string;
-using std::ofstream;
-using std::ifstream;
+ 
 
  
 
@@ -34,9 +31,7 @@ void createDatabase() {
 void readWorldDataFromConfigFile() {
 
 	Json::Reader reader;   
-	Json::Value newValue;   
-	Json::StyledStreamWriter writer;  
-	ofstream newFile;
+	Json::Value newValue;     
 
 	//opening file using fstream
 	ifstream file("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\WorldConfiguration.json");
@@ -107,7 +102,7 @@ int main()
 	// - Starts trying random values for each person's variables associated with how they make decisions. 
 	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
 	//      counter the effects of the current S.I 
-	DataAnalyzer myDataAnalyzer = DataAnalyzer(world);
+	DataAnalyzer myDataAnalyzer = DataAnalyzer(envManager);
 	AdaptationEngine myAdaptorEngine = AdaptationEngine(&sessionDataLogger, &myDataAnalyzer, &envManager);
   
 

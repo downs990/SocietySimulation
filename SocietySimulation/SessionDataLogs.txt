@@ -221,3 +221,21 @@ Time: 9:48:22
 RECESSION: AdaptationFound: workDecisionTree3
 Time: 10:48:22
 RECESSION: AdaptationFound: workDecisionTree3
+Time: 17:54:16
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 18:54:16
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 19:54:16
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 20:54:16
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 18:5:51
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 19:5:51
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 20:5:51
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 21:5:51
+RECESSION: AdaptationFound: workDecisionTree1
+Time: 22:5:51
+RECESSION: AdaptationFound: workDecisionTree1
