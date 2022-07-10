@@ -12,7 +12,7 @@ Person::Person(int id) {
 
 
 	this->isEmployed = true;
-
+	this->knowledgeScore = 0;
 }
 
 
@@ -35,6 +35,12 @@ double Person::getHappy(time_t currentDateTime) {
 
 	return happy;
 }
+
+
+void Person::setKnowledgeScoreOffset(int offset) {
+	this->knowledgeScore += offset;
+}
+
 
 
 string Person::getEducationLevel() {

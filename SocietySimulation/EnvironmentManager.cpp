@@ -77,69 +77,85 @@ void workDecisionTree3(Environment& env, time_t currentDateTime) {
 
 }
 
-map<string, void (*)(Environment&, time_t)> EnvironmentManager::getAllWorkDecisions() {
+ 
 
-	map<string, void (*)(Environment&, time_t)> workDecisions;
-	workDecisions["workDecisionTree1"] = workDecisionTree1;
-	workDecisions["workDecisionTree2"] = workDecisionTree2;
-	workDecisions["workDecisionTree3"] = workDecisionTree3;
-
-	return workDecisions;
-
-}
-
-void schoolDecisionTree(Environment& env, time_t currentDateTime) { // Chagne * to & 
+void schoolDecisionTree1(Environment& env, time_t currentDateTime) {} 
+void schoolDecisionTree2(Environment& env, time_t currentDateTime) {}
 
 
-	// TODO: Loop through env.getPopulation() to apply to every person in env. 
-	Person* person = &(*env.getPopulation())[0];
+// TODO: Only execute during time between classes. (in schedule)
+void schoolDecisionTree3(Environment& env, time_t currentDateTime) {
+	// Study / Homework
 
-	string taskName = "Time between classes";
-	int timeBetweenClasses = 0;
-	string prevClassTime = "12:00pm";
+	vector<Person>* population = env.getPopulation();
+	for (Person& p : *population) {
+		
+		for (Schedule::SimTask currentTask : p.getSchedule().getTasks()) {
+			// 1. Keep track of previous class time. 
+			// 2. Keep track of current class time.
+			// 3. Time between those classes is when this decision will execute. 
+		}
 
-	// 1. Evaluate schedule of person in env. 
-	for (Schedule::SimTask currentTask : person->getSchedule().getTasks()) {
-		string currClassTime = currentTask.getStartTime();
+		time_t hoursSinceAte = p.getLastAte() - currentDateTime; // TODO: Calculate this correctly.
+		time_t hoursSinceSlept = p.getLastSlept() - currentDateTime; // TODO: Calculate this correctly.
 
-		//// TODO: Properly compare times  
-		//if ((currClassTime < prevClassTime) >= 3) {
-		//	if (person->getHoursSinceSlept() > 15) {           // SLEEP
-		//		// Sleep 2 hours 
-		//		//person->setHoursSinceSlept(0);
-		//	}
-		//	else if (person->getAteBreakfast() == false) {	   // EAT
-		//		// Traverse EAT subtree 
-		//	}
-		//	else if (true) {								   // STUDY
-		//	}
-		//}
+		if (hoursSinceAte < 5) {
+			if (hoursSinceSlept < 8) {
+			 
+				p.setKnowledgeScoreOffset(1); // knowledge++ 
+			 
+			}
+		}
 	}
+	 
 
-
-	// 2. If time between classes is 3h >= then present the following decisions:  
-	//			EAT                SLEEP              STUDY 
-	//         /                                        \
-	//  @ school    @ resturant                        subjectA   subjectB
-	//                    \                        (Exam tomorrow)  (Exam next week)    
-	//         placeA   placeB  placeC
-	//          /           |      \
-	//     2miles        1.5miles    4miles
-	//(happy+=1,hungry=0)  (happy+=2,hungry=10%)  (happy+=4,hungry=5%) 
-
-
-	// TODO: Evaluate each decision against thresholds and adjust Person's state/mood based on choice. 
-	// TODO: Evaulate if/else nest v. Real Decision Trees
-	//		https://stats.stackexchange.com/questions/398322/what-is-the-purpose-of-using-a-decision-tree
-
-
-} 
-
-
-void homeDecisionTree(Environment& env, time_t currentDateTime) {
 }
+void schoolDecisionTree4(Environment& env, time_t currentDateTime) {}
+
+void homeDecisionTree1(Environment& env, time_t currentDateTime) {}
+void homeDecisionTree2(Environment& env, time_t currentDateTime) {}
+void homeDecisionTree3(Environment& env, time_t currentDateTime) {}
 
 
+
+// TODO: Evaulate if/else decision nest v. Real Decision Trees
+//		https://stats.stackexchange.com/questions/398322/what-is-the-purpose-of-using-a-decision-tree
+
+
+
+map<string, void (*)(Environment&, time_t)> EnvironmentManager::getAllDecisions(string envType) {
+
+	if (envType == "WORK") {
+		map<string, void (*)(Environment&, time_t)> workDecisions;
+		workDecisions["workDecisionTree1"] = workDecisionTree1;
+		workDecisions["workDecisionTree2"] = workDecisionTree2;
+		workDecisions["workDecisionTree3"] = workDecisionTree3;
+
+		return workDecisions;
+	
+	}
+	else if (envType == "SCHOOL") {
+		map<string, void (*)(Environment&, time_t)> schoolDecisions;
+		schoolDecisions["schoolDecisionTree1"] = schoolDecisionTree1;
+		schoolDecisions["schoolDecisionTree2"] = schoolDecisionTree2;
+		schoolDecisions["schoolDecisionTree3"] = schoolDecisionTree3;
+		schoolDecisions["schoolDecisionTree4"] = schoolDecisionTree4;
+
+		return schoolDecisions;
+	}
+	else if (envType == "HOME") {
+		map<string, void (*)(Environment&, time_t)> homeDecisions;
+		homeDecisions["homeDecisionTree1"] = homeDecisionTree1;
+		homeDecisions["homeDecisionTree2"] = homeDecisionTree2;
+		homeDecisions["homeDecisionTree3"] = homeDecisionTree3;
+
+		return homeDecisions;
+	
+	}
+	 
+	 
+
+}
 
 
 
@@ -311,13 +327,16 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 		}
 		else if (currentEnv.getType() == "HOME") {
-			currentEnv.addDecision(homeDecisionTree);
+			//currentEnv.addDecision(homeDecisionTree1);
+			//currentEnv.addDecision(homeDecisionTree2);
+			currentEnv.addDecision(homeDecisionTree3);      // Tests "FirstWorldCountry" H.E
+			//currentEnv.addDecision(homeDecisionTree4);
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
 			// ...
 		}
 		else if (currentEnv.getType() == "SCHOOL") {
-			currentEnv.addDecision(schoolDecisionTree);
+			currentEnv.addDecision(schoolDecisionTree1);
 
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)

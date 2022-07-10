@@ -42,7 +42,7 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	float marketPerformanceDecline = societalInterruptionConditions["StockMarketPerformanceDecline"].asFloat();
 
 	vector<double> decisionResults = {}; 
-	map<string, void (*)(Environment&, time_t )> allWorkDecisions = currentEnvManager->getAllWorkDecisions();
+	map<string, void (*)(Environment&, time_t )> allWorkDecisions = currentEnvManager->getAllDecisions("WORK");
 	
 	// TODO: Find cleaner simpler way to get .keys() and .values() of map<>
 	vector<string> decisionMapKeys = {};

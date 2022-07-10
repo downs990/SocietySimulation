@@ -38,7 +38,13 @@ public:
 	//int getHoursSpentEating(time_t currentDateTime); 
 	
 	string getEducationLevel();
+	void setKnowledgeScoreOffset(int offset);
+	
+	
+	
 	string toString();
+
+
 
 
 private:
