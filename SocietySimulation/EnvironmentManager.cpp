@@ -188,12 +188,9 @@ void pandemicCondition(Environment& env, Json::Value relatedConditions) {
 		Person& currentPerson = (*env.getPopulation())[i];
 		currentPerson.setHealthState(StateOfHealth::PANDEMIC_VIRUS);
 	}
-
-
 }
 
 
- 
 void EnvironmentManager::clearAllDecisions(string envType) {
 
 	for (Environment& env : allEnvironments) {
@@ -215,8 +212,6 @@ void EnvironmentManager::addDecision(string envType, void (*newDecision)(Environ
 	}
 
 }
-
-
 
 
 
@@ -314,17 +309,17 @@ EnvironmentManager::EnvironmentManager(vector<Environment>& myEnvironments,
 
 
 		}
-		else if (currentEnv.getType() == "HOME") {
-			//currentEnv.addDecision(homeDecisionTree1);
-			//currentEnv.addDecision(homeDecisionTree2);
-			currentEnv.addDecision(homeDecisionTree3);      // Tests "FirstWorldCountry" H.E
-			//currentEnv.addDecision(homeDecisionTree4);
+		else if (currentEnv.getType() == "SCHOOL") {
+			//currentEnv.addDecision(schoolDecisionTree1);
+			//currentEnv.addDecision(schoolDecisionTree2);
+			currentEnv.addDecision(schoolDecisionTree3);      // Tests "FirstWorldCountry" H.E
+			//currentEnv.addDecision(schoolDecisionTree4);
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
 			// ...
 		}
-		else if (currentEnv.getType() == "SCHOOL") {
-			currentEnv.addDecision(schoolDecisionTree1);
+		else if (currentEnv.getType() == "HOME") {
+			currentEnv.addDecision(homeDecisionTree1);
 
 
 			// Add Environment Specific Variables (What's needed for measuring H.E or S.I ?)
