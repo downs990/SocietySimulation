@@ -1,7 +1,6 @@
 #include "DataAnalyzer.h" 
 
-DataAnalyzer::DataAnalyzer(EnvironmentManager envManager) {
-	world = envManager.allEnvironments;
+DataAnalyzer::DataAnalyzer(EnvironmentManager envManager) : world(envManager.allEnvironments) {
 	worldConfigJSON = envManager.worldConfigJSON;
 
 	runningEventLogsJSON = {};
@@ -48,7 +47,39 @@ Json::Value DataAnalyzer::getEventLogs() {
 vector<string> DataAnalyzer::updateEventLogs() {
 
 
-	compareCurrentDataToEventThresholds();
+	string currentAverageEducation = checkForFirstWorldCountry();
+
+	// Update JSON
+	runningEventLogsJSON["HistoricEvents"][0]["Thresholds"]["AverageEducationLevel"] = currentAverageEducation;
+
+	// TODO: Figure out why the below fields are deleted when the .json file is updated. 
+/*
+	{
+		"HistoricEvents": [
+		{
+			"Name": "FirstWorldCountry",
+				"Thresholds" : {
+				"GrossDomesticProduct": 0,
+					"AverageEducationLevel" : "ELEMENTARY"
+			}
+		},
+	{
+	  "Name": "HighQualityOfHealth",
+	  "Thresholds" : { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
+	},
+	{
+	  "Name": "SocialEquality",
+	  "Thresholds" : { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
+	}
+	] }
+*/
+
+	// Write to "EventLogs.json"
+	ofstream myfile;
+	myfile.open("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\EventLogs.json");
+	myfile << runningEventLogsJSON;
+	myfile.close();
+
 
 
 	// TODO: Keep track of the previous sim cycle in the main loop. 
@@ -59,14 +90,44 @@ vector<string> DataAnalyzer::updateEventLogs() {
 
 
 
+ 
+
 
 
 // TODO: Check if values in EventLogs.json match the thresholds in WorldConfig.json for 
 //     any expected HistoricEvents. 
-void DataAnalyzer::compareCurrentDataToEventThresholds() {
+string DataAnalyzer::checkForFirstWorldCountry() {
 
+	// TODO: Actually compare these thresholds to "runningEventLogsJSON"
+	//Json::Value firstWorldConditions = worldConfigJSON["HistoricEvents"][0]["Thresholds"];
+	//double grossDomesticProduct = firstWorldConditions["GrossDomesticProduct"].asDouble();
+	//string averageEducation = firstWorldConditions["AverageEducationLevel"].asString();
 
+	string currentAverageEducation = "ELEMENTARY";
 
+	int averageKnowledgeScore = 0;
+	int sumKnowledge = 0;
+	int sumPopulation = 0;
+
+	for (Environment& env : world) {
+	
+		if (env.getType() == "SCHOOL") {
+					 
+			for (Person& p : *env.getPopulation()) {
+				sumKnowledge += p.getKnowledgeScore();
+			}
+
+			sumPopulation += env.getPopulation()->size();
+
+			averageKnowledgeScore = sumKnowledge / sumPopulation;
+			 
+			string education = getEducationLevel(averageKnowledgeScore);
+			cout << "AverageKnowledgeScore: " << averageKnowledgeScore << "  Education: " << education << "\n";
+			currentAverageEducation = education;
+		} 
+	}
+
+	return currentAverageEducation;
 }
 
 // TODO: Make type T

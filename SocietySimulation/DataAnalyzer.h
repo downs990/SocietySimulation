@@ -12,11 +12,11 @@ public:
 	DataAnalyzer(EnvironmentManager envManager);
 	Json::Value getEventLogs();
 	vector<string> updateEventLogs();
-	void compareCurrentDataToEventThresholds();
+	string checkForFirstWorldCountry();
 	double averageEnvSpecificProperty(string envType, string propertyName);
 
 private:
-	vector<Environment> world;
+	vector<Environment>& world;
 	Json::Value worldConfigJSON;
 	Json::Value runningEventLogsJSON;
 

@@ -38,27 +38,16 @@ double Person::getHappy(time_t currentDateTime) {
 
 
 void Person::setKnowledgeScoreOffset(int offset) {
-	this->knowledgeScore += offset;
+	knowledgeScore += offset;
 }
 
 
+int Person::getKnowledgeScore() {
+	return knowledgeScore;
 
-string Person::getEducationLevel() {
-	string education = "ELEMENTARY";
-
-	if (knowledgeScore > 12960) {
-		education = "HIGH_SCHOOL";
-	}
-	else if (knowledgeScore > 17280) {
-		education = "BACHELORS";
-	}
-	else if (knowledgeScore > 19440) {
-		education = "MASTERS";
-	}
-
-	return education;
 }
 
+  
 
 
 // Pre-Condition: A < B 

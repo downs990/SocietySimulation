@@ -71,4 +71,20 @@ static double maxValueIndex(vector<double> myList) {
 }
 
 
+static string getEducationLevel(int knowledgeScore) {
+	string education = "ELEMENTARY";
+
+	if (knowledgeScore > 12960) {
+		education = "HIGH_SCHOOL";
+	}
+	if (knowledgeScore > 17280) {
+		education = "BACHELORS";
+	}
+	if (knowledgeScore > 19440) {
+		education = "MASTERS";
+	}
+
+	return education;
+}
+
  

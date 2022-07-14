@@ -1,23 +1,11 @@
-{
-  "HistoricEvents": [
-    {
-      "Name": "FirstWorldCountry",
-      "Thresholds": {
-        "GrossDomesticProduct": 0,
-        "AverageEducationLevel": "ELEMENTARY"
-      }
-
-    },
-    {
-      "Name": "HighQualityOfHealth",
-      "Thresholds": { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
-    },
-    {
-      "Name": "SocialEquality",
-      "Thresholds": { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
-    }
-  
-  
-  ] 
-
+{ 
+	"HistoricEvents" : 
+	[ 
+		{
+			"Thresholds" :  
+			{
+				"AverageEducationLevel" : "MASTERS"
+			}
+		}
+	]
 }

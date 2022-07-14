@@ -41,11 +41,12 @@ public:
 	
 	// TODO: Can I get away with not having this variable???
 	//int getHoursSpentEating(time_t currentDateTime); 
-	
-	string getEducationLevel();
+	 
+	int getKnowledgeScore();
 	void setKnowledgeScoreOffset(int offset);
 	
 	
+	 
 	
 	string toString();
 

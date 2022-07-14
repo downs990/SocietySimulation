@@ -96,13 +96,14 @@ void schoolDecisionTree3(Environment& env, time_t currentDateTime) {
 			// 3. Time between those classes is when this decision will execute. 
 		}
 
-		time_t hoursSinceAte = p.getLastAte() - currentDateTime;     // TODO: Calculate this correctly.
-		time_t hoursSinceSlept = p.getLastSlept() - currentDateTime; // TODO: Calculate this correctly.
+		// TODO: Calculate this correctly.
+		time_t hoursSinceAte =   4;  //p.getLastAte() - currentDateTime;      
+		time_t hoursSinceSlept = 7;  //p.getLastSlept() - currentDateTime; 
 
 		if (hoursSinceAte < 5) {
 			if (hoursSinceSlept < 8) {
 			 
-				p.setKnowledgeScoreOffset(1); // knowledge++ 
+				p.setKnowledgeScoreOffset(250); // knowledge++ 
 			 
 			}
 		}
