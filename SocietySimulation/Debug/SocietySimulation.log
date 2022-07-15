@@ -1,25 +1,4 @@
-﻿  AdaptationEngine.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\AdaptationEngine.cpp(75,40): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-  DataAnalyzer.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-  Environment.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-  EnvironmentManager.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(156,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(173,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\EnvironmentManager.cpp(187,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-  Person.cpp
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(52,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(61,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\Person.cpp(142,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+﻿  DataAnalyzer.cpp
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(55,32): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\SocietySimulation\MyConstants.h(64,28): warning C4018: '<': signed/unsigned mismatch
   SocietySimulation.vcxproj -> C:\Users\downs\Desktop\VisualStudioWorkspace\SocietySimulation\Debug\SocietySimulation.exe

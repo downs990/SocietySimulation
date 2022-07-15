@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClCompile Include="AdaptationEngine.cpp" />
     <ClCompile Include="DataAnalyzer.cpp" />
-    <ClCompile Include="DataLogger.cpp" />
     <ClCompile Include="dist\jsoncpp.cpp" />
     <ClCompile Include="Environment.cpp" />
     <ClCompile Include="EnvironmentManager.cpp" />

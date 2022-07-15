@@ -3,7 +3,7 @@
 DataAnalyzer::DataAnalyzer(EnvironmentManager envManager) : world(envManager.allEnvironments) {
 	worldConfigJSON = envManager.worldConfigJSON;
 
-	runningEventLogsJSON = {};
+	runningEventLogsJSON = getEventLogs();
 
 	// TOOD: Remove "EventLogs.json" and just keep track of those thresholds in a variable. 
 	Json::Value historicEventThresholds = {
@@ -30,15 +30,14 @@ Json::Value DataAnalyzer::getEventLogs() {
 	Json::Value eventLogsJSON;
 
 	//opening file using fstream
-	ifstream file("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\EventLogs.json");
+	ifstream file(EVENT_LOGS_PATH);
 
 	// check if there is any error in getting data from the json file 
 	if (!reader.parse(file, eventLogsJSON)) {
 		cout << reader.getFormattedErrorMessages();
 	}
-
-	runningEventLogsJSON = eventLogsJSON;
-	return runningEventLogsJSON;
+	 
+	return eventLogsJSON;
 }
 
 
@@ -47,36 +46,13 @@ Json::Value DataAnalyzer::getEventLogs() {
 vector<string> DataAnalyzer::updateEventLogs() {
 
 
-	string currentAverageEducation = checkForFirstWorldCountry();
+	checkFirstWorldCountry(); 
 
-	// Update JSON
-	runningEventLogsJSON["HistoricEvents"][0]["Thresholds"]["AverageEducationLevel"] = currentAverageEducation;
-
-	// TODO: Figure out why the below fields are deleted when the .json file is updated. 
-/*
-	{
-		"HistoricEvents": [
-		{
-			"Name": "FirstWorldCountry",
-				"Thresholds" : {
-				"GrossDomesticProduct": 0,
-					"AverageEducationLevel" : "ELEMENTARY"
-			}
-		},
-	{
-	  "Name": "HighQualityOfHealth",
-	  "Thresholds" : { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
-	},
-	{
-	  "Name": "SocialEquality",
-	  "Thresholds" : { "<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>": 0 }
-	}
-	] }
-*/
+	
 
 	// Write to "EventLogs.json"
 	ofstream myfile;
-	myfile.open("C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\EventLogs.json");
+	myfile.open(EVENT_LOGS_PATH);
 	myfile << runningEventLogsJSON;
 	myfile.close();
 
@@ -90,44 +66,51 @@ vector<string> DataAnalyzer::updateEventLogs() {
 
 
 
- 
 
+// TODO: Eventually, remove condition for checking only school envs. When people are 
+// able to move to different envs, the ones that are educated in school will be moved 
+// all over the place. So, you'll have to check each env.
+void DataAnalyzer::checkFirstWorldCountry() {
+	 
 
-
-// TODO: Check if values in EventLogs.json match the thresholds in WorldConfig.json for 
-//     any expected HistoricEvents. 
-string DataAnalyzer::checkForFirstWorldCountry() {
-
-	// TODO: Actually compare these thresholds to "runningEventLogsJSON"
-	//Json::Value firstWorldConditions = worldConfigJSON["HistoricEvents"][0]["Thresholds"];
-	//double grossDomesticProduct = firstWorldConditions["GrossDomesticProduct"].asDouble();
-	//string averageEducation = firstWorldConditions["AverageEducationLevel"].asString();
-
-	string currentAverageEducation = "ELEMENTARY";
-
-	int averageKnowledgeScore = 0;
-	int sumKnowledge = 0;
-	int sumPopulation = 0;
+	Json::Value& thresholds = runningEventLogsJSON["HistoricEvents"][0]["Thresholds"];
+	string currentAverageEducation = "ELEMENTARY"; 
+	int sumKnowledge = 0, totalPopulation = 0;
+	float sumProfits = 0;
 
 	for (Environment& env : world) {
 	
 		if (env.getType() == "SCHOOL") {
-					 
+			 
 			for (Person& p : *env.getPopulation()) {
 				sumKnowledge += p.getKnowledgeScore();
 			}
 
-			sumPopulation += env.getPopulation()->size();
-
-			averageKnowledgeScore = sumKnowledge / sumPopulation;
-			 
+			totalPopulation += env.getPopulation()->size();
+			int averageKnowledgeScore = sumKnowledge / totalPopulation;
 			string education = getEducationLevel(averageKnowledgeScore);
-			cout << "AverageKnowledgeScore: " << averageKnowledgeScore << "  Education: " << education << "\n";
 			currentAverageEducation = education;
+			cout << "AverageKnowledgeScore: " << averageKnowledgeScore << "  Education: " << education << "\n";
 		} 
-	}
+		if (env.getType() == "WORK") {
 
-	return currentAverageEducation;
+			Json::Value envSpecificVars = env.getEnvironmentSpecificVars();
+			sumProfits += envSpecificVars["QuarterlyProfitDollars"].asFloat();
+			cout << "GrossDomesticProduct: " << sumProfits <<  "\n";
+		}
+	}
+	
+	// Update JSON 
+	thresholds["AverageEducationLevel"] = currentAverageEducation;
+	thresholds["GrossDomesticProduct"] = sumProfits;
+
+	Json::Value firstWorldConditions = worldConfigJSON["HistoricEvents"][0]["Thresholds"];
+	float grossDomesticProduct = firstWorldConditions["GrossDomesticProduct"].asFloat();
+	string averageEducation = firstWorldConditions["AverageEducationLevel"].asString();
+
+	if (currentAverageEducation == averageEducation && sumProfits >= grossDomesticProduct) {
+		logSimData("Historic Event Achieved:   FIRST_WORLD_COUNTRY ");
+	}
 }
 
 // TODO: Make type T

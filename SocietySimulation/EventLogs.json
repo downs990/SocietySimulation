@@ -1,10 +1,26 @@
-{ 
+{
 	"HistoricEvents" : 
-	[ 
+	[
 		{
-			"Thresholds" :  
+			"Name" : "FirstWorldCountry",
+			"Thresholds" : 
 			{
-				"AverageEducationLevel" : "MASTERS"
+				"AverageEducationLevel" : "MASTERS",
+				"GrossDomesticProduct" : 474428192.0
+			}
+		},
+		{
+			"Name" : "HighQualityOfHealth",
+			"Thresholds" : 
+			{
+				"<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" : 0
+			}
+		},
+		{
+			"Name" : "SocialEquality",
+			"Thresholds" : 
+			{
+				"<RUNNING-CURRENT-THRESHOLD-VALUES-HERE>" : 0
 			}
 		}
 	]

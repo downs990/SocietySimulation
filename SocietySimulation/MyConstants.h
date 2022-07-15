@@ -9,6 +9,9 @@
 //static struct tm *myDateTimeStruct; 
 
 static int const SECONDS_IN_HOUR = 3600;  
+static string const EVENT_LOGS_PATH = "C:\\Users\\downs\\Desktop\\VisualStudioWorkspace\\SocietySimulation\\SocietySimulation\\EventLogs.json";
+
+
 
 enum class StateOfHealth {
 	HEALTHY,

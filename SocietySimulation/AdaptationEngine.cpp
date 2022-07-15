@@ -1,9 +1,8 @@
 #include "AdaptationEngine.h"
 
 
-AdaptationEngine::AdaptationEngine(DataLogger* dataLogger, DataAnalyzer* dataAnalyzer, EnvironmentManager* envManager) {
-	
-	currentDataLogger = dataLogger;
+AdaptationEngine::AdaptationEngine(DataAnalyzer* dataAnalyzer, EnvironmentManager* envManager) {
+	 
 	currentDataAnalyzer = dataAnalyzer;
 	currentEnvManager = envManager;
 }
@@ -73,7 +72,7 @@ void AdaptationEngine::adaptToRecession(Json::Value societalInterruptionConditio
 	 
 	double indexOfMaxValue = maxValueIndex(decisionResults);  
 	string functionName = decisionMapKeys[indexOfMaxValue]; 
-	currentDataLogger->log("RECESSION: AdaptationFound: " + functionName + "\n");
+	logSimData("RECESSION: AdaptationFound: " + functionName + "\n");
 	  
 }
 

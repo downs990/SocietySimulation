@@ -12,7 +12,7 @@ public:
 	DataAnalyzer(EnvironmentManager envManager);
 	Json::Value getEventLogs();
 	vector<string> updateEventLogs();
-	string checkForFirstWorldCountry();
+	void checkFirstWorldCountry();
 	double averageEnvSpecificProperty(string envType, string propertyName);
 
 private:

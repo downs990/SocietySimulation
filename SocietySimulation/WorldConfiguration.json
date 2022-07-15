@@ -34,7 +34,7 @@
     {
       "Name": "FirstWorldCountry",
       "Thresholds": { 
-        "GrossDomesticProduct": 200000000000,
+        "GrossDomesticProduct": 10000000,
         "AverageEducationLevel": "BACHELORS"
 
       }

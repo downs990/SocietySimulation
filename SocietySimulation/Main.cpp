@@ -5,8 +5,7 @@
 #include "Person.h"
 #include "Environment.h"
 #include "EnvironmentManager.h"
-#include "DataAnalyzer.h"
-#include "DataLogger.h"
+#include "DataAnalyzer.h" 
 #include "AdaptationEngine.h"
 
 using std::cout; 
@@ -84,8 +83,7 @@ int main()
 {
 	 
 	// 1. Init databases / datastores
-	createDatabase();
-	DataLogger sessionDataLogger = DataLogger();
+	createDatabase(); 
 
 	// 2. Build world objects from config
 	readWorldDataFromConfigFile();
@@ -103,7 +101,7 @@ int main()
 	// - Use the Data Analyzer to check if those random values are making the person make more decisions that will 
 	//      counter the effects of the current S.I 
 	DataAnalyzer myDataAnalyzer = DataAnalyzer(envManager);
-	AdaptationEngine myAdaptorEngine = AdaptationEngine(&sessionDataLogger, &myDataAnalyzer, &envManager);
+	AdaptationEngine myAdaptorEngine = AdaptationEngine(&myDataAnalyzer, &envManager);
   
 
 
@@ -135,13 +133,14 @@ int main()
 		cout << timeString;
 
 		
+
 		 
 		// TODO: Create some kind of whole simulation "state" variable that has all important values and can 
 		//     be logged each frame. (only values that have chanced since last frame are logged)
 
 
 		// TODO: Log compressed JSON of each Person and Environment each frame. 
-		sessionDataLogger.log(timeString);
+		logSimData(timeString);
 		envManager.executeBehaviors(now);
 
 		// Checks for Historic Events. 
