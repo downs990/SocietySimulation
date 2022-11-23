@@ -72,7 +72,6 @@ vector<string> DataAnalyzer::updateEventLogs() {
 // all over the place. So, you'll have to check each env.
 void DataAnalyzer::checkFirstWorldCountry() {
 	 
-
 	Json::Value& thresholds = runningEventLogsJSON["HistoricEvents"][0]["Thresholds"];
 	string currentAverageEducation = "ELEMENTARY"; 
 	int sumKnowledge = 0, totalPopulation = 0;
@@ -104,11 +103,12 @@ void DataAnalyzer::checkFirstWorldCountry() {
 	thresholds["AverageEducationLevel"] = currentAverageEducation;
 	thresholds["GrossDomesticProduct"] = sumProfits;
 
-	Json::Value firstWorldConditions = worldConfigJSON["HistoricEvents"][0]["Thresholds"];
-	float grossDomesticProduct = firstWorldConditions["GrossDomesticProduct"].asFloat();
-	string averageEducation = firstWorldConditions["AverageEducationLevel"].asString();
+	Json::Value firstWorldConditions = worldConfigJSON["HistoricEvents"][0]["Thresholds"]; 
 
-	if (currentAverageEducation == averageEducation && sumProfits >= grossDomesticProduct) {
+	if (currentAverageEducation == firstWorldConditions["AverageEducationLevel"].asString()
+		&&
+		sumProfits >= firstWorldConditions["GrossDomesticProduct"].asFloat()) 
+	{
 		logSimData("Historic Event Achieved:   FIRST_WORLD_COUNTRY ");
 	}
 }

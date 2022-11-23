@@ -64,7 +64,7 @@ private:
 	
 	
 	
-	
+	// Total study hours
 	int knowledgeScore;
 
 
